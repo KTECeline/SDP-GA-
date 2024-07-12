@@ -2,7 +2,7 @@
   "name": "sdp-ga-",
   "version": "1.0.0",
   "description": "Software Development Project. Used to build a python learning game in a web application.",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
