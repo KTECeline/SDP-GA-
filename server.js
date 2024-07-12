@@ -1,5 +1,5 @@
 const express = require('./vercel/node_modules/express');
-const phpExpress = require('./vercel/node_modules/expressphp-express')({
+const phpExpress = require('./vercel/node_modules/express/php-express')({
   binPath: 'C:/xampp1/php/php.exe' // replace with your PHP binary path if different
 });
 
