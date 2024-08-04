@@ -1,0 +1,409 @@
+@font-face {
+    font-family: "PPmonument";
+    src: url("../font/PPMonumentExtended-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "PPmonument";
+    src: url("../font/PPMonumentExtended-Black.otf") format("opentype");
+    font-weight: 800;
+}
+
+:root {
+    --white-100: #ffffff;
+    --purple-color: #9900ff;
+    --green-color: #f74452;
+    --cyberpunk-color: #f06414;
+    --purple-color-alpha-3: rgba(238, 106, 229, 0.329);
+    --purple-color-alpha-2: rgba(105, 19, 129, 0.67);
+    --green-color: #61cdb4;
+    --green-color-alpha-3: rgba(2, 126, 29, 0.733);
+    --green-color-alpha-2: rgba(66, 231, 126, 0.2);
+    --brown-color: #c5be38;
+    --brown-color-alpha-3: rgba(222, 216, 97, 0.578);
+    --brown-color-alpha-2: rgba(199, 194, 99, 0.2);
+    --surface: #0a080d;
+
+    /* ============= SPACING ============= */
+    --space-es: 0.375rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-xmd: 1.5rem;
+    --space-lg: 2rem;
+    /* ============= PADDING ============= */
+    --padding-sm: var(--space-sm);
+    --padding-md: var(--space-md);
+    --padding-xmd: var(--space-xmd);
+    --padding-lg: var(--space-lg);
+
+    /* ============= MARGIN ============= */
+    --margin-sm: var(--space-sm);
+    --margin-md: var(--space-md);
+    --margin-xmd: var(--space-xmd);
+    --margin-lg: var(--space-lg);
+
+    /* ============= FONT SIZE ============= */
+    --font-size-1: 0.8rem;
+    --font-size-2: 1.5rem;
+
+    /* ============= FONT WEIGHT ============= */
+    --font-regular: 400;
+    --font-extra-bold: 800;
+}
+
+.purple{
+    --primary: var(--purple-color);
+    --primary-alpha-3: var(--purple-color-alpha-3);
+    --primary-alpha-2: var(--purple-color-alpha-2);
+}
+
+.green {
+    --primary: var(--green-color);
+    --primary-alpha-3: var(--green-color-alpha-3);
+    --primary-alpha-2: var(--green-color-alpha-2);
+}
+
+.brown {
+    --primary: var(--brown-color);
+    --primary-alpha-3: var(--brown-color-alpha-3);
+    --primary-alpha-2: var(--brown-color-alpha-2);
+}
+
+/* =============  FLEX BOX =============*/
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.f-column {
+    flex-direction: column;
+}
+
+.c-gap-1 {
+    column-gap: 0.4rem;
+}
+
+.r-gap-1 {
+    row-gap: 0.4rem;
+}
+
+.gap-1 {
+    gap: 0.4rem;
+}
+
+.c-gap-2 {
+    column-gap: 0.4rem;
+}
+
+.r-gap-2 {
+    row-gap: 0.8rem;
+}
+
+.gap-2 {
+    gap: 0.4rem;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "PPmonument";
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    width: 100%;
+}
+
+.app__slider {
+    width: 100%;
+}
+
+.app__slider-slide {
+    position: relative;
+}
+
+.app__slider-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+}
+
+.login {
+    position: relative;
+    background-color: var(--surface);
+    overflow: hidden;
+}
+
+.login::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 500px;
+    border-radius: 50%;
+    background-color: var(--primary-alpha-2);
+    transform: translateY(50%);
+    filter: blur(150px);
+    z-index: 0;
+}
+
+.login__form {
+    position: relative;
+    margin-inline: clamp(var(--margin-md), 4vw, calc(var(--margin-lg) * 2.2));
+    padding-block: var(--padding-md);
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.form {
+    flex-shrink: 0;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.form.show {
+    opacity: 1;
+    z-index: 1;
+    pointer-events: all;
+}
+
+.login-form {
+    row-gap: 2rem;
+}
+
+.signup-form {
+    row-gap: 1.8rem;
+    transform: translateX(-100%);
+}
+
+.form__title {
+    font-size: clamp(var(--font-size-1), 3vw, var(--font-size-2));
+    font-weight: var(--font-extra-bold);
+    color: var(--white-100);
+}
+
+.form__subtitle {
+    font-size: var(--font-size-1);
+    font-weight: var(--font-regular);
+    color: var(--white-100);
+}
+
+.form__field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem; 
+}
+
+.form__field label {
+    display: block;
+    margin-bottom: 1rem;  
+    font-size: 0.8rem; 
+    color: #ffffff; 
+}
+
+.form__field .form__input {
+    width: 100%; 
+    padding: 0.7rem 1rem; 
+    background: none; 
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 4px; 
+    outline: none; 
+    color: #ffffff; 
+    font-size: 0.6rem; 
+    font-weight: 400;
+    transition: border-color 0.3s ease; 
+}
+
+.form__field .form__input-border {
+    position: absolute;
+    bottom: -2px; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: transparent; 
+}
+
+.form__field .form__input:focus {
+    border-color: var(--primary);; 
+}
+
+.form__button-border {
+    position: absolute;
+    inset: 0;
+    background-color: var(--primary);
+    pointer-events: none;
+}
+
+.form__link {
+    width: fit-content;
+    font-size: calc(var(--font-size-1) / 1.2);
+    font-weight: var(--font-regular);
+    color: var(--white-100);
+    transition: color 0.1s ease;
+}
+
+.form__link:hover {
+    color: var(--primary);
+}
+
+.form__button {
+    border: none;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    font-size: calc(var(--font-size-1) * 1.1);
+}
+
+.form__button.filled {
+    color: var(--white-100);
+}
+
+.form__button.outlined {
+    color: var(--primary);
+}
+
+.form__button.filled .form__button-bg {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background-color: var(--primary);
+}
+
+/* close button */
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ffffff; 
+}
+
+/* login_register password icon */
+
+.password-toggle-icon {
+    position: absolute;
+    top: 73%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.password-toggle-icon i {
+    font-size: 15px;
+    line-height: 1;
+    color: #b6b6b6;
+    transition: color 0.5s ease-in-out;
+}
+  
+.password-toggle-icon i:hover {
+    color: #ffffff;
+}
+
+/* forgot_reset password */ 
+
+.reset-form {
+    background-color:rgba(255, 255, 255, 0.7);;
+    width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: fixed; 
+    top: 51%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 0; 
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.reset-form label {
+    display: block;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.reset-form input {
+    width: calc(100% - 50px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px rgb(255, 255, 255, 0.65);
+    background-color:rgb(255, 255, 255, 0.65);
+    border-radius: 5px;
+}
+
+.reset-form input:focus {
+    outline: none;
+    border-color: #330155;
+}
+
+.form-group {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container {
+    text-align: center; 
+    margin-top: 40px;
+}
+
+.submit-btn {
+    background-color: #3f0160;
+    color: #fff;
+    padding: 10px 20px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0 10px; 
+}
+
+/* fotgot_reset password icon */
+.password-icon {
+    position: absolute;
+    top: 65%;
+    right: 85px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.password-icon i {
+    font-size: 15px;
+    line-height: 1;
+    color: #333;
+    transition: color 0.5s ease-in-out;
+}
+  
+.password-icon i:hover {
+    color: #953cdd;
+}
