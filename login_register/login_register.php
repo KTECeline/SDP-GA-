@@ -28,7 +28,7 @@
                 echo "<script>alert('Error: Unable to register. Please try again!');</script>";
             } else {
                 echo "<script>alert('Successfully registered!');</script>";
-                echo "<script>window.location.href = 'homepage.php';</script>";
+                echo "<script>window.location.href = '../homepage.php';</script>";
                 exit();
             }
         }
