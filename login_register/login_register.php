@@ -46,7 +46,7 @@
             $row = mysqli_fetch_array($user_result);
             $_SESSION['name'] = $row['USER_USERNAME']; 
             echo "<script>alert('Successfully logged in!');</script>";
-            echo "<script>window.location.href = 'homepage.php';</script>";
+            echo "<script>window.location.href = '../homepage/homepage.php';</script>";
             exit();
         } else {
             echo "<script>alert('Incorrect username/email!');</script>";
@@ -150,7 +150,7 @@
                             </div>
 
                             <div class="form__field">
-                                <label for="password">Password:</label>
+                                <label for="password">Password:</label>  
                                 <input type="password" name="password" class="form__input" placeholder="Enter your password" required />
                                 <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
                                     <i class="fas fa-eye"></i>

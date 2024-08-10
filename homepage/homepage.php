@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/default.css">
-    <script src="Javascript/script.js"></script>
 
 </head>
 
@@ -20,18 +19,18 @@
 <header class="active">
 
 <div class="container">
-    <a href="login_register/login_register.php"><img src="image/Witchcraft.Code Logo.png"/></a>
+    <a href="homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
 
     <ul class="header-action">
-        <li><a href="login_register/login_register.php">Leaderboard</a></li>
-        <li><a href="login_register/login_register.php">Login</a></li>
+        <li><a href="leaderboard.php">Leaderboard</a></li>
+        <li><a href="profile.php">Profile</a></li>
     </ul>
 
 </div>
 
 <div class="mPage">
-    <img src="image/Witchcraft.Code Logo (Without bg).png" name="backgroundLogo"/>
-    <img src="image/purpleSky.jpeg" alt="purpleSky" name="backgroundhidden">
+    <img src="../image/Witchcraft.Code Logo (Without bg).png" name="backgroundLogo"/>
+    <img src="../image/purpleSky.jpeg" alt="purpleSky" name="backgroundhidden">
     <button onclick="playnow()">Play Now</button>
 </div>
 
@@ -51,7 +50,7 @@
 
 <section id="side-bar">
         <div class="profile">
-            <img src="image/cute ghost 2.gif" class="logo-image" alt="">
+            <img src="../image/cute ghost 2.gif" class="logo-image" alt="">
         </div>
 
         <div class="course">
@@ -64,32 +63,18 @@
         </div>
 </section>
 
+
 <footer>
 
-<div class="footer-top">
-    <div class="container">
-
-        <div class="footer-brand">
-            <a href="#" class="logo"></a>
-            <p class="footer-text">Witchcraft.code is a ...</p>
-            <ul class="footer-list">
-                <li><p class="footer-link-title">Start A Conversation</p></li>
-                <li><a href="mailto:hello@witchcraftcode.com" class="footer-link">hello@witchcraftcode.com</a></li>
-                <li><a href="tel:+0123456789" class="footer-link">+0123456789</a></li>
-            </ul>
-            </div>
-
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="copyright">&copy; 2024 Witchcraft.Code. All rights reserved.</p>
         </div>
-    <div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <p class="copyright">&copy; 2024 Witchcraft.Code. All rights reserved.</p>
-            </div>
-        </div>
+    </div>
+    
+    </footer>
 
 
-</footer>
 
 
 </body>
