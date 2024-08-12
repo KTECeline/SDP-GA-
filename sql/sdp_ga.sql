@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2024 at 03:40 PM
+-- Generation Time: Aug 12, 2024 at 07:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -44,6 +44,16 @@ CREATE TABLE `episode` (
   `EPISODE_NAME` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `episode`
+--
+
+INSERT INTO `episode` (`EPISODE_ID`, `EPISODE_NAME`) VALUES
+(1, 'EP1'),
+(2, 'EP2'),
+(3, 'EP3'),
+(4, 'EP4');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +90,17 @@ CREATE TABLE `game_episode` (
   `EPISODE_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `game_episode`
+--
+
+INSERT INTO `game_episode` (`EPISODE_QUESTION_ID`, `EPISODE_QUESTION`, `EPISODE_HINT`, `OPTION_A`, `OPTION_A_EXPLANATION`, `OPTION_B`, `OPTION_B_EXPLANATION`, `OPTION_C`, `OPTION_C_EXPLANATION`, `OPTION_D`, `OPTION_D_EXPLANATION`, `CORRECT_ANSWER`, `EPISODE_ID`) VALUES
+(1, 'Which of the following is the correct way to open a file in read mode in Python?', 'To open a file for reading, use the mode that specifies \'read\'.', 'file = open(\'filename.txt\', \'o\')', '\'o\' is not a valid mode for opening a file.', 'file = open(\'filename.txt\', \'r\')', '\'r\' opens the file in read mode, which is the correct choice.', 'file = open(\'filename.txt\', \'w\')', '\'w\' opens the file in write mode, which does not work for reading.', 'file = open(\'filename.txt\', \'a\')', '\'a\' opens the file in append mode, which is not used for reading.', 'B', 4),
+(2, 'How can you write the string \"Hello, World!\" into a file named example.txt in Python?\r\n', 'To write to a file, use the mode that allows creating or overwriting the file.', 'with open(\'example.txt\', \'w\') as file:\r\n     file.write(\"Hello, World!\")', '\'w\' mode opens the file for writing, creating it if it doesn’t exist, and writing the specified string.', 'with open(\'example.txt\', \'r\') as file:\r\n     file.write(\"Hello, World!\")', '\'r\' mode is for reading only, and does not allow writing.', 'with open(\'example.txt\', \'o\') as file:\r\n     file.write(\"Hello, World!\")', '\'o\' is not a valid mode for file operations.', 'with open(\'example.txt\', \'a\') as file:\r\n     file.write(\"Hello, World!\")', '\'a\' mode opens the file for appending, which also writes to the file but does not overwrite existing content.', 'A', 4),
+(3, 'How do you get the current date and time in Python using the datetime module?', 'To obtain the current date and time, call a method from the datetime class.', 'datetime.now()', 'This method is used to get the current date and time.', 'datetime.datetime()', 'This is not used for getting the current date and time.', 'datetime.time.now()', 'This method does not exist for getting date and time.', 'datetime.datetime.now()', 'This method is also valid for getting the current date and time, with correct class usage.', 'D', 4),
+(4, 'Which of the following is the correct way to append data to an existing file in Python?', 'To add new data to a file without deleting the existing content, use the append mode.', 'with open(\'example.txt\', \'a\') as file:\r\n     file.write(\"New data\")\r\n\r\n', '\'a\' mode allows appending data to the end of the file.', 'with open(\'example.txt\', \'w\') as file:\r\n     file.write(\"New data\")\r\n', '\'w\' mode overwrites the file content.', 'with open(\'example.txt\', \'r\') as file:\r\n     file.write(\"New data\")', '\'r\' mode is for reading only.', 'with open(\'example.txt\', \'o\') as file:\r\n     file.write(\"New data\")', '\'o\' is not a valid file mode.', 'A', 4),
+(5, 'What does the strip() method do when used with file input in Python?', 'The strip() method cleans up whitespace from the edges of a string.', 'Splits the file into lines', 'strip() does not split file contents.', 'Reads the entire file contents into memory', 'strip() does not handle file reading.', 'Removes leading and trailing whitespace characters', 'strip() removes whitespace from the start and end of a string.', 'Removes all whitespace characters', 'strip() specifically removes leading and trailing whitespace, not all whitespace.', 'C', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -107,6 +128,13 @@ CREATE TABLE `user_information` (
   `USER_PASSWORD` varchar(50) NOT NULL,
   `ROLES` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_information`
+--
+
+INSERT INTO `user_information` (`USER_ID`, `USER_NAME`, `USER_EMAIL`, `USER_PHONENUMBER`, `USER_USERNAME`, `USER_PASSWORD`, `ROLES`) VALUES
+(1, 'Hui Nan', 'huinan26@gmail.com', '011-20186158', 'huinannn', 'hn123', 'user');
 
 --
 -- Indexes for dumped tables
@@ -162,7 +190,7 @@ ALTER TABLE `certificate_information`
 -- AUTO_INCREMENT for table `episode`
 --
 ALTER TABLE `episode`
-  MODIFY `EPISODE_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EPISODE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `episode_result`
@@ -174,7 +202,7 @@ ALTER TABLE `episode_result`
 -- AUTO_INCREMENT for table `game_episode`
 --
 ALTER TABLE `game_episode`
-  MODIFY `EPISODE_QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EPISODE_QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `score_information`
@@ -186,7 +214,7 @@ ALTER TABLE `score_information`
 -- AUTO_INCREMENT for table `user_information`
 --
 ALTER TABLE `user_information`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
