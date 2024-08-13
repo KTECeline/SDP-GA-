@@ -1,0 +1,143 @@
+/* side bar */
+#side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #ffffff;
+    left: -250px;
+    transition: all .5s ease;
+}
+
+#side-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#side-bar ul li {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+#side-bar ul a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: left;
+}
+
+#side-bar .course ul a {
+    display: flex;
+    height: 60px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    color: black;
+    font-size: 14px;
+    text-align: center;
+}
+
+#side-bar ul a i {
+    margin-right: 10px;
+}
+
+#side-bar ul li:hover a {
+    padding-left: 30px;
+}
+
+#side-bar .profile a {
+    text-decoration: none;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 25px;
+    padding: 13px 30px;
+    font-weight: 600;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #6a0dad;
+}
+
+#side-bar .profile a.btn:hover {
+    color: #ffffff;
+    background: #6a0dad;
+}
+
+#side-bar .profile {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#side-bar .profile .image {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+#side-bar .profile .name {
+    font-size: 20px;
+    color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#side-bar .profile .role {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+/* side bar button */
+#check {
+    display: none;
+}
+
+label #btn, label #cancel {
+    position: absolute;
+    cursor: pointer;
+    background: #6a0dad;
+    border-radius: 3px;
+}
+
+label #btn {
+    left: 40px;
+    top: 100px;
+    font-size: 35px;
+    color: white;
+    padding: 6px 12px;
+    transition: all .5s;
+}
+
+label #cancel {
+    z-index: 1111;
+    left: -195px;
+    top: 100px;
+    font-size: 30px;
+    color: white;
+    padding: 4px 9px;
+    transition: all .5s ease;
+    position: fixed;
+}
+
+#check:checked ~ #side-bar {
+    left: 0;
+}
+
+#check:checked ~ label #btn {
+    left: 250px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#check:checked ~ label #cancel {
+    left: 195px;
+}

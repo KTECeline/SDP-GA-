@@ -1,0 +1,156 @@
+/* User profile */
+#profile .box {
+    width: 850px;
+    height: 440px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    margin: 150px auto;
+    color: #000000;
+}
+
+#profile .box-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#profile .box-content .divider {
+    border-left: 1.5px solid #000000;
+    height: 300px;
+    margin: 0 50px;
+    margin-top: 20px;
+}
+
+#profile .box-content h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#profile .box-content .role {
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+#profile .box-content .right {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+#profile .heading, #ins_profile .heading {
+    font-size: 35px;
+    color: #000000;
+    padding-bottom: 16px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#profile .box-content .image, #ins_profile .box-content .image {
+    width: 150px;
+    height: 200px;
+    margin-top: 20px;
+}
+
+#profile .update, #ins_profile .update {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#profile .update a.btn, #ins_profile .update a.btn {
+    text-decoration: none;
+    background-color: hsl(252, 80%, 16%);
+    color: #ffffff;
+    font-size: 16px;
+    padding: 12px 25px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.profile-details {
+    margin-top: 40px;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: left;
+    color: #000000;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.detail-item .label {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.detail-item .value {
+    font-size: 18px;
+    color: #000000;
+}
+
+/* Update user profile */
+#profile .details {
+    width: 650px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    margin: 120px auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.edit-form {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.edit-form input[type="text"], .edit-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+.edit-form input[type="text"]:focus, .edit-form input[type="email"]:focus {
+    outline: none;
+    border-color: #953cdd; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container .btn, .submit-btn {
+    text-decoration: none;
+    background-color: hsl(252, 80%, 16%);
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 12px 25px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-left: 30px;
+}

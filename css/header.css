@@ -27,7 +27,7 @@ header {
   header.active {
     top: 0;
   }
-  
+
   
   header .container {
     height: 100%;
@@ -88,6 +88,7 @@ header {
   .header-action li:is(:hover, :focus)::after{
     --scale:1;
   }
+
 :root{
     --black:#000000;
     --violet-dark: hsl(262, 99%, 62%);
@@ -103,34 +104,56 @@ header {
     --gradient: linear-gradient(to right, var(--violet-light), var(--violet-dark))
 }
 
+.dropbtn {
+    font-size: 16px;
+    color: var(--black);
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: var(--black);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* Footer */
 footer {
+    padding: 4vw;
     background-color: var(--light-violet);
-    padding: 3vw;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    position: relative;
-    left: 0;
-    width: 100%; /* Changed to 100% to ensure the footer spans the full width */
-    margin-bottom: 0; /* Removed negative margin */
   }
   
   .footer-top {
-    padding: 3vw 10vw;
-    margin-top: -100px; /* Reset to avoid affecting the layout */
-    margin-bottom: -100px; /* Removed negative margin */
+    margin-top: -45px; 
+    margin-bottom: -80px; 
     width: 100%;
   }
   
   .copyright {
     color: var(--gray);
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
   }
-  
-    
-  

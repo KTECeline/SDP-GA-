@@ -46,7 +46,7 @@
             $row = mysqli_fetch_array($user_result);
             $_SESSION['name'] = $row['USER_USERNAME']; 
             echo "<script>alert('Successfully logged in!');</script>";
-            echo "<script>window.location.href = '../homepage/homepage.php';</script>";
+            echo "<script>window.location.href = '../user/homepage.php';</script>";
             exit();
         } else {
             echo "<script>alert('Incorrect username/email!');</script>";
