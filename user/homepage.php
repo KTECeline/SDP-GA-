@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <?php include "header.php"?>
+    <?php include "../header_footer/header.php"?>
 
     <div class="top">
         <img src="../image/Halloween Chill.gif" alt="Halloween chill" class="backgroundhidden">
@@ -160,7 +160,7 @@
         </div>
     </div>
     
-    <?php include "footer.php"?>
+    <?php include "../header_footer/footer.php"?>
 
     <script src="../Javascript/script.js"></script>
 </body>

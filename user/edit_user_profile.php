@@ -52,7 +52,7 @@
 
     <body>
     
-        <?php include "header.php"?>
+        <?php include "../header_footer/header.php"?>
 
         <!-- side bar button -->
         <input type="checkbox" id="check">
@@ -108,7 +108,7 @@
             </form>
         </section>
 
-        <?php include "footer.php" ?>
+        <?php include "../header_footer/footer.php" ?>
 
     </body>
 </html>

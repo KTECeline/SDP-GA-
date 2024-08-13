@@ -1,10 +1,10 @@
 /* User profile */
 #profile .box {
     width: 850px;
-    height: 440px;
+    height: 455px;
     background-color: rgba(255, 255, 255, 0.65);
     border-radius: 20px;
-    margin: 150px auto;
+    margin: 145px auto;
     color: #000000;
 }
 

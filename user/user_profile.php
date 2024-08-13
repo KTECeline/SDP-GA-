@@ -46,7 +46,7 @@
 
     <body>
 
-        <?php include "header.php" ?>
+        <?php include "../header_footer/header.php" ?>
 
         <!-- side bar button -->
             <input type="checkbox" id="check">
@@ -103,6 +103,8 @@
                         </div>
                         
                         <div class="update">
+                            <div class="button-container">
+                            <a href="homepage.php" class="btn">Back</a>
                             <a href="edit_user_profile.php" class="btn">Update</a>
                         </div>
                     </div>
@@ -110,7 +112,7 @@
             </div>
         </section>
 
-        <?php include "footer.php" ?>
+        <?php include "../header_footer/footer.php" ?>
 
     </body>
 </html>
