@@ -104,59 +104,33 @@ header {
 }
 
 
-/* Footer */
 
+/* Footer */
 footer {
     background-color: var(--light-violet);
-    padding: 5vw;
+    padding: 3vw;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    position:  relative;
+    position: relative;
     left: 0;
-    width: 100vw;
+    width: 100%; /* Changed to 100% to ensure the footer spans the full width */
+    margin-bottom: 0; /* Removed negative margin */
   }
+  
   .footer-top {
     padding: 3vw 10vw;
-    margin-top:-100px;
-    width: 100%; /* Ensure it spans the full width */
+    margin-top: -100px; /* Reset to avoid affecting the layout */
+    margin-bottom: -100px; /* Removed negative margin */
+    width: 100%;
   }
-  .footer-brand .logo {
-    margin-bottom: 25px;
-  }
-  .footer-text {
-    color: var(--gray);
-    line-height: 1.6;
-    font-size: 20px;
-  }
-  .footer-list {
-    margin-bottom: 30px;
-  }
-  .footer-list li {
-    margin-bottom: 20px;
-  }
-  .footer-link-title {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  .footer-link {
-    color: var(--gray);
-    font-size: 20px;
-    width: max-content;
-  }
-  .footer-link:hover {
-    color: var(--violet-light);
-    font-size: 20px;
-    width: max-content;
-  }
- .copyright {
+  
+  .copyright {
     color: var(--gray);
     font-size: 20px;
     text-align: center;
-    margin-bottom:-100px ;
   }
   
-  
+    
   
