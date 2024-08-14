@@ -1,5 +1,22 @@
 <?php
+// Start the session
 session_start();
+
+// Handle session restart if requested
+if (isset($_POST['reset'])) {
+    // Unset all session variables
+    session_unset();
+    
+    // Destroy the session
+    session_destroy();
+    
+    // Start a new session
+    session_start();
+    
+    // Optionally, redirect to the same page to reload with a fresh session
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
 
 include '../conn/conn.php';
 
@@ -33,13 +50,11 @@ if ($result->num_rows > 0) {
         );
     }
 } else {
-    // If no question found, set a default message or handle accordingly
     $quizQuestion = "No questions available.";
     $hint = "";
     $optionA = $optionB = $optionC = $optionD = "";
     $correctAnswer = "";
     $explanation = [];
-
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -48,21 +63,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $explanationText = isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '';
 
         if ($selectedAnswer === $correctAnswer) {
-            // Increment the question ID for the next question
             $_SESSION['EPISODE_QUESTION_ID'] = $currentQuestion + 1;
-            // Display the explanation and the "Next Question" button
             $showNextButton = true;
         } else {
             $showNextButton = false;
         }
     } elseif (isset($_POST['nextQuestion'])) {
-        // When "Next Question" button is clicked, move to the next question
         $_SESSION['EPISODE_QUESTION_ID'] = $currentQuestion + 1;
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 }
-// Close the statement
 $stmt->close();
 ?>
 <!DOCTYPE html>
@@ -70,19 +81,26 @@ $stmt->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz</title>
 </head>
 <body>
-    <div class="question">
-        <form method="post">
-        <p><?= $quizQuestion ?></p>
-        <div class="answer">
-            <button type="submit" class="button" name="answer" value="A"><?= $optionA ?></button>
-            <button type="submit" class="button" name="answer" value="B"><?= $optionB ?></button>
-            <button type="submit" class="button" name="answer" value="C"><?= $optionC ?></button>
-            <button type="submit" class="button" name="answer" value="D"><?= $optionD ?></button>
+        <div class="question">
+            <form method="post">
+                <p><?= $quizQuestion ?></p>
+                <div class="answer">
+                    <button type="submit" class="button" name="answer" value="A"><?= $optionA ?></button>
+                    <button type="submit" class="button" name="answer" value="B"><?= $optionB ?></button>
+                    <button type="submit" class="button" name="answer" value="C"><?= $optionC ?></button>
+                    <button type="submit" class="button" name="answer" value="D"><?= $optionD ?></button>
+                </div>
+                <?php if (isset($explanationText)): ?>
+                    <p><?= $explanationText ?></p>
+                <?php endif; ?>
+                <?php if (isset($showNextButton) && $showNextButton): ?>
+                    <button type="submit" class="button" name="nextQuestion" value="next">Next Question</button>
+                <?php endif; ?>
+            </form>
         </div>
-        </form>
     </div>
 </body>
 </html>
