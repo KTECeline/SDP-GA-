@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Episode</title>
-    <link rel="stylesheet" href="cor.css">
+    <link rel="stylesheet" href="../css/corrent1.css/">
     
 </head>
 <body>
