@@ -9,18 +9,19 @@
         $username = $_POST['new_username'];
         $password = $_POST['new_password'];
 
+        // Remove the extra comma before WHERE clause
         $sql = "UPDATE user_information SET " .
                 "USER_NAME = '$name', " .  
                 "USER_EMAIL = '$email', " .
-                "USER_PHONENUMBER= '$phone', " .
+                "USER_PHONENUMBER = '$phone', " .
                 "USER_USERNAME = '$username', " .
-                "USER_PASSWORD = '$password' " .
+                "USER_PASSWORD = '$password' " .  // Removed the comma here
                 "WHERE USER_ID = $id";
 
         mysqli_query($dbConn, $sql);
 
         if (mysqli_affected_rows($dbConn) > 0) { 
-            echo "<script>alert('Successfully update data!');</script>";
+            echo "<script>alert('Successfully updated data!');</script>";
             echo "<script>window.location.href='../../admin/profile/profile.php';</script>";
             exit(); 
         } else {

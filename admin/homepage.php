@@ -13,10 +13,12 @@
             echo "<script>alert('No data found for the logged-in user!');</script>";
         }
     } else {
-        echo "<script>window.location.href = 'update_user_profile.php';</script>";
+        echo "<script>window.location.href = '../../login_register/login_register.php';</script>";
         exit();
     }
-    ?>
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
