@@ -6,6 +6,7 @@
     <title>Responsive Sidebar</title>
     <link rel="stylesheet" href="../../css/admin/sidebar.css">
     <link rel="stylesheet" href="../../css/admin/playerList.css">
+ 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -54,6 +55,7 @@
 
      
     <div class="main-content">
+    
     <div class="top-part">
         <div class="view-toggle">
             <button id="toggleViewBtn">Switch to Card View</button>
