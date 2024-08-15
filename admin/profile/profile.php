@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    include '../conn/conn.php';
+    include '../../conn/conn.php';
     
     if(isset($_SESSION['name'])) {
         $username = $_SESSION['name'];;
