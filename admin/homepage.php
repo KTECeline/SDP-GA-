@@ -1,6 +1,22 @@
 <?php
     session_start();
-?>
+    
+    include '../conn/conn.php';
+    
+    if(isset($_SESSION['name'])) {
+        $username = $_SESSION['name'];;
+        $sql = "SELECT * FROM user_information WHERE USER_USERNAME = '$username'";
+        $result = mysqli_query($dbConn, $sql);
+        if(mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_array($result);
+        } else {
+            echo "<script>alert('No data found for the logged-in user!');</script>";
+        }
+    } else {
+        echo "<script>window.location.href = 'update_user_profile.php';</script>";
+        exit();
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
