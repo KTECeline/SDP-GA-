@@ -1,0 +1,156 @@
+/* Common Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: hsl(282, 80%, 16%);
+    color: #fff;
+}
+
+
+.top-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title h1 {
+    color: #FFB6C1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.playerlist-btn button {
+    background-color: #4a4a69;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+   gap:10px;;
+    
+
+}
+
+.playerlist-btn button:hover {
+    background-color: #2a2a40;
+}
+
+.view-toggle button {
+    background-color: #4a4a69;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-toggle button:hover {
+    background-color: #2a2a40;
+}
+
+/* Table View Styles */
+.user-table {
+    display: none; /* Initially hidden, shown when active */
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #333;
+}
+
+.user-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px 15px;
+    border: 1px solid #555;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #4a4a69;
+    color: #fff;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #2a2a40;
+}
+
+.user-table tr:hover {
+    background-color: #44445e;
+}
+
+/* Card View Styles */
+.user-cards {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.user-card {
+    text-align:center;
+    align-items: center;
+    background-color: #2e2e4a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    background-color: #39395e;
+}
+
+.user-card h3 {
+    margin-bottom: 10px;
+    color: #FFB6C1;
+}
+
+.user-card p {
+    margin-bottom: 8px;
+    color: #cfcfd9;
+}
+
+.user-card input[type="radio"] {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.user-cards.active-view {
+    display: grid;
+}
+
+.user-table.active-view {
+    display: table;
+}
+
+/* edit */
+#userTable.editing {
+    border: 2px solid #FF69B4;
+}
+
+.select-checkbox {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+button {
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: hsl(282, 80%, 16%);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: hsl(252, 58%, 34%);
+}
+
