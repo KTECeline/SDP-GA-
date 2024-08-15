@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
     
     include '../../conn/conn.php';
     
@@ -13,10 +13,11 @@ session_start();
             echo "<script>alert('No data found for the logged-in user!');</script>";
         }
     } else {
-        echo "<script>window.location.href = '../../login_register/login.php';</script>";
+        echo "<script>window.location.href = '../../admin/profile/update.php';</script>";
         exit();
     }
-    ?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +80,7 @@ session_start();
                 <div class="box">
                     <div class="box-content">
                         <div class="left">
-                            <img src="../image/blackcat.png" class="image" alt="blackcat">
+                            <img src="../image/blackcat.png" class="image" alt="">
                             <h3 class="name"><?php echo $row['USER_NAME'] ?></h3>
                             <p class="role">Admin</p>
                         </div>
