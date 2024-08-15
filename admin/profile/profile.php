@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    include '../conn/conn.php';
+    include '../../conn/conn.php';
     
     if(isset($_SESSION['name'])) {
         $username = $_SESSION['name'];;
@@ -80,7 +80,7 @@
                 <div class="box">
                     <div class="box-content">
                         <div class="left">
-                            <img src="../image/blackcat.png" class="image" alt="">
+                            <img src="../image/blackcat.png" class="image" alt="blackcat">
                             <h3 class="name"><?php echo $row['USER_NAME'] ?></h3>
                             <p class="role">Admin</p>
                         </div>
