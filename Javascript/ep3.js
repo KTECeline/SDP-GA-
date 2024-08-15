@@ -44,3 +44,18 @@ function handleCorrectAnswer() {
     stopQuizTimer();
     document.getElementById('next-button').style.display = 'block'; // Show the next button
 }
+
+function image(){
+    const img = document.getElementById('zoomable-image');
+    let currentFloor = 0;
+
+    img.addEventListener('click', () => {
+        if (currentFloor < 12) {
+            currentFloor++;
+            img.className = 'scroll-floor-' + currentFloor;
+        } else {
+            img.className = 'scroll-floor-0';
+            currentFloor = 0;
+        }
+    });
+}

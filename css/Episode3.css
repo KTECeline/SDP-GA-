@@ -1,23 +1,18 @@
-#readyGo {
-    position:relative;
-}
-
-@keyframes count {
-    0% { transform: scale(1.5); }
-    100% { transform: scale(1); }
-}
-
-.nums {
-
-    font-size: 5rem;
-    height: auto;
+#bottom {
     position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
-    margin: auto;
-    text-align: center;
-    animation: count 0.1s cubic-bezier(0.1,0.1,1,1) 1;
-    
 }
+
+body{
+    background: url('../image/ep3 Background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
