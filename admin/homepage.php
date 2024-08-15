@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,7 @@
         <div class="profile-section">
             <img src="../image/witchghost.png" alt="Admin" class="profile-pic">
             <div class="profile-info">
-                <h4>Admin Name</h4>
+                <h4><?php echo $row['USER_NAME'] ?></h4>
                 <p>Administrator</p>
             </div>
         </div>
