@@ -91,7 +91,9 @@
                     FROM 
                         user_information u
                     LEFT JOIN 
-                        score_information s ON u.USER_ID = s.USER_ID";
+                        score_information s ON u.USER_ID = s.USER_ID
+                    WHERE 
+                        u.ROLES = 'user'";
 
             $result = mysqli_query($dbConn, $sql);
 
