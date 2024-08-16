@@ -93,7 +93,7 @@ body {
 }
  
 .certs {
-    margin-top: -20px;
+    margin-top: 20px;
     padding: 0;
     height: 100%;
     width: 100%;
@@ -159,7 +159,7 @@ body {
     margin-top: -60px;
 }
 
-.btn {
+.download-button {
     text-decoration: none;
     background-color: hsl(252, 80%, 16%);
     border: none;
@@ -171,3 +171,9 @@ body {
     margin-left: 30px;
     cursor: pointer;
 } 
+
+/* thank you */
+.img {
+    width: 300px;
+    height: 140px;
+}

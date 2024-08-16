@@ -34,20 +34,24 @@
         }
     }
 
-    if (isset($_POST['login'])) {
 
+    if (isset($_POST['login'])) {
         $username_email = $_POST['username-email'];
         $password = $_POST['password'];
-    
+
+        $username_email = mysqli_real_escape_string($dbConn, $username_email);
+        $password = mysqli_real_escape_string($dbConn, $password);
+
         $user_query = "SELECT * FROM user_information WHERE (USER_USERNAME = '$username_email' OR USER_EMAIL = '$username_email') AND USER_PASSWORD = '$password'";
         $user_result = mysqli_query($dbConn, $user_query);
-    
+
         if (mysqli_num_rows($user_result) > 0) {
             $row = mysqli_fetch_array($user_result);
-            
+
+            $_SESSION['USER_ID'] = $row['USER_ID'];
             $_SESSION['name'] = $row['USER_USERNAME'];
-            $_SESSION['role'] = $row['ROLES']; 
-    
+            $_SESSION['role'] = $row['ROLES'];
+
             if ($_SESSION['role'] == 'admin') {
                 echo "<script>alert('Successfully logged in as admin!');</script>";
                 echo "<script>window.location.href = '../admin/homepage.php';</script>";
@@ -60,7 +64,6 @@
             echo "<script>alert('Incorrect username/email or password!');</script>";
         }
     }
-    
 ?>
 
 <!DOCTYPE html>

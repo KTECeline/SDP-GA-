@@ -3,7 +3,6 @@ function closeLogin() {
 }
 
 function downloadCertificate() {
-
     var header = document.querySelector('header');
     var footer = document.querySelector('footer');
     var buttons = document.querySelector('.button');
