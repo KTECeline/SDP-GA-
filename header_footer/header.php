@@ -20,7 +20,7 @@
     <body>
         <header class="active">
             <div class="container">
-                <a href="homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+                <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
             
                 <ul class="header-action">
                     <li><a href="leaderboard.php">Leaderboard</a></li>
