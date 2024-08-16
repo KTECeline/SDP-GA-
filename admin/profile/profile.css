@@ -1,3 +1,11 @@
+/*MAIN-content*/
+.main-content {
+    margin-top:-10dvh;
+    background-image: url("../../image/PexelCastle.gif");
+    background-size: cover;
+    background-repeat:no-repeat;
+
+}
 /* User profile */
 #profile .box {
     width: 850px;
@@ -6,6 +14,7 @@
     border-radius: 20px;
     margin: 145px auto;
     color: #000000;
+    padding-top: -300px;
 }
 
 #profile .box-content {
@@ -98,7 +107,7 @@
     color: #000000;
 }
 
-/* Update user profile */   
+/* Update user profile */
 #profile .details {
     width: 650px;
     background-color: rgba(255, 255, 255, 0.65);
@@ -132,6 +141,8 @@
     resize: vertical;
 }
 
+
+
 .edit-form input[type="text"]:focus, .edit-form input[type="email"]:focus {
     outline: none;
     border-color: #953cdd; 
@@ -153,4 +164,12 @@
     font-weight: 600;
     border-radius: 10px;
     margin-left: 30px;
+}
+
+
+.propic{
+    margin-top: 50px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: -65px;
 }

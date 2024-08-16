@@ -28,9 +28,9 @@
                         if (isset($_SESSION['name'])) { 
                     ?>
                         <li class="dropdown">
-                            <a href="homepage.php" class="dropbtn"><?php echo $_SESSION['name']; ?></a>
+                            <a href="../user/homepage.php" class="dropbtn"><?php echo $_SESSION['name']; ?></a>
                             <div class="dropdown-content">
-                                <a href="user_profile.php">Profile</a>
+                                <a href="../user/user_profile.php">Profile</a>
                                 <a href="../login_register/logout.php">Logout</a>
                             </div>
                         </li>

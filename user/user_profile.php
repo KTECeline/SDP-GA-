@@ -66,8 +66,8 @@
 
             <ul>
                 <li><a href="user_profile.php"><i class="fas fa-user"></i>Profile</a></li>
-                <li><a href="leaderboard.php"><i class="fas fa-trophy"></i>Leaderboard</a></li>
-                <li><a href="certificate.php"><i class="fas fa-certificate"></i>Certificate</a></li>
+                <li><a href="user_leaderboard.php"><i class="fas fa-trophy"></i>Leaderboard</a></li>
+                <li><a href="user_certificate.php"><i class="fas fa-certificate"></i>Certificate</a></li>
                 <li><a href="../login_register/logout.php"><i class="fas fa-door-open"></i>Log Out</a></li>
             </ul>        
         </section>
@@ -104,8 +104,9 @@
                         
                         <div class="update">
                             <div class="button-container">
-                            <a href="homepage.php" class="btn">Back</a>
-                            <a href="edit_user_profile.php" class="btn">Update</a>
+                                <a href="homepage.php" class="btn">Back</a>
+                                <a href="edit_user_profile.php" class="btn">Update</a>
+                            </div>
                         </div>
                     </div>
                 </div>
