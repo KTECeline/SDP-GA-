@@ -72,8 +72,8 @@
 
             <ul>
                 <li><a href="user_profile.php"><i class="fas fa-book-open"></i>Profile</a></li>
-                <li><a href="leaderboard.php"><i class="fas fa-landmark"></i>Leaderboard</a></li>
-                <li><a href="certificate.php"><i class="fas fa-landmark"></i>Certificate</a></li>
+                <li><a href="user_leaderboard.php"><i class="fas fa-landmark"></i>Leaderboard</a></li>
+                <li><a href="user_certificate.php"><i class="fas fa-landmark"></i>Certificate</a></li>
                 <li><a href="../login_register/logout.php"><i class="fas fa-door-open"></i>Log Out</a></li>
             </ul>        
         </section>

@@ -15,14 +15,14 @@ $remaining_time = 5;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Episode</title>
-    <link rel="stylesheet" href="../css/Episode1.css/">
+    <link rel="stylesheet" href="../css/Episode1.css">
     
 </head>
 <body>
     <div id="timer"><?php echo $remaining_time; ?></div>
     <div class="container">
         <div class="container-image">
-            <img width="400px" src="Flying witch.gif" alt="Flying witch" class="rotate90">
+            <img width="400px" src="../image/Flying witch.gif" alt="Flying witch" class="rotate90">
         </div>
         <div class="container-right">
             <h1 class="question">1+1=?</h1>
