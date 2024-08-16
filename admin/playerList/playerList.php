@@ -97,7 +97,8 @@
                     LEFT JOIN 
                         score_information s ON u.USER_ID = s.USER_ID
                     WHERE
-                        u.ROLES = 'user'";
+                        u.ROLES = 'user'
+                        ORDER BY u.USER_ID ASC";
 
             $result = mysqli_query($dbConn, $sql);
 

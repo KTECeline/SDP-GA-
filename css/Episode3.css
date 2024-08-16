@@ -1,5 +1,5 @@
 body {
-    background: url('../image/ep3 Background.jpg') no-repeat center center fixed;
+    background: url('../image/ep3q.gif') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -8,12 +8,15 @@ body {
     padding: 0; /* Remove padding to avoid shifting the centering */
     box-sizing: border-box;
     text-align: center;
+    font-family: 'OCR A Std', sans-serif;
     
     /* Flexbox centering */
     display: flex;
     justify-content: center; /* Horizontally centers the content */
     align-items: center; /* Vertically centers the content */
     height: 100vh; /* Ensures the body takes up the full height of the viewport */
+    /* Shift the content slightly to the right */
+    margin-left: 600px; /* Adjust this value as needed */
 }
 
 .question {
@@ -68,6 +71,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    font-family: 'OCR A Std', sans-serif;
 }
 
 .button:hover {
@@ -76,35 +80,35 @@ body {
 
 /* Button styling for different answer options */
 .button[value="A"] {
-    background-color: #f44336;
+    background-color: #fc9896;
 }
 
 .button[value="A"]:hover {
-    background-color: #e53935;
+    background-color: #f16773;
 }
 
 .button[value="B"] {
-    background-color: #2196F3;
+    background-color: #e4a1c9;
 }
 
 .button[value="B"]:hover {
-    background-color: #1e88e5;
+    background-color: #c86dcf;
 }
 
 .button[value="C"] {
-    background-color: #FF9800;
+    background-color: #94a3d1;
 }
 
 .button[value="C"]:hover {
-    background-color: #fb8c00;
+    background-color: #7195d0;
 }
 
 .button[value="D"] {
-    background-color: #9C27B0;
+    background-color: #6f6ca6;
 }
 
 .button[value="D"]:hover {
-    background-color: #8e24aa;
+    background-color: #5e4e8b;
 }
 
 /* Explanation text */
