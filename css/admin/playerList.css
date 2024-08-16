@@ -5,7 +5,12 @@ body {
     color: #fff;
 }
 
-
+.main-content {    
+    background-image: url("../../image/sky.gif");
+    height:100dvh;
+     width:200dvh;
+     background-size: cover;
+}
 .top-part {
     display: flex;
     justify-content: space-between;
@@ -14,8 +19,13 @@ body {
 }
 
 .title h1 {
-    color: #FFB6C1;
+    color: #fff;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    width:100%;
+    background-color:#7c6a9a;
+    border-radius:5px;
+    padding:4px;
+   
 }
 
 .playerlist-btn button {
@@ -153,4 +163,5 @@ button {
 button:hover {
     background-color: hsl(252, 58%, 34%);
 }
+
 

@@ -2,10 +2,9 @@
 
 .main-content {    
     padding: 20px;
-    background-color:  hsl(252, 80%, 16%);
     min-height: 100vh;
     transition: all 0.3s ease;
-    background-image: url("../image/purplef.jpeg");
+    background-image: url("../../image/purplef.jpeg");
     background-size: cover;
     background-repeat:no-repeat;
 }
@@ -24,7 +23,7 @@
 }
 
 .alteration {
-    background-color: hsl(282, 80%, 16%);
+    background-color: hsl(274, 70%, 22%);
     padding: 15px 20px;
     border-radius: 10px;
     margin-bottom: 40px;
