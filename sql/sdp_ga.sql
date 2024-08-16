@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2024 at 10:24 AM
+-- Generation Time: Aug 16, 2024 at 10:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `certificate_information` (
   `CERTIFICATE_ID` int(11) NOT NULL,
   `CERTIFICATE_NAME` varchar(255) NOT NULL,
+  `CERTIFICATE_FEEDBACK` varchar(255) NOT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -146,7 +147,7 @@ INSERT INTO `user_information` (`USER_ID`, `USER_NAME`, `USER_EMAIL`, `USER_PHON
 --
 ALTER TABLE `certificate_information`
   ADD PRIMARY KEY (`CERTIFICATE_ID`),
-  ADD KEY `certificate_information_ibfk_1` (`USER_ID`);
+  ADD KEY `user_id_ibfk_1` (`USER_ID`) USING BTREE;
 
 --
 -- Indexes for table `episode`
@@ -158,19 +159,23 @@ ALTER TABLE `episode`
 -- Indexes for table `episode_result`
 --
 ALTER TABLE `episode_result`
-  ADD PRIMARY KEY (`EPISODE_RESULT_ID`);
+  ADD PRIMARY KEY (`EPISODE_RESULT_ID`),
+  ADD KEY `episode_id_ibfk_1` (`EPISODE_ID`),
+  ADD KEY `user_id_ibfk_1` (`USER_ID`) USING BTREE;
 
 --
 -- Indexes for table `game_episode`
 --
 ALTER TABLE `game_episode`
-  ADD PRIMARY KEY (`EPISODE_QUESTION_ID`);
+  ADD PRIMARY KEY (`EPISODE_QUESTION_ID`),
+  ADD KEY `game_episode_ibfk_1` (`EPISODE_ID`) USING BTREE;
 
 --
 -- Indexes for table `score_information`
 --
 ALTER TABLE `score_information`
-  ADD PRIMARY KEY (`SCORE_ID`);
+  ADD PRIMARY KEY (`SCORE_ID`),
+  ADD KEY `user_id_ibfk_1` (`USER_ID`) USING BTREE;
 
 --
 -- Indexes for table `user_information`
@@ -186,7 +191,7 @@ ALTER TABLE `user_information`
 -- AUTO_INCREMENT for table `certificate_information`
 --
 ALTER TABLE `certificate_information`
-  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `episode`
@@ -227,6 +232,12 @@ ALTER TABLE `user_information`
 --
 ALTER TABLE `certificate_information`
   ADD CONSTRAINT `certificate_information_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `user_information` (`USER_ID`);
+
+--
+-- Constraints for table `score_information`
+--
+ALTER TABLE `score_information`
+  ADD CONSTRAINT `score_information_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `user_information` (`USER_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
