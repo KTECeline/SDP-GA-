@@ -69,6 +69,10 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="../css/Episode3.css"/>
+    <link href="https://fonts.cdnfonts.com/css/ocr-a-std" rel="stylesheet">
+    <style>
+    @import url('https://fonts.cdnfonts.com/css/ocr-a-std');
+    </style>
 </head>
 <body>
     <div class="question">
@@ -78,7 +82,7 @@ $stmt->close();
             <div class="bullet">
                 <p>
                     <img src="../image/magic-wond.png" alt="Magic Wand" style="width:24px; height:auto; vertical-align:middle;">
-                    Magic Wond = <?= $bullet ?>
+                    Magic Wand = <?= $bullet ?>
                 </p> <!-- Display bullet count with image -->
             </div>
             <p><?= $quizQuestion ?></p>
