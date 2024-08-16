@@ -1,5 +1,5 @@
 body{
-    background: url(witch_background.jpg) no-repeat center center fixed;
+    background: url('../image/Episode1_background.gif') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -10,6 +10,7 @@ body{
 }
 
 #timer {
+    font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     font-weight: bold;
     text-align:center;
@@ -22,6 +23,7 @@ body{
 }
 
 .container {
+    transform: translateY(80px); 
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
@@ -38,40 +40,46 @@ body{
 }
 
 .question{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
     width: 680px;
     text-align: center;
     margin-top: 50px;
     color: white;
 }
 
-.answer-grid {
+.answer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     margin-top: 50px;
 }
 
-
-.answer-box {
-    background-color: pink;    
-    padding: 50px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border-radius: 15px;
+.button{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    height: 50px;
+    background-color: lightblue;
+    color: blue;
 }
 
-a{
-    text-decoration: none;
-    font-weight: normal;
-    font-family: Arial, sans-serif;
-    color: black;
-  }
+.button:hover {
+    background-color: darkblue;
+    color: lightblue;
+    cursor: pointer;
+}
+
+.explanation{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    transform: translateY(100px); 
+}
 
 #boom {
     display: none;
     position: fixed;
-    top: 150px;
+    top: 250px;
     left: 150px;
 
 }
