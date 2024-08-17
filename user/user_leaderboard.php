@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../../conn/conn.php';
+    include '../conn/conn.php';
     if (isset($_SESSION['name'])) {
         
 
@@ -32,15 +32,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
-    <link rel="stylesheet" href="../../css/admin/sidebar.css">
-    <link rel="stylesheet" href="../../admin/leaderboard/leaderboard.css">
+    <link rel="stylesheet" href="../css/leaderboard.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.min.css">
 </head>
 <body>
-    <!--SIDEBAR-->
-    <?php include '../../admin/sidebar.php'; ?>
-
+<header class="active">
+            <div class="container">
+                <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+            
+                <ul class="header-action">
+                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <?php 
+                        if (isset($_SESSION['name'])) { 
+                    ?>
+                        <li class="dropdown">
+                            <a href="../user/homepage.php" class="dropbtn"><?php echo $_SESSION['name']; ?></a>
+                            <div class="dropdown-content">
+                                <a href="../user/user_profile.php">Profile</a>
+                                <a href="../login_register/logout.php">Logout</a>
+                            </div>
+                        </li>
+                    <?php 
+                        } else { 
+                    ?>
+                        <li><a href="../login_register/login.php"><i class="fa fa-sign-in"></i>Login</a></li>
+                    <?php 
+                        }
+                    ?>   
+                </ul>
+            </div>
+        </header>
     <!--MAIN CONTENT-->
     <div class="main-content">
     <center><h1>Leaderboard</h1></center>

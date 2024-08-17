@@ -23,7 +23,7 @@
 }
 
 .alteration {
-    background-color: hsl(274, 70%, 22%);
+    background-color: rgba(78, 51, 128, 0.7);
     padding: 15px 20px;
     border-radius: 10px;
     margin-bottom: 40px;
@@ -52,4 +52,40 @@
 
 .alteration ul li a:hover {
     text-decoration: underline;
+}
+
+
+/* Styles for the chart containers */
+.chart-container {
+    width: 45%;
+    display: inline-block;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .chart-container {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+/* Optional: Style for the chart titles */
+.chart-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Optional: Add some space between charts */
+.chart-container + .chart-container {
+    margin-top: 40px;
+}
+.charts{
+    margin-left:3%;
 }

@@ -29,7 +29,7 @@ $sql = "SELECT
 FROM 
   game_episode
 WHERE 
-  EPISODE_ID = 3;";
+  EPISODE_ID = 4;";
 $result = $conn->query($sql);
 
 $questions = [];
@@ -48,7 +48,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EP3</title>
+    <title>EP4</title>
     <link rel="stylesheet" href="../../../css/admin/sidebar.css">
     <link rel="stylesheet" href="../../../admin/QA/EP1/ep1.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -107,10 +107,10 @@ $conn->close();
         <div class="back">
             <a href="../../../admin/QA/QA.php" button><i class="fas fa-arrow-left"></i> Back</a>
             <a href="../../../admin/homepage.php" button><i class="fas fa-home"></i> Home</a>
-            <a href="../../../admin/QA/ep3/create.php" button><i class="fa-solid fa-plus"></i> Create Question</a>
+            <a href="../../../admin/QA/ep4/create.php" button><i class="fa-solid fa-plus"></i> Create Question</a>
         </div>
         <div class="ep1-container">
-        <h1 class="ep1-title">EP3</h1>
+        <h1 class="ep1-title">EP4</h1>
         <?php foreach ($questions as $index => $question): ?>
         <div class="question-card" id="question-<?php echo $index + 1; ?>" style="display: <?php echo $index === 0 ? 'flex' : 'none'; ?>;">
             

@@ -71,27 +71,31 @@ $conn->close();
             </div>
         </div>
         <div class="sidebar-content">
-            <a href="../profile/profile.php" class="sidebar-item">
+            <a href="../../../admin/profile/profile.php" class="sidebar-item">
             <i class="fa-solid fa-id-badge"></i>
                 <span>Profile</span>
             </a>
-            <a href="../playerList/playerList.php" class="sidebar-item">
+            <a href="../../../admin/playerList/playerList.php" class="sidebar-item">
             <i class="fa-solid fa-user-group"></i>
                 <span>Player List</span>
             </a>
-            <a href="../QA/QA.php" class="sidebar-item">
+            <a href="../../../admin/QA/QA.php" class="sidebar-item">
                 <i class="fas fa-question"></i>
                 <span>Q&A List</span>
             </a>
-            <a href="../leaderboard/leaderboard.php" class="sidebar-item active">
+            <a href="../../../admin/leaderboard/leaderboard.php" class="sidebar-item active">
                 <i class="fas fa-trophy"></i>
                 <span>Leaderboard</span>
             </a>
-            <a href="../certificate/certificate.php" class="sidebar-item">
+            <a href="../../../admin/certificate/certificate.php" class="sidebar-item">
                 <i class="fas fa-certificate"></i>
                 <span>Certificate</span>
             </a>
-            <a href="../../login_register/logout.php" class="sidebar-item">
+            <a href="../../../admin/feedback/feedback.php" class="sidebar-item">
+            <i class="fa-solid fa-comments"></i>
+                <span>Feedback</span>
+            </a>
+            <a href="../../../login_register/logout.php" class="sidebar-item">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Log Out</span>
             </a>

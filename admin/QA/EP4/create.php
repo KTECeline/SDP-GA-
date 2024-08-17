@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
   $correct_answer = $_POST['CORRECT_ANSWER'];
   $episode_id = $_POST['EPISODE_ID'];
 
-  if ($episode_id == 1) {
+  if ($episode_id == 4) {
     $query = "INSERT INTO game_episode (EPISODE_QUESTION, EPISODE_HINT, OPTION_A, 
     OPTION_A_EXPLANATION, OPTION_B, OPTION_B_EXPLANATION, OPTION_C, OPTION_C_EXPLANATION, 
     OPTION_D, OPTION_D_EXPLANATION, CORRECT_ANSWER, EPISODE_ID) 
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     if ($stmt->affected_rows > 0) {
         echo "<script>
         alert('New question created successfully!');
-        window.location.href = '../../../admin/QA/ep1/ep1.php';
+        window.location.href = '../../../admin/QA/ep3/ep3.php';
       </script>";
     } else {
       echo "Error: " . $stmt->error;
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
 
     $stmt->close();
   } else {
-    echo "Episode ID is not 1. Cannot create question.";
+    echo "Episode ID is not 4. Cannot create question.";
   }
 }
 
@@ -176,7 +176,7 @@ input[type="submit"] {
 </style>
 <!-- Create question form -->
 <div class="qform">
-    <center><h2>Create a New Question in EP1</h2></center>
+    <center><h2>Create a New Question in EP4</h2></center>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <!-- Question and Hint on the same line -->
         <div class="form-row">
@@ -233,7 +233,7 @@ input[type="submit"] {
                 </select>
             </div>
             <div class="form-column full-width">
-                <input type="hidden" name="EPISODE_ID" value="1">
+                <input type="hidden" name="EPISODE_ID" value="4">
                 <input type="submit" name="submit" value="Create Question">
                 <button type="button" onclick="window.history.back()">Cancel</button>
             </div>

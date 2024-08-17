@@ -25,11 +25,11 @@
             exit(); 
         } else {
             echo "<script>alert('Cannot update data!');</script>";
-            echo "<script>window.location.href='../../profile/ediprofile.php';</script>";
+            echo "<script>window.location.href='../../../admin/profile/ediprofile.php';</script>";
             exit();
         }
     } else {
-        echo "<script>window.location.href='../../profile/profile.php';</script>";
+        echo "<script>window.location.href='../../admin/profile/profile.php';</script>";
         exit();
     }
 ?>
