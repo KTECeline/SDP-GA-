@@ -55,7 +55,7 @@
             <i class="fa-solid fa-comments"></i>
                 <span>Feedback</span>
             </a>
-            <a href="../../login_register/logout.php" class="sidebar-item">
+            <a href="../login_register/logout.php" class="sidebar-item">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Log Out</span>
             </a>
@@ -69,9 +69,11 @@
             </div>
             <div class="alteration">
                 <ul>
+                    <li><a href="../admin/profile/profile.php">Profile</li>
                     <li><a href="../admin/playerList/playerList.php">Player list</li>
                     <li><a href="../admin/leaderboard/leaderboard.php">View leaderboard</li>
-                    <li><a href="../admin/certificate/certificate.php">Certificate list</li>   
+                    <li><a href="../admin/certificate/certificate.php">Certificate list</li>  
+                    <li><a href="../admin/feedback/feedback.php">Feedback</li> 
                 </ul>
         </div>
         <div class="main-content-items">
