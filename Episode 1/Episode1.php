@@ -1,9 +1,9 @@
 <?php
-include 'conn.php';
+include '../conn/conn.php';
 session_start();
 
 // Handle the current question ID from the POST request or default to 1
-$currentQuestion = isset($_GET['question_id']) ? (int)$_GET['question_id'] : 1;
+$currentQuestion = isset($_GET['EPISODE_QUESTION_ID']) ? (int)$_GET['EPISODE_QUESTION_ID'] : 6;
 
 // Initialize variables
 $showNextButton = false;
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $selectedAnswer = $_POST['answer'];
 
         // Prepare the SQL query
-        $sql = "SELECT * FROM episode1 WHERE EPISODE_ID = 1 AND EPISODE_QUESTION_ID = ?";
+        $sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 1 AND EPISODE_QUESTION_ID = ?";
         $stmt = $dbConn->prepare($sql);
         $stmt->bind_param("i", $currentQuestion);
         $stmt->execute();
@@ -46,13 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['nextQuestion'])) {
         // Increment the question ID for the next question
         $nextQuestion = $currentQuestion + 1;
-        header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?EPISODE_QUESTION_ID=" . $nextQuestion);
         exit;
     }
 }
 
 // Fetch the current question details
-$sql = "SELECT * FROM episode1 WHERE EPISODE_ID = 1 AND EPISODE_QUESTION_ID = ?";
+$sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 1 AND EPISODE_QUESTION_ID = ?";
 $stmt = $dbConn->prepare($sql);
 $stmt->bind_param("i", $currentQuestion);
 $stmt->execute();
@@ -77,7 +77,7 @@ if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
 }
 
-$remaining_time = 1000;
+$remaining_time = 5;
 ?>
 
 <!DOCTYPE html>
@@ -86,19 +86,19 @@ $remaining_time = 1000;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="episodes1.css"/>
+    <link rel="stylesheet" href="../css/Episode1.css"/>
 </head>
 <body>
     <div id="timer"><?php echo $remaining_time; ?></div>
     <div class="container">
         <div class="container-image">
-            <img width="400px" src="Flying witch.gif" alt="Flying witch" class="rotate90">
+            <img width="400px" src="../image/Flying witch.gif" alt="Flying witch" class="rotate90">
         </div>
         <div class="container-right">
             <div class="question">
                 <form method="post">
                     <p><?= $quizQuestion ?></p>
-                    <input type="hidden" name="question_id" value="<?= $currentQuestion ?>">
+                    <input type="hidden" name="EPISODE_QUESTION_ID" value="<?= $currentQuestion ?>">
                     <div class="answer">
                         <button type="submit" class="button" name="answer" value="(A)"><?= $optionA ?></button>
                         <button type="submit" class="button" name="answer" value="(B)"><?= $optionB ?></button>
@@ -116,7 +116,7 @@ $remaining_time = 1000;
             </div>
         </div>
     </div>
-    <img id="boom" src="boom.gif" alt="Boom" style="display:none;">
+    <img id="boom" src="../image/boom.gif" alt="Boom" style="display:none;">
 
     <script>
     // Timer
