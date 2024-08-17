@@ -40,8 +40,32 @@
     </head>
 
     <body>
-
-        <?php include "../header_footer/header.php"; ?>
+        <header class="active">
+            <div class="container">
+                <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+            
+                <ul class="header-action">
+                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <?php 
+                        if (isset($_SESSION['name'])) { 
+                    ?>
+                        <li class="dropdown">
+                            <a href="../user/homepage.php" class="dropbtn"><?php echo $_SESSION['name']; ?></a>
+                            <div class="dropdown-content">
+                                <a href="../user/user_profile.php">Profile</a>
+                                <a href="../login_register/logout.php">Logout</a>
+                            </div>
+                        </li>
+                    <?php 
+                        } else { 
+                    ?>
+                        <li><a href="../login_register/login.php"><i class="fa fa-sign-in"></i>Login</a></li>
+                    <?php 
+                        }
+                    ?>   
+                </ul>
+            </div>
+        </header>
 
         <div id="main"> 
             <div id="certs" class="certs">
@@ -66,9 +90,8 @@
         </div>
 
         <div class="button">
-            <button id="back" class="btn" onclick="window.location.href='certificate_details.php'">Back</button>
-            <button id="downloaddata" class="btn" onclick="downloadCertificate()">Download E-Certificate</button>
-            <button id="exit" class="btn" onclick="window.location.href='../user/homepage.php'">Exit</button>
+            <button id="downloaddata" class="download-button" onclick="downloadCertificate()">Download E-Certificate</button>
+            <button id="next" class="download-button" onclick="window.location.href='feedback.php'">Next</button>
         </div>
 
         <br>

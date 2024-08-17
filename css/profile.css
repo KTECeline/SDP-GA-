@@ -154,3 +154,26 @@
     border-radius: 10px;
     margin-left: 30px;
 }
+
+/* User certificate */
+.boxes {
+    width: 600px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    margin: 150px auto;
+    color: #000000;
+}
+.detail {
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+    position: relative;
+}
+
+.image {
+    margin: 0px;
+    width: 280px;
+    height: 240px;
+    text-align: center;
+}

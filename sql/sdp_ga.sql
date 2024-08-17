@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2024 at 10:39 AM
+-- Generation Time: Aug 17, 2024 at 08:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `certificate_information` (
   `CERTIFICATE_ID` int(11) NOT NULL,
   `CERTIFICATE_NAME` varchar(255) NOT NULL,
-  `CERTIFICATE_FEEDBACK` varchar(255) NOT NULL,
+  `CERTIFICATE_FEEDBACK` varchar(255) DEFAULT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -63,7 +63,7 @@ INSERT INTO `episode` (`EPISODE_ID`, `EPISODE_NAME`) VALUES
 
 CREATE TABLE `episode_result` (
   `EPISODE_RESULT_ID` int(11) NOT NULL,
-  `TIME_TAKEN` timestamp NOT NULL DEFAULT current_timestamp(),
+  `TIME_TAKEN` datetime NOT NULL DEFAULT current_timestamp(),
   `SCORE` int(11) NOT NULL,
   `EPISODE_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL
@@ -191,7 +191,7 @@ ALTER TABLE `user_information`
 -- AUTO_INCREMENT for table `certificate_information`
 --
 ALTER TABLE `certificate_information`
-  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `episode`
@@ -209,7 +209,7 @@ ALTER TABLE `episode_result`
 -- AUTO_INCREMENT for table `game_episode`
 --
 ALTER TABLE `game_episode`
-  MODIFY `EPISODE_QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `EPISODE_QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `score_information`
@@ -226,12 +226,6 @@ ALTER TABLE `user_information`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `certificate_information`
---
-ALTER TABLE `certificate_information`
-  ADD CONSTRAINT `certificate_information_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `user_information` (`USER_ID`);
 
 --
 -- Constraints for table `score_information`

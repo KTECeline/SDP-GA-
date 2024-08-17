@@ -104,7 +104,7 @@
                         
                         <div class="update">
                             <div class="button-container">
-                                <a href="homepage.php" class="btn">Back</a>
+                                <a href="../user/homepage.php" class="btn">Back</a>
                                 <a href="edit_user_profile.php" class="btn">Update</a>
                             </div>
                         </div>
