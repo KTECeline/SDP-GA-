@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION['name'])) { 
+    $username = $_SESSION['username'];}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,12 +136,9 @@
                     monsterImg.src = `../image/monster${currentMonster}.png`;
                     monsterDiv.style.display = 'block';
                 }
-            } else {
-                img.className = 'scroll-floor-1';
-                currentFloor = 1;
-                currentMonster = 1;
-                monsterImg.src = `../image/monster${currentMonster}.png`;
-                monsterDiv.style.display = 'block';
+            } 
+            if (currentFloor === 12) {
+                window.location.href = "try.php";
             }
         });
 
