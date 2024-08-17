@@ -9,7 +9,8 @@
                 FROM user_information u
                 JOIN score_information e ON u.USER_ID = e.USER_ID
                 WHERE u.ROLES = 'user'
-                ORDER BY e.EPISODE_TOTAL_SCORE DESC"; 
+                ORDER BY e.EPISODE_TOTAL_SCORE DESC
+                LIMIT 10"; 
         $result = $dbConn->query($sql);
 
         $leaderboardData = array();
@@ -43,7 +44,7 @@
                 <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
             
                 <ul class="header-action">
-                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <li><a href="user_leaderboard.php">Leaderboard</a></li>
                     <?php 
                         if (isset($_SESSION['name'])) { 
                     ?>
@@ -66,7 +67,7 @@
         </header>
     <!--MAIN CONTENT-->
     <div class="main-content">
-    <center><h1>Leaderboard</h1></center>
+    <center><h1>TOP 10 Leaderboard</h1></center>
     <div class="podium">
             <div class="podium-item podium-2">
                 <div class="podium-rank">2</div>
@@ -91,7 +92,7 @@
                 </div>
             </div>
         </div>
-    <div class="container">
+    <div class="table-container">
     <form id="resetForm" method="post" action="../../admin/leaderboard/reset.php">
             <table>
                 <tr>
@@ -112,12 +113,9 @@
                 }
                 ?>
             </table>
-            <button type="button" class="reset-button" id="resetToggleButton">Reset</button>
-            <center><button type="submit" class="reset-button" id="confirmResetButton" style="display:none;">Confirm Reset</button></center>
-            <center><button type="submit" class="reset-button" id="cancelButton" style="display:none;">Cancel</button></center>
         </div>
     </div>
-    <script src="../../Javascript/sidebar.js"></script>
+    
     <script>
         const leaderboardData = <?php echo json_encode($leaderboardData); ?>;
         

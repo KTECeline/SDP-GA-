@@ -4,8 +4,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
+    padding-top:6%;
 }
-.container {
+.table-container {
     background-color: #2c1e4a;
     padding:20px;
     border-radius: 10px;
@@ -20,6 +21,7 @@ h1 {
     color: #ffffff;
     text-align: center;
     margin-bottom: 20px;
+    padding-top:1%;
 }
 table {
     width: 100%;
@@ -101,7 +103,8 @@ tr:nth-child(even) {
 
 .main-content {    
     background-image: url("../image/deer.jpg");
-    height:100dvh;
-     width:200dvh;
-     background-size: cover;
+    height:120dvh;
+    width:300dvh;
+    background-size: cover;
+
 }
