@@ -45,11 +45,15 @@
             <?php 
             include '../../admin/playerList/conn.php';
 
-            $sql = "SELECT u.USER_ID, u.USER_USERNAME, u.USER_PASSWORD, s.EPISODE_TOTAL_SCORE,
-            RANK() OVER (ORDER BY s.EPISODE_TOTAL_SCORE DESC) AS RANKING
+            $sql = "SELECT 
+                        u.USER_ID, 
+                        u.USER_USERNAME, 
+                        u.USER_PASSWORD, 
+                        COALESCE(s.EPISODE_TOTAL_SCORE, 0) AS EPISODE_TOTAL_SCORE,
+                        COALESCE(RANK() OVER (ORDER BY s.EPISODE_TOTAL_SCORE DESC), 0) AS RANKING
                     FROM 
                         user_information u
-                    JOIN (
+                    LEFT JOIN (
                         SELECT 
                             USER_ID, 
                             MAX(EPISODE_TOTAL_SCORE) AS EPISODE_TOTAL_SCORE
@@ -60,7 +64,8 @@
                     ) s ON u.USER_ID = s.USER_ID
                     WHERE
                         u.ROLES = 'user'
-                    ORDER BY u.USER_ID ASC";
+                    ORDER BY 
+                        u.USER_ID ASC";
 
             $result = mysqli_query($dbConn, $sql);
 
