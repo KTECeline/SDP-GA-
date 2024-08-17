@@ -2,7 +2,7 @@
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 10; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -49,8 +49,7 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-}
-
+}/* Container for the entire content including the table and buttons */
 .container {
     background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
     border-radius: 15px;
@@ -58,32 +57,45 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     width: 80%;
     max-width: 1200px;
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
+    position: relative; /* Position relative for absolute positioning of the button */
 }
 
-h1 {
-    color: #fff;
-    text-align: left;
-    margin-bottom: 20px;
+/* Table container with scrolling */
+.table-container {
+    max-height: 500px; /* Set the maximum height of the table */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    width: 100%;
 }
 
+/* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px; /* Add spacing at the bottom */
 }
 
-th, td {
+thead th {
+    position: sticky;
+    top: 0; /* Stick the header to the top */
+    background-color: rgba(0, 0, 0, 0.8); /* Header background */
+    z-index: 2; /* Ensure the header is above the body rows */
+    color: #fff;
     padding: 15px;
-    text-align: left;
+}
+
+/* Table body styles */
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tbody td {
+    padding: 15px;
+    text-align: center;
     color: #fff;
     border-bottom: 1px solid #ddd;
 }
 
-tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
+/* Fixed edit button */
 .editbutton {
     background-color: #8e44ad;
     color: white;
@@ -94,9 +106,22 @@ tr:nth-child(even) {
     font-size: 16px;
     transition: background-color 0.3s ease;
     margin-bottom: 15px;
+    position: absolute;
+    bottom: 20px; /* Position the button at the bottom of the container */
+    left: 50%;
+    transform: translateX(-50%); /* Center the button horizontally */
 }
 
 .editbutton:hover {
     background-color: #732d91;
 }
+.confirm-edit {
+    left: 40%;
+    transform: translateX(-50%); /* Center the first button horizontally */
+    margin-right: 20px; /* Add gap to the right of the first button */
+}
 
+.cancel-edit {
+    left: calc(50% + 20px); /* Adjust the left position to account for the gap */
+    transform: translateX(-50%); /* Center the second button horizontally */
+}
