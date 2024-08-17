@@ -3,7 +3,7 @@ include '../conn/conn.php';
 session_start();
 
 // Handle the current question ID from the POST request or default to 1
-$currentQuestion = isset($_GET['EPISODE_QUESTION_ID']) ? (int)$_GET['EPISODE_QUESTION_ID'] : 6;
+$currentQuestion = isset($_GET['EPISODE_QUESTION_ID']) ? (int)$_GET['EPISODE_QUESTION_ID'] : 1;
 
 // Initialize variables
 $showNextButton = false;
@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Fetch question details
         $correctAnswer = $row['CORRECT_ANSWER'];
         $explanation = array(
-            "(A)" => $row['OPTION_A_EXPLANATION'],
-            "(B)" => $row['OPTION_B_EXPLANATION'],
-            "(C)" => $row['OPTION_C_EXPLANATION'],
-            "(D)" => $row['OPTION_D_EXPLANATION'],
+            "A" => $row['OPTION_A_EXPLANATION'],
+            "B" => $row['OPTION_B_EXPLANATION'],
+            "C" => $row['OPTION_C_EXPLANATION'],
+            "D" => $row['OPTION_D_EXPLANATION'],
         );
 
         // Determine if the selected answer is correct
@@ -77,7 +77,7 @@ if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
 }
 
-$remaining_time = 5;
+$remaining_time = 10000;
 ?>
 
 <!DOCTYPE html>
@@ -100,10 +100,10 @@ $remaining_time = 5;
                     <p><?= $quizQuestion ?></p>
                     <input type="hidden" name="EPISODE_QUESTION_ID" value="<?= $currentQuestion ?>">
                     <div class="answer">
-                        <button type="submit" class="button" name="answer" value="(A)"><?= $optionA ?></button>
-                        <button type="submit" class="button" name="answer" value="(B)"><?= $optionB ?></button>
-                        <button type="submit" class="button" name="answer" value="(C)"><?= $optionC ?></button>
-                        <button type="submit" class="button" name="answer" value="(D)"><?= $optionD ?></button>
+                        <button type="submit" class="button" name="answer" value="A"><?= $optionA ?></button>
+                        <button type="submit" class="button" name="answer" value="B"><?= $optionB ?></button>
+                        <button type="submit" class="button" name="answer" value="C"><?= $optionC ?></button>
+                        <button type="submit" class="button" name="answer" value="D"><?= $optionD ?></button>
                     </div>
                     <div class="explanation"><?php if ($explanationText): ?>
                         <p><?= $explanationText ?></p>
