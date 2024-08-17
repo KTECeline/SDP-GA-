@@ -44,7 +44,9 @@
     <div class="main-content">
     <div class="container">
             <h1><center>Certificate</center></h1>
+            <div class="table-container">
             <table>
+                <thead>
                 <tr>
                     <th>No.</th>
                     <th>Username</th>
@@ -52,11 +54,11 @@
                     <th class="viewCert">View</th>
                     <th class="select-column" style="display: none;">Select</th>
                 </tr>
+    </thead>
+    <tbody>
                 <?php
                 foreach ($certData as $index => $player) {
                     echo "<tr>
-                    
-
                             <td>" . ($index + 1) . "</td>
                             <td>" . htmlspecialchars($player['username']) . "</td>
                             <td>" . htmlspecialchars($player['certname']) . "</td>
@@ -65,11 +67,13 @@
                           </tr>";
                 }
                 ?>
+                </tbody>
             </table>
+            <div class="button-container">
             <button type="button" class="editbutton" id="editButton">Edit Name on Cert!</button>
-            <center><button type="submit" class="editbutton" id="confirmEditButton" style="display:none;">Confirm Edit</button></center>
-            <center><button type="submit" class="editbutton" id="cancelButton" style="display:none;">Cancel</button></center>
-        </div>
+            <center><button type="submit" class="editbutton confirm-edit" id="confirmEditButton" style="display:none;">Confirm Edit</button></center>
+            <center><button type="submit" class="editbutton cancel-edit" id="cancelButton" style="display:none;">Cancel</button></center>
+        </div></div>
 <!-- Certificate Modal -->
         <div id="certModal" class="modal">
             <div class="modal-content">
