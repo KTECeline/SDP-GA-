@@ -163,8 +163,8 @@
                     <div class="boxes">
                         <div class="detail">
                             <br>
-                            <h4>No certificate records found. <br>
-                                You need to complete all the episode!.</h4>
+                            <h4>No certificate record found. <br>
+                                You need to complete all the episodes!</h4>
                             <img src="../image/not found.png" class="image"/></a>
                         </div>
                       

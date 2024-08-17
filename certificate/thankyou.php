@@ -20,7 +20,7 @@
             <form class="cer" method="post">
                 <div class="details">
                     <span class="close-button" onclick="closeLogin()">🗙</span>
-                    <h4>Once again, thanks for participate in Witchcraft.Code</h4>
+                    <h4>Thanks again for participating in Witchcraft.Code!</h4>
                     <img src="../image/thank you.gif" class="img"/>
 
                     <div class="form">
