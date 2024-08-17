@@ -2,6 +2,7 @@
 include '../conn/conn.php';
 
 $currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 1;
+$bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
 
 $sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 4 AND EPISODE_QUESTION_ID = ?";
 $stmt = $dbConn->prepare($sql);
@@ -46,11 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($selectedAnswer === $correctAnswer) {
             $nextQuestion = $currentQuestion + 1;
+            $bullet += 1; // Increment bullet count
             $showNextButton = true;
             if (isset($_POST['nextQuestion'])) {
-                $nextQuestion = (int)$_POST['question_id'] + 1;
-                // Reload the page with the updated question ID
-                header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion);
+                // Reload the page with the updated question ID and bullet count
+                header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion . "&bullet=" . $bullet);
                 exit;
             }
         } else {
@@ -60,6 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $stmt->close();
+
+
+?>
+<?php
+session_start();
+
+if (!isset($_SESSION['start_time'])) {
+    $_SESSION['start_time'] = time();
+}
+
+$current_time = time();
+$remaining_time = 100;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,12 +81,24 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="../css/Episode3.css"/>
+    <link href="https://fonts.cdnfonts.com/css/ocr-a-std" rel="stylesheet">
+    <style>
+    @import url('https://fonts.cdnfonts.com/css/ocr-a-std');
+    </style>
 </head>
 <body>
+<div id="timer"><?php echo $remaining_time; ?></div>
     <div class="question">
         <form method="post">
-            <p><?= $quizQuestion ?></p>
             <input type="hidden" name="question_id" value="<?= $nextQuestion ?>">
+            <input type="hidden" name="bullet" value="<?= $bullet ?>">
+            <div class="bullet">
+                <p>
+                    <img src="../image/magic-wond.png" alt="Magic Wand" style="width:24px; height:auto; vertical-align:middle;">
+                    Magic Wand = <?= $bullet ?>
+                </p> <!-- Display bullet count with image -->
+            </div>
+            <p><?= $quizQuestion ?></p>
             <div class="answer">
                 <button type="submit" class="button" name="answer" value="A"><?= $optionA ?></button>
                 <button type="submit" class="button" name="answer" value="B"><?= $optionB ?></button>
@@ -88,5 +113,20 @@ $stmt->close();
             <?php endif; ?>
         </form>
     </div>
+    <script>
+         var remainingTime = <?php echo $remaining_time; ?>;
+    var timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+        if (remainingTime > 0) {
+            timerElement.textContent = remainingTime;
+            remainingTime--;
+            setTimeout(updateTimer, 1000);
+        } else {
+            timerElement.textContent = "Time's up !";
+        }
+    }
+    updateTimer();
+    </script>
 </body>
 </html>

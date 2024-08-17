@@ -2,22 +2,6 @@
 // Start the session
 session_start();
 
-// Handle session restart if requested
-if (isset($_POST['reset'])) {
-    // Unset all session variables
-    session_unset();
-    
-    // Destroy the session
-    session_destroy();
-    
-    // Start a new session
-    session_start();
-    
-    // Optionally, redirect to the same page to reload with a fresh session
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit;
-}
-
 include '../conn/conn.php';
 
 $currentQuestion = $_SESSION['EPISODE_QUESTION_ID'] ?? 1;

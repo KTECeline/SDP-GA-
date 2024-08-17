@@ -1,16 +1,24 @@
 <?php
 include '../conn/conn.php';
 
+session_start();
+
 $currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 1;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
+$attempts = isset($_POST['attempts']) ? (int)$_POST['attempts'] : 0; // Track attempts
+$marks = isset($_POST['marks']) ? (int)$_POST['marks'] : 0; // Track total marks
+
+// Set the timer
+if (!isset($_SESSION['start_time'])) {
+    $_SESSION['start_time'] = time();
+}
+
+// Calculate remaining time
+$current_time = time();
+$remaining_time = 100 - ($current_time - $_SESSION['start_time']);
 
 $sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 4 AND EPISODE_QUESTION_ID = ?";
 $stmt = $dbConn->prepare($sql);
-
-if ($stmt === false) {
-    die('Prepare failed: ' . htmlspecialchars($dbConn->error));
-}
-
 $stmt->bind_param("i", $currentQuestion);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -44,17 +52,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['answer'])) {
         $selectedAnswer = $_POST['answer'];
         $explanationText = isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '';
+        $attempts += 1; // Increment attempts
 
         if ($selectedAnswer === $correctAnswer) {
+            if ($remaining_time <= 0) {
+                $score = 2; // Set score to 2 if time's up
+            } else {
+                // Calculate score based on attempts and remaining time
+                switch ($attempts) {
+                    case 1: $score = 10; break;
+                    case 2: $score = 8; break;
+                    case 3: $score = 6; break;
+                    case 4: $score = 4; break;
+                    default: $score = 0;
+                }
+            }
+            $marks += $score; // Update total marks
             $nextQuestion = $currentQuestion + 1;
-            $bullet += 1; // Increment bullet count
+            $bullet += 1;
             $showNextButton = true;
+            $attempts = 0; // Reset attempts after correct answer
+
+            // Stop the timer by unsetting the session start time
+            unset($_SESSION['start_time']);
+
             if (isset($_POST['nextQuestion'])) {
-                // Reload the page with the updated question ID and bullet count
-                header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion . "&bullet=" . $bullet);
+                header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion . "&bullet=" . $bullet . "&marks=" . $marks);
                 exit;
             }
         } else {
+            // Deduct 10 seconds for incorrect answer
+            $_SESSION['start_time'] -= 10;
             $showNextButton = false;
         }
     }
@@ -62,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $stmt->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,20 +99,20 @@ $stmt->close();
     <title>Quiz</title>
     <link rel="stylesheet" href="../css/Episode3.css"/>
     <link href="https://fonts.cdnfonts.com/css/ocr-a-std" rel="stylesheet">
-    <style>
-    @import url('https://fonts.cdnfonts.com/css/ocr-a-std');
-    </style>
 </head>
 <body>
+<div id="marks"> Marks = <?= $marks ?> </div>
+<div id="timer"><?php echo $remaining_time; ?></div>
+
     <div class="question">
         <form method="post">
             <input type="hidden" name="question_id" value="<?= $nextQuestion ?>">
             <input type="hidden" name="bullet" value="<?= $bullet ?>">
+            <input type="hidden" name="attempts" value="<?= $attempts ?>">
+            <input type="hidden" name="marks" value="<?= $marks ?>">
             <div class="bullet">
-                <p>
-                    <img src="../image/magic-wond.png" alt="Magic Wand" style="width:24px; height:auto; vertical-align:middle;">
-                    Magic Wand = <?= $bullet ?>
-                </p> <!-- Display bullet count with image -->
+                
+                <p><img src="../image/magic-wond.png" alt="Magic Wand" style="width:24px; height:auto; vertical-align:middle;"> Magic Wand = <?= $bullet ?></p>
             </div>
             <p><?= $quizQuestion ?></p>
             <div class="answer">
@@ -100,5 +129,20 @@ $stmt->close();
             <?php endif; ?>
         </form>
     </div>
+    <script>
+         var remainingTime = <?php echo $remaining_time; ?>;
+    var timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+        if (remainingTime > 0) {
+            timerElement.textContent = remainingTime;
+            remainingTime--;
+            setTimeout(updateTimer, 1000);
+        } else {
+            timerElement.textContent = "Time's up !";
+        }
+    }
+    updateTimer();
+    </script>
 </body>
 </html>
