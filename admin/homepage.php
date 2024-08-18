@@ -124,52 +124,84 @@
             })
             .catch(error => console.error('Error:', error));
 
-        function createAverageScoresChart(data) {
-            new Chart(document.getElementById('averageScoresChart'), {
-                type: 'line',
-                data: {
-                    labels: data.map(item => item.episodeId),
-                    datasets: [{
-                        label: 'Average Score',
-                        data: data.map(item => item.averageScore),
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Average Scores per Episode'
-                        }
-                    }
+            function createAverageScoresChart(data) {
+    new Chart(document.getElementById('averageScoresChart'), {
+        type: 'line',
+        data: {
+            labels: data.map(item => item.episodeId),
+            datasets: [{
+                label: 'Average Score',
+                data: data.map(item => item.averageScore),
+                borderColor: 'rgba(153, 102, 255, 1)',
+                tension: 0.1,
+                fill: false // Optionally disable filling under the line
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Average Scores per Episode'
                 }
-            });
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Episode ID'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Average Score'
+                    },
+                    beginAtZero: true // Optional: ensures the y-axis starts at 0
+                }
+            }
         }
+    });
+}
+
 
         function createTopPerformersChart(data) {
-            new Chart(document.getElementById('topPerformersChart'), {
-                type: 'bar',
-                data: {
-                    labels: data.map(item => item.userId),
-                    datasets: [{
-                        label: 'Total Score',
-                        data: data.map(item => item.totalScore),
-                        backgroundColor: 'rgba(255, 159, 64, 0.6)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Top Performers'
-                        }
-                    }
+    new Chart(document.getElementById('topPerformersChart'), {
+        type: 'bar',
+        data: {
+            labels: data.map(item => item.userId),
+            datasets: [{
+                label: 'Total Score',
+                data: data.map(item => item.totalScore),
+                backgroundColor: 'rgba(255, 159, 64, 0.6)'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Top Performers'
                 }
-            });
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'User ID'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Total Score'
+                    },
+                    beginAtZero: true 
+                }
+            }
         }
+    });
+}
 
         function createEpisodeChart(data) {
             new Chart(document.getElementById('episodeChart'), {
