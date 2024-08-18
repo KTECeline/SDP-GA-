@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="hint">
-        Please Double Click The Witch, It Will Be Evolution !!<br>Congratulations, You Can Proceed To Episode 2 !
+        Please Double Click The Witch, There Will Be An Evolution !!<br><br>Congratulations, You Can Proceed To Episode 2 !
     </div>
     <div class="image">
         <img src="../image/Flying witch.gif" alt="Flying witch" class="rotate90" id="witch">
