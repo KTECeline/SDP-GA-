@@ -69,21 +69,23 @@
             </div>
             <div class="alteration">
                 <ul>
-                    <li><a href="../admin/playerList/playerList.php">Player list</li>
-                    <li><a href="../admin/leaderboard/leaderboard.php">View leaderboard</li>
-                    <li><a href="../admin/certificate/certificate.php">Certificate list</li>   
+                    <li><a href="../admin/profile/profile.php">Profile</a></li>
+                    <li><a href="../admin/playerList/playerList.php">Player list</a></li>
+                    <li><a href="../admin/leaderboard/leaderboard.php">View leaderboard</a></li>
+                    <li><a href="../admin/certificate/certificate.php">Certificate list</a></li> 
+                    <li><a href="../admin/feedback/feedback.php">Feedback</a></li>  
                 </ul>
         </div>
         <div class="main-content-items">
             <div class="main-title">
-                <h2>Question and Answer alteration</h2>
+                <h2><a href="../admin/QA/QA.php">Question and Answer alteration</a></h2>
             </div>
             <div class="alteration">
                 <ul>
-                    <li><a href="../admin/QA/EP1/ep1.php">EP1</li>
-                    <li><a href="../admin/QA/ep2/ep2.php">EP2</li>
-                    <li><a href="../admin/QA/EP3/ep3.php">EP3</li>
-                    <li><a href="../admin/QA/EP4/ep4.php">EP4</li>
+                    <li><a href="../admin/QA/EP1/ep1.php">EP1</a></li>
+                    <li><a href="../admin/QA/ep2/ep2.php">EP2</a></li>
+                    <li><a href="../admin/QA/EP3/ep3.php">EP3</a></li>
+                    <li><a href="../admin/QA/EP4/ep4.php">EP4</a></li>
                 </ul>
             </div>
         </div>
