@@ -41,51 +41,32 @@ if (isset($_POST['certificate'])) {
     }
 }
 
-if (isset($_POST['feedback'])) {
+//FFEDBACK//
+
+if (isset($_POST['feedback']) && isset($_POST['certificate_id'])) {
     $feedback = $_POST['feedback'];
+    $certificate_id = $_POST['certificate_id'];
 
-    if (isset($_SESSION['USER_ID'])) {
-        $user_id = $_SESSION['USER_ID']; 
+    // Update the feedback in the database
+    $updateQuery = "UPDATE certificate_information
+                    SET CERTIFICATE_FEEDBACK = ? 
+                    WHERE CERTIFICATE_ID = ?";
 
-        // Check if a certificate record exists
-        $check_stmt = $dbConn->prepare("SELECT CERTIFICATE_ID FROM certificate_information WHERE USER_ID = ? ORDER BY CERTIFICATE_ID DESC LIMIT 1");
-        $check_stmt->bind_param("i", $user_id);
-        $check_stmt->execute();
-        $result = $check_stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $certificate_id = $row['CERTIFICATE_ID'];
-
-            // Update feedback
-            $update_stmt = $dbConn->prepare("UPDATE certificate_information SET CERTIFICATE_FEEDBACK = ? WHERE CERTIFICATE_ID = ?");
-            $update_stmt->bind_param("si", $feedback, $certificate_id);
-
-            try {
-                $update_stmt->execute();
-                if ($update_stmt->affected_rows > 0) {
-                    error_log("Feedback updated for certificate ID: " . $certificate_id);
-                    echo "<script>alert('Feedback updated successfully!'); window.location.href = 'thankyou.php';</script>";
-                    exit();
-                } else {
-                    error_log("No changes made when updating feedback for certificate ID: " . $certificate_id);
-                    echo "<script>alert('No changes were made. The feedback might be the same as before.'); window.location.href = 'feedback.php';</script>";
-                }
-            } catch (mysqli_sql_exception $e) {
-                error_log("Error updating feedback: " . $e->getMessage());
-                echo "Error: " . $e->getMessage();
-            }
-
-            $update_stmt->close();
-        } else {
-            error_log("No certificate record found for user ID: " . $user_id);
-            echo "<script>alert('Error: No certificate record found. Please generate a certificate first.'); window.location.href = 'certificate_details.php';</script>";
-        }
-
-        $check_stmt->close();
+    $stmt = $dbConn->prepare($updateQuery);
+    if ($stmt === false) {
+        echo "Error preparing statement: " . $dbConn->error;
     } else {
-        error_log("User not logged in");
-        echo "<script>alert('Error: User not logged in.'); window.location.href = '../user/login_register.php';</script>";
-    } 
+        $stmt->bind_param('si', $feedback, $certificate_id);
+        if ($stmt->execute()) {
+            echo "Feedback updated successfully!";
+        } else {
+            echo "Error executing query: " . $stmt->error;
+        }
+        $stmt->close();
+    }
+
+    $dbConn->close();
+} else {
+    echo "Invalid input.";
 }
 ?>
