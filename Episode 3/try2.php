@@ -3,10 +3,7 @@ include '../conn/conn.php';
 
 session_start();
 
-//if (isset($_SESSION['name'])) { 
- //   $username = $_SESSION['username']; 
-  //  $user = $_SESSION['USER_ID'];}
-
+// Initialize variables
 $currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 1;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
 $attempts = isset($_POST['attempts']) ? (int)$_POST['attempts'] : 0; // Track attempts
@@ -19,7 +16,8 @@ if (!isset($_SESSION['start_time'])) {
 
 // Calculate remaining time
 $current_time = time();
-$remaining_time = 100 - ($current_time - $_SESSION['start_time']);
+$elapsed_time = $current_time - $_SESSION['start_time'];
+$remaining_time = max(0, 100 - $elapsed_time); // Ensure remaining time doesn't go below 0
 
 $sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 4 AND EPISODE_QUESTION_ID = ?";
 $stmt = $dbConn->prepare($sql);
@@ -30,7 +28,6 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $quizQuestion = $row['EPISODE_QUESTION'];
-    $hint = $row['EPISODE_HINT'];
     $optionA = $row['OPTION_A'];
     $optionB = $row['OPTION_B'];
     $optionC = $row['OPTION_C'];
@@ -46,12 +43,10 @@ if ($result->num_rows > 0) {
     // No more questions available
     $episode_id = 3;
     $user = 1;
-    // Prepare SQL statement with placeholders
     $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
     $stmt = $dbConn->prepare($insertSql);
     $stmt->bind_param("iii", $marks, $episode_id, $user);
 
-    // Execute the statement
     if ($stmt->execute()) {
         header("Location: fight.php?marks=" . $marks);
         exit;
@@ -72,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($remaining_time <= 0) {
                 $score = 2; // Set score to 2 if time's up
             } else {
-                // Calculate score based on attempts and remaining time
                 switch ($attempts) {
                     case 1: $score = 10; break;
                     case 2: $score = 8; break;
@@ -87,16 +81,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $showNextButton = true;
             $attempts = 0; // Reset attempts after correct answer
 
-            // Stop the timer by unsetting the session start time
-            unset($_SESSION['start_time']);
+            unset($_SESSION['start_time']); // Stop the timer
 
             if (isset($_POST['nextQuestion'])) {
                 header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion . "&bullet=" . $bullet . "&marks=" . $marks);
                 exit;
             }
         } else {
-            // Deduct 10 seconds for incorrect answer
-            $_SESSION['start_time'] -= 10;
+            $_SESSION['start_time'] -= 10; // Deduct 10 seconds for incorrect answer
             $showNextButton = false;
         }
     }
@@ -145,21 +137,23 @@ $stmt->close();
 
 <script>
     var remainingTime = <?= $remaining_time ?>;
-var timerElement = document.getElementById('timer');
+    var timerElement = document.getElementById('timer');
 
-function updateTimer() {
-    if (remainingTime > 0) {
-        timerElement.textContent = remainingTime ;
-        remainingTime--;
-        setTimeout(updateTimer, 1000); // Continue updating the timer every second
-    } else {
-        timerElement.textContent = "Time's up!";
-        // Additional logic if you want to automatically submit the form or show a message
+    function updateTimer() {
+        if (remainingTime > 0) {
+            timerElement.textContent = remainingTime;
+            remainingTime--;
+            setTimeout(updateTimer, 1000); // Continue updating the timer every second
+        } else {
+            timerElement.textContent = "Time's up!";
+            // Additional logic if you want to automatically submit the form or show a message
+        }
     }
-}
 
-// Start the timer
-updateTimer();
+    // Start the timer
+    document.addEventListener('DOMContentLoaded', (event) => {
+        updateTimer(); // Start the timer once the DOM is fully loaded
+    });
 </script>
 </body>
 </html>
