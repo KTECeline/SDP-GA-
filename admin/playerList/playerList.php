@@ -34,6 +34,7 @@
     <div id="tableView" class="user-table active-view">
    
         <table id="userTable">
+            <thead>
             <tr bgcolor="purple">
                 <th>User ID</th>
                 <th>Username</th>
@@ -42,6 +43,7 @@
                 <th>Score</th>
                 
             </tr>
+            </thead>
             <?php 
             include '../../admin/playerList/conn.php';
 
