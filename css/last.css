@@ -1,0 +1,70 @@
+body{
+    background: url('../image/evolution.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.hint {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    transform: translateY(70px);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 800px;
+    background-color: rgba(85, 200, 173, 0.2); /* 使用半透明背景色 */
+    color: rgb(32, 244, 180);
+}
+
+a {
+    background-color: aqua;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: red;
+    text-decoration: none;
+}
+
+.image {
+    position: relative;
+    width: 100px; 
+    height: 100px; 
+}
+
+.rotate90 {
+    width: 250px;
+    transform: scaleX(-1) translateY(150px) translateX(-480px);
+}    
+
+#evolution {
+    transform: scaleX(-1) translateY(-20px) translateX(-400px);
+    width: 400px;
+    display: none;
+    position: absolute;
+}
+
+#newWitch {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-110px) translateX(380px) scaleX(-1);
+    transition: left 2s ease-in-out; 
+}
+
+.next {
+    float: right;
+    right: 100px;
+    top: 500px;
+    position: fixed;
+    display: none;
+}
+
+.home {
+    left: 100px;
+    top: 500px;
+    position: fixed;
+    display: none;
+}
+
+.run-out {
+    left: 100%;
+}
