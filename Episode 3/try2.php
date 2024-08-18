@@ -2,9 +2,16 @@
 include '../conn/conn.php';
 
 session_start();
-
+if (isset($_SESSION['USER_ID'])) {
+    $userID = $_SESSION['USER_ID'];
+    // Now you can use $userID to fetch user-specific data from your database
+} else {
+    // No user is logged in, redirect to login page
+    header("Location: login.php");
+    exit();
+}
 // Initialize variables
-$currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 1;
+$currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 30;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
 $attempts = isset($_POST['attempts']) ? (int)$_POST['attempts'] : 0; // Track attempts
 $marks = isset($_POST['marks']) ? (int)$_POST['marks'] : 0; // Track total marks
@@ -19,7 +26,7 @@ $current_time = time();
 $elapsed_time = $current_time - $_SESSION['start_time'];
 $remaining_time = max(0, 100 - $elapsed_time); // Ensure remaining time doesn't go below 0
 
-$sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 4 AND EPISODE_QUESTION_ID = ?";
+$sql = "SELECT * FROM game_episode WHERE EPISODE_ID = 3 AND EPISODE_QUESTION_ID = ?";
 $stmt = $dbConn->prepare($sql);
 $stmt->bind_param("i", $currentQuestion);
 $stmt->execute();
@@ -42,10 +49,9 @@ if ($result->num_rows > 0) {
 } else {
     // No more questions available
     $episode_id = 3;
-    $user = 1;
     $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
     $stmt = $dbConn->prepare($insertSql);
-    $stmt->bind_param("iii", $marks, $episode_id, $user);
+    $stmt->bind_param("iii", $marks, $episode_id, $userID);
 
     if ($stmt->execute()) {
         header("Location: fight.php?marks=" . $marks);
