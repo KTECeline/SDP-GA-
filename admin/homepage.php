@@ -55,7 +55,7 @@
             <i class="fa-solid fa-comments"></i>
                 <span>Feedback</span>
             </a>
-            <a href="../login_register/logout.php" class="sidebar-item">
+            <a href="../../login_register/logout.php" class="sidebar-item">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Log Out</span>
             </a>
@@ -69,11 +69,9 @@
             </div>
             <div class="alteration">
                 <ul>
-                    <li><a href="../admin/profile/profile.php">Profile</li>
                     <li><a href="../admin/playerList/playerList.php">Player list</li>
                     <li><a href="../admin/leaderboard/leaderboard.php">View leaderboard</li>
-                    <li><a href="../admin/certificate/certificate.php">Certificate list</li>  
-                    <li><a href="../admin/feedback/feedback.php">Feedback</li> 
+                    <li><a href="../admin/certificate/certificate.php">Certificate list</li>   
                 </ul>
         </div>
         <div class="main-content-items">
@@ -95,16 +93,17 @@
             </div>
             <div class="charts">
             <div class="chart-container">
-                <canvas id="averageScoresChart"></canvas>
-            </div>
-            <div class="chart-container">
                 <canvas id="topPerformersChart"></canvas>
             </div>
             <div class="chart-container">
-                <canvas id="episodeChart"></canvas>
+                <canvas id="percentileDonutChart" ></canvas>
             </div>
             <div class="chart-container">
                 <canvas id="episodeMetricsChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="episodeChart"></canvas>
             </div>
                 </div>
             </div>
@@ -117,94 +116,36 @@
         fetch('../admin/analysis/api.php')
             .then(response => response.json())
             .then(data => {
-                createAverageScoresChart(data.averageScores);
                 createTopPerformersChart(data.topPerformers);
                 createEpisodeChart(data.episodeProgress);
                 createEpisodeMetricsChart(data.episodeMetrics);
+                createPercentileDonutChart(data.percentileDistribution);
             })
             .catch(error => console.error('Error:', error));
 
-            function createAverageScoresChart(data) {
-    new Chart(document.getElementById('averageScoresChart'), {
-        type: 'line',
-        data: {
-            labels: data.map(item => item.episodeId),
-            datasets: [{
-                label: 'Average Score',
-                data: data.map(item => item.averageScore),
-                borderColor: 'rgba(153, 102, 255, 1)',
-                tension: 0.1,
-                fill: false // Optionally disable filling under the line
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Average Scores per Episode'
-                }
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Episode ID'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Average Score'
-                    },
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 30 // Adjust this value to increase the gap
-                    }
-                }
-            }
-        }
-    });
-}
-
 
         function createTopPerformersChart(data) {
-    new Chart(document.getElementById('topPerformersChart'), {
-        type: 'bar',
-        data: {
-            labels: data.map(item => item.userId),
-            datasets: [{
-                label: 'Total Score',
-                data: data.map(item => item.totalScore),
-                backgroundColor: 'rgba(255, 159, 64, 0.6)'
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Top Performers'
-                }
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'User ID'
-                    }
+            new Chart(document.getElementById('topPerformersChart'), {
+                type: 'bar',
+                data: {
+                    labels: data.map(item => item.userId),
+                    datasets: [{
+                        label: 'Total Score',
+                        data: data.map(item => item.totalScore),
+                        backgroundColor: 'rgba(255, 159, 64, 0.6)'
+                    }]
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Total Score'
-                    },
-                    beginAtZero: true 
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Top Performers'
+                        }
+                    }
                 }
-            }
+            });
         }
-    });
-}
 
         function createEpisodeChart(data) {
             new Chart(document.getElementById('episodeChart'), {
@@ -342,6 +283,63 @@
                 }
             });
         }
+
+        function createPercentileDonutChart(data) {
+    const ctx = document.getElementById('percentileDonutChart').getContext('2d');
+    if (ctx) { // Check if context is obtained
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: data.map(item => item.percentile),
+                datasets: [{
+                    data: data.map(item => item.count),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(199, 199, 199, 0.6)',
+                        'rgba(83, 102, 255, 0.6)',
+                        'rgba(60, 186, 84, 0.6)',
+                        'rgba(251, 99, 142, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(199, 199, 199, 1)',
+                        'rgba(83, 102, 255, 1)',
+                        'rgba(60, 186, 84, 1)',
+                        'rgba(251, 99, 142, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'User Percentiles Distribution'
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    } else {
+        console.error('Failed to get canvas context');
+    }
+}
+
+
     </script>
 </body>
 </html>
