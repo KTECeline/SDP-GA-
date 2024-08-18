@@ -1,3 +1,21 @@
+<?php
+session_start();
+include '../conn/conn.php';
+
+if (isset($_GET['user_id'])) {
+    $user_id = $_GET['user_id'];
+
+    // Fetch the total score from score_information
+    $stmt = $dbConn->prepare("SELECT EPISODE_TOTAL_SCORE FROM score_information WHERE USER_ID = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($total_score);
+    $stmt->fetch();
+    $stmt->close();
+} else {
+    echo "User ID not found.";
+}
+?>
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -21,6 +39,7 @@
                 <div class="details">
                     <span class="close-button" onclick="closeLogin()">🗙</span>
                     <h4>Thanks again for participating in Witchcraft.Code!</h4>
+                    <p>Your total score across all episodes is: <?php echo htmlspecialchars($total_score); ?>!!</p>
                     <img src="../image/thank you.gif" class="img"/>
 
                     <div class="form">
