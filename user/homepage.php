@@ -1,3 +1,25 @@
+<?php
+session_start();
+require '../conn/conn.php';
+$user_id = $_SESSION['USER_ID'];
+
+$completed_episodes = [false, false, false, false];
+
+$query = "SELECT EPISODE_ID FROM episode_result WHERE USER_ID = ? ORDER BY EPISODE_ID ASC";
+$stmt = $dbConn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $completed_episodes[$row['EPISODE_ID'] - 1] = true;
+}
+$can_play_episode_1 = true; 
+$can_play_episode_2 = $completed_episodes[0]; 
+$can_play_episode_3 = $completed_episodes[1]; 
+$can_play_episode_4 = $completed_episodes[2];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +31,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/header.css">
 
@@ -20,7 +41,7 @@
     <div class="top">
         <img src="../image/Halloween Chill.gif" alt="Halloween chill" class="backgroundhidden">
         <img src="../image/Witchcraft.Code Logo (Without bg).png" class="backgroundImg"/>
-        <button class="top-btn" onclick="playnow()" >Play Now</button>
+        <button class="top-btn" <?php if(!$can_play_episode_1) echo 'disabled'; ?> onclick="location.href='../Episode 1/ep1.php'">PLAY NOW</button>
     </div>
 
     <div class="midSession">
@@ -58,7 +79,7 @@
                         Learn more about variables, data types and basic operations in Python. This is the first episode of the Python series. Stay tuned for more episodes.
                     </div>
                     <div class="buttons">
-                        <button>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_1) { echo 'onclick="showMessage(1)"'; } else { echo 'onclick="location.href=\'../Episode 1/Episode1.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +93,7 @@
                         If else, loops and functions are the main topics in this episode. Stay tuned for more episodes.
                     </div>
                     <div class="buttons">
-                        <button>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_2) { echo 'onclick="showMessage(1)"'; } else { echo 'onclick="location.href=\'../Episode 2/Episode2.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>
@@ -86,7 +107,7 @@
                         list, tuples, dictionary and sets are the main topics in this episode. Stay tuned for more episodes.
                     </div>
                     <div class="buttons">
-                        <button>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_3) { echo 'onclick="showMessage(2)"'; } else { echo 'onclick="location.href=\'../Episode 3/Episode3.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>
@@ -95,12 +116,12 @@
                 <div class="content">
                     <div class="author">HUI NAN</div>
                     <div class="title">EPISODE 4</div>
-                    <div class="topic">FILE HANGDLING AND LIBRARY</div>
+                    <div class="topic">FILE HANDLING AND LIBRARY</div>
                     <div class="des">
                         Read from, write to file
                     </div>
                     <div class="buttons">
-                        <button>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_4) { echo 'onclick="showMessage(3)"'; } else { echo 'onclick="location.href=\'../Episode 4/Episode4.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>
@@ -111,10 +132,7 @@
                 <img src="../image/5.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        Basics of Python
                     </div>
                 </div>
             </div>
@@ -122,10 +140,7 @@
                 <img src="../image/6.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        Control Flow
                     </div>
                 </div>
             </div>
@@ -133,10 +148,7 @@
                 <img src="../image/7.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        Data Structure
                     </div>
                 </div>
             </div>
@@ -144,10 +156,7 @@
                 <img src="../image/8.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        File Handling
                     </div>
                 </div>
             </div>

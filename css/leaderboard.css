@@ -71,7 +71,7 @@ tr:nth-child(even) {
     margin-bottom: 5px;
 }
 .podium-username {
-    font-size: 20px;
+    font-size: 17px;
     margin-bottom: 5px;
     color: #ffffff;
     text-shadow: -1px 2px 3px #2c1e4a;
@@ -107,4 +107,20 @@ tr:nth-child(even) {
     width:300dvh;
     background-size: cover;
 
+}
+
+.highlighted-row {
+    background-color: #6c5a8a !important;
+    font-weight: bold;
+}
+.user-rank {
+    position: sticky;
+    bottom: 0;
+    background-color: #2c1e4a;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-top: 2px solid #4c3a6a;
+    color: #ffffff;
+    font-size: 20px;
 }

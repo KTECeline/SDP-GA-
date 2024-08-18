@@ -2,6 +2,15 @@
 include '../conn/conn.php';
 session_start();
 
+// Handle game restart
+if (isset($_POST['restartGame'])) {
+    // Clear session variables
+    unset($_SESSION['start_time']);
+    unset($_SESSION['score']);
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
 // Initialize start time and score if not set
 if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
@@ -123,7 +132,6 @@ $remaining_time = max(0, 10000 - $elapsed_time);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="../css/Episode1.css"/>
-
 </head>
 <body>
     <div id="timer"><?php echo $remaining_time; ?></div>
@@ -150,6 +158,7 @@ $remaining_time = max(0, 10000 - $elapsed_time);
                     <?php if ($showNextButton): ?>
                         <button type="submit" class="button" name="nextQuestion" value="next">Next Question</button>
                     <?php endif; ?>
+                    <button type="submit" class="button" name="restartGame" value="restart">Restart Game</button>
                 </form>
             </div>
         </div>
@@ -169,7 +178,6 @@ $remaining_time = max(0, 10000 - $elapsed_time);
                 setTimeout(updateTimer, 1000);
             } else {
                 timerElement.textContent = "Time's up!";
-                
             }
         }
         updateTimer();
