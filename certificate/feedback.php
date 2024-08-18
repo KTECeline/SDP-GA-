@@ -76,6 +76,7 @@ if (isset($_SESSION['USER_ID'])) {
         <?php include "../header_footer/footer.php"; ?>
     </body>
 </html><script>
+
 document.getElementById('feedback').addEventListener('click', function(event) {
     // Prevent form submission to allow AJAX request
     event.preventDefault();
@@ -86,20 +87,16 @@ document.getElementById('feedback').addEventListener('click', function(event) {
     // Get certificate ID from the hidden input field
     var certificateId = document.querySelector('input[name="certificate_id"]').value;
 
-    // Log the feedback and certificate ID to the console
-    console.log('Feedback submitted:', feedback);
-    console.log('Certificate ID submitted:', certificateId);
 
     // Create an AJAX request
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'certificate_save.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-    // Handle the response
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('Server response:', xhr.responseText);  // Log the server response
-            alert('Feedback updated successfully!');
+            // Redirect to thankyou.php
+            window.location.href = 'thankyou.php';
         }
     };
 
