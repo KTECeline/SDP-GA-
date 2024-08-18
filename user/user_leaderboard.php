@@ -1,30 +1,55 @@
 <?php
     session_start();
     include '../conn/conn.php';
-    if (isset($_SESSION['name'])) {
+    if (isset($_SESSION['name']) && isset($_SESSION['USER_ID'])) {
+        $current_user_id = $_SESSION['USER_ID'];
         
 
         // SQL query
-        $sql = "SELECT u.USER_ID, u.USER_USERNAME, e.EPISODE_TOTAL_SCORE
+        $sql_top10 = "SELECT e.USER_ID, u.USER_USERNAME, MAX(e.EPISODE_TOTAL_SCORE) AS MAX_SCORE,
+                RANK() OVER (ORDER BY MAX(e.EPISODE_TOTAL_SCORE) DESC) AS RANK
                 FROM user_information u
                 JOIN score_information e ON u.USER_ID = e.USER_ID
                 WHERE u.ROLES = 'user'
-                ORDER BY e.EPISODE_TOTAL_SCORE DESC
+                GROUP BY u.USER_ID
+                ORDER BY MAX_SCORE DESC
                 LIMIT 10"; 
-        $result = $dbConn->query($sql);
+        $result_top10 = $dbConn->query($sql_top10);
 
-        $leaderboardData = array();
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $leaderboardData[] = array(
-                    "USER_ID" => $row["USER_ID"],
-                    "username" => $row["USER_USERNAME"],
-                    "score" => $row["EPISODE_TOTAL_SCORE"]
-                );
-            }
-        }
+        $sql_user_rank = "SELECT USER_ID, USER_USERNAME, MAX_SCORE, RANK FROM (
+            SELECT e.USER_ID, u.USER_USERNAME, MAX(e.EPISODE_TOTAL_SCORE) AS MAX_SCORE,
+            RANK() OVER (ORDER BY MAX(e.EPISODE_TOTAL_SCORE) DESC) AS RANK
+            FROM user_information u
+            JOIN score_information e ON u.USER_ID = e.USER_ID
+            WHERE u.ROLES = 'user'
+            GROUP BY u.USER_ID
+          ) ranked_users
+          WHERE USER_ID = ?";
 
-    $dbConn->close();
+$stmt = $dbConn->prepare($sql_user_rank);
+$stmt->bind_param("i", $current_user_id);
+$stmt->execute();
+$result_user_rank = $stmt->get_result();
+
+$leaderboardData = array();
+$userRankData = null;
+
+if ($result_top10->num_rows > 0) {
+    while($row = $result_top10->fetch_assoc()) {
+        $leaderboardData[] = array(
+            "USER_ID" => $row["USER_ID"],
+            "username" => $row["USER_USERNAME"],
+            "score" => $row["MAX_SCORE"],
+            "rank" => $row["RANK"]
+        );
+    }
+}
+
+if ($result_user_rank->num_rows > 0) {
+    $userRankData = $result_user_rank->fetch_assoc();
+}
+
+$dbConn->close();
 ?>
 
 <!DOCTYPE html>
@@ -93,30 +118,35 @@
             </div>
         </div>
     <div class="table-container">
-    <form id="resetForm" method="post" action="../../admin/leaderboard/reset.php">
+    
             <table>
                 <tr>
-                <th class="select-column" style="display: none;">Select</th>
                     <th>Rank</th>
                     <th>Username</th>
                     <th>Score</th>
                 </tr>
                 <?php
-                foreach ($leaderboardData as $index => $player) {
-                    echo "<tr>
-                    <td class='select-column' style='display: none;'><input type='checkbox' name='reset_users[]' value='" . htmlspecialchars($player['USER_ID']) . "'></td>
-
-                            <td>" . ($index + 1) . "</td>
+                foreach ($leaderboardData as $player) {
+                    $highlightClass = ($player['USER_ID'] == $current_user_id) ? 'highlighted-row' : '';
+                    echo "<tr class='{$highlightClass}'>
+                            <td>" . htmlspecialchars($player['rank']) . "</td>
                             <td>" . htmlspecialchars($player['username']) . "</td>
                             <td>" . htmlspecialchars($player['score']) . "</td>
                           </tr>";
                 }
                 ?>
             </table>
+            <?php if ($userRankData && $userRankData['RANK'] > 10): ?>
+        <div class="user-rank">
+            Your Rank: <?php echo htmlspecialchars($userRankData['RANK']); ?> | 
+            Score: <?php echo htmlspecialchars($userRankData['MAX_SCORE']); ?>
         </div>
+        <?php endif; ?>
+        </div>
+       
     </div>
     
-    <script>
+     <script>
         const leaderboardData = <?php echo json_encode($leaderboardData); ?>;
         
         function populatePodium(data) {
@@ -132,29 +162,8 @@
         }
 
         populatePodium(leaderboardData);
-        
-        // Toggle the visibility of checkboxes and buttons
-        const resetToggleButton = document.getElementById('resetToggleButton');
-const confirmResetButton = document.getElementById('confirmResetButton');
-const confirmCancelButton = document.getElementById('cancelButton');
-const selectColumns = document.querySelectorAll('.select-column'); // Select the column
-
-resetToggleButton.addEventListener('click', () => {
-    selectColumns.forEach(column => {
-        column.style.display = 'table-cell'; // Show the select column (header and checkboxes)
-    });
-    confirmResetButton.style.display = 'inline-block';
-    confirmCancelButton.style.display = 'inline-block'; // Show the confirm button
-    resetToggleButton.style.display = 'none'; // Hide the reset button
-});
-
-cancelButton.addEventListener('click', () => {
-    confirmResetButton.style.display = 'none'; // Hide the confirm button
-    cancelButton.style.display = 'none'; // Hide the cancel button
-    resetToggleButton.style.display = 'inline-block'; // Show the reset button
-});
-
     </script>
+
 
     <script src="../../../Javascript/sidebar.js"></script>
     
