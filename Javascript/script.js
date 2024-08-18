@@ -47,3 +47,7 @@ function showSlider(type){
         next.click();
     }, timeAutoNext)
 }
+
+function showMessage(episodeNumber) {
+    alert("You need to complete Episode " + episodeNumber + " before accessing this episode.");
+}
