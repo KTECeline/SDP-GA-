@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['name'])) { 
-    $username = $_SESSION['username'];}
+    $username = $_SESSION['username'];
+    $user = $_SESSION['USER_ID'];}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +139,7 @@ if (isset($_SESSION['name'])) {
                 }
             } 
             if (currentFloor === 12) {
-                window.location.href = "try.php";
+                window.location.href = "congrats.php";
             }
         });
 
