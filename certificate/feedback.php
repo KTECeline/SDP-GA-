@@ -96,7 +96,8 @@ document.getElementById('feedback').addEventListener('click', function(event) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Redirect to thankyou.php
-            window.location.href = 'thankyou.php';
+            var userId = <?php echo json_encode($user_id); ?>;
+            window.location.href = 'thankyou.php?user_id=' + encodeURIComponent(userId);
         }
     };
 
