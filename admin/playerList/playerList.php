@@ -29,6 +29,12 @@
             <button id="deleteBtn">Delete</button>
         </div>
     </div>
+        <!-- Search Bar -->
+        <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for usernames or user IDs..">
+    <button id="searchBtn"><i class="fa fa-search"></i></button>
+    <button id="resetBtn">Reset</button>
+</div>
 
     <!-- Table View -->
     <div id="tableView" class="user-table active-view">
@@ -125,3 +131,62 @@
                     ?>
 </body>
 </html>
+
+<script>
+    // JavaScript for filtering both table and card views
+    document.getElementById("searchBtn").addEventListener("click", function() {
+        // Get the search input value
+        let searchValue = document.getElementById("searchInput").value.toLowerCase();
+
+        // Filter Table Rows
+        let table = document.getElementById("userTable");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+            let userId = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+            let username = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+
+            if (userId.includes(searchValue) || username.includes(searchValue)) {
+                rows[i].style.display = ""; // Show the row
+            } else {
+                rows[i].style.display = "none"; // Hide the row
+            }
+        }
+
+        // Filter Card View
+        let cards = document.getElementsByClassName("user-card");
+
+        for (let i = 0; i < cards.length; i++) {
+            let userId = cards[i].getElementsByTagName("h3")[0].textContent.toLowerCase();
+            let username = cards[i].getElementsByTagName("p")[0].textContent.toLowerCase();
+
+            if (userId.includes(searchValue) || username.includes(searchValue)) {
+                cards[i].style.display = ""; // Show the card
+            } else {
+                cards[i].style.display = "none"; // Hide the card
+            }
+        }
+    });
+
+    // JavaScript for Reset Button
+    document.getElementById("resetBtn").addEventListener("click", function() {
+        // Clear the search input
+        document.getElementById("searchInput").value = "";
+
+        // Reset Table Rows to show all rows
+        let table = document.getElementById("userTable");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+            rows[i].style.display = ""; // Show all rows
+        }
+
+        // Reset Card View to show all cards
+        let cards = document.getElementsByClassName("user-card");
+
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].style.display = ""; // Show all cards
+        }
+    });
+
+    </script>
