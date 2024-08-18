@@ -157,7 +157,10 @@
                         display: true,
                         text: 'Average Score'
                     },
-                    beginAtZero: true // Optional: ensures the y-axis starts at 0
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 30 // Adjust this value to increase the gap
+                    }
                 }
             }
         }
