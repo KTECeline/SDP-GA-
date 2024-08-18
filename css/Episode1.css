@@ -81,7 +81,18 @@ body{
     position: fixed;
     top: 250px;
     left: 150px;
+}
 
+#score-display {
+    color: blue;
+    background-color: lightblue;
+    position: fixed;
+    top: 100px;
+    float: right;
+    right: 36%;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .rotate90 {
