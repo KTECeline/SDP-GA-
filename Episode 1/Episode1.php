@@ -70,18 +70,68 @@ if ($result->num_rows > 0) {
     $optionC = $row['OPTION_C'];
     $optionD = $row['OPTION_D'];
 } else {
-    $quizQuestion = "No questions available.";
-    $optionA = $optionB = $optionC = $optionD = "";
+    // No more questions available
+    $episode_id = 3;
+
+    // Prepare SQL statement with placeholders
+    $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
+    $stmt = $dbConn->prepare($insertSql);
+    $stmt->bind_param("iii", $date, $marks, $episode_id, $user);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        header("Location: last.php?marks=" . $marks);
+        exit;
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 }
+
+$nextQuestion = $currentQuestion;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['answer'])) {
+        $selectedAnswer = $_POST['answer'];
+        $explanationText = isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '';
+        $attempts += 1; // Increment attempts
+
+        if ($selectedAnswer === $correctAnswer) {
+            if ($remaining_time <= 0) {
+                $score = 2; // Set score to 2 if time's up
+            } else {
+                // Calculate score based on attempts and remaining time
+                switch ($attempts) {
+                    case 1: $score = 10; break;
+                    case 2: $score = 8; break;
+                    case 3: $score = 6; break;
+                    case 4: $score = 4; break;
+                    default: $score = 0;
+                }
+            }
+            $marks += $score; // Update total marks
+            $nextQuestion = $currentQuestion + 1;
+            $bullet += 1;
+            $showNextButton = true;
+            $attempts = 0; // Reset attempts after correct answer
+            // Stop the timer by unsetting the session start time
+            unset($_SESSION['start_time']);
+
+            if (isset($_POST['nextQuestion'])) {
+                header("Location: " . $_SERVER['PHP_SELF'] . "?question_id=" . $nextQuestion . "&marks=" . $marks);
+                exit;
+            }
+        } else {
+            // Deduct 10 seconds for incorrect answer
+            $_SESSION['start_time'] -= 10;
+            $showNextButton = false;
+        }
+    }
+}
+
+
 
 $stmt->close();
 
-// Initialize session and time
-if (!isset($_SESSION['start_time'])) {
-    $_SESSION['start_time'] = time();
-}
-
-$remaining_time = 10000;
 ?>
 
 <!DOCTYPE html>

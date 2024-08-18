@@ -3,11 +3,11 @@ include '../conn/conn.php';
 
 session_start();
 
-if (isset($_SESSION['name'])) { 
-    $username = $_SESSION['username']; 
-    $user = $_SESSION['USER_ID'];}
+//if (isset($_SESSION['name'])) { 
+ //   $username = $_SESSION['username']; 
+  //  $user = $_SESSION['USER_ID'];}
 
-$currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 21;
+$currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 1;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
 $attempts = isset($_POST['attempts']) ? (int)$_POST['attempts'] : 0; // Track attempts
 $marks = isset($_POST['marks']) ? (int)$_POST['marks'] : 0; // Track total marks
@@ -45,11 +45,11 @@ if ($result->num_rows > 0) {
 } else {
     // No more questions available
     $episode_id = 3;
-
+    $user = 1;
     // Prepare SQL statement with placeholders
-    $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
+    $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
     $stmt = $dbConn->prepare($insertSql);
-    $stmt->bind_param("iii", $date, $marks, $episode_id, $user);
+    $stmt->bind_param("iii", $marks, $episode_id, $user);
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -145,18 +145,21 @@ $stmt->close();
 
 <script>
     var remainingTime = <?= $remaining_time ?>;
-    var timerElement = document.getElementById('timer');
+var timerElement = document.getElementById('timer');
 
-    function updateTimer() {
-        if (remainingTime > 0) {
-            timerElement.textContent = remainingTime;
-            remainingTime--;
-            setTimeout(updateTimer, 1000);
-        } else {
-            timerElement.textContent = "Time's up!";
-        }
+function updateTimer() {
+    if (remainingTime > 0) {
+        timerElement.textContent = remainingTime ;
+        remainingTime--;
+        setTimeout(updateTimer, 1000); // Continue updating the timer every second
+    } else {
+        timerElement.textContent = "Time's up!";
+        // Additional logic if you want to automatically submit the form or show a message
     }
-    updateTimer();
+}
+
+// Start the timer
+updateTimer();
 </script>
 </body>
 </html>
