@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     overflow: auto;
-    margin-top: -50px;
 }
 
 .container {
@@ -18,6 +17,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     width: 70%;
     max-width: 1000px;
+    margin-top:-6%;
 }
 
 h1 {
@@ -28,6 +28,8 @@ h1 {
 
 .table {
     margin-top: 20px;
+     overflow-y: auto; /* Enables vertical scrolling */
+    max-height: 400px;
 }
 
 table {
@@ -45,6 +47,10 @@ th, td {
 
 th {
     background-color: #6c5a8a;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
 }
 
 tr:hover td {

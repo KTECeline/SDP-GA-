@@ -6,16 +6,18 @@
     if (isset($_SESSION['USER_ID'])) {
         $user_id = $_SESSION['USER_ID']; 
 
-        $stmt = $dbConn->prepare("SELECT CERTIFICATE_NAME FROM certificate_information WHERE USER_ID = ?");
+        $stmt = $dbConn->prepare("SELECT CERTIFICATE_NAME, CERTIFICATE_ID FROM certificate_information WHERE USER_ID = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
-        $stmt->bind_result($name);
+        $stmt->bind_result($name,$certificate_id);
         $stmt->fetch();
 
-        if (!$name) {
+        if (!$name|| !$certificate_id) {
             echo "<script>alert('No certificate found for this user.'); window.location.href = 'certificate_details.php';</script>";
             exit();
         }
+        $name = htmlspecialchars($name);
+        $certificate_id = htmlspecialchars($certificate_id);
 
         $stmt->close();
     } else {
@@ -91,7 +93,7 @@
 
         <div class="button">
             <button id="downloaddata" class="download-button" onclick="downloadCertificate()">Download E-Certificate</button>
-            <button id="next" class="download-button" onclick="window.location.href='feedback.php'">Next</button>
+            <button id="next" class="download-button" onclick="window.location.href='feedback.php?certificate_id=<?php echo urlencode($certificate_id); ?>'">Next</button>
         </div>
 
         <br>

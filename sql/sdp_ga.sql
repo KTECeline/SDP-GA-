@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `certificate_information` (
   `CERTIFICATE_ID` int(11) NOT NULL,
   `CERTIFICATE_NAME` varchar(255) NOT NULL,
-  `CERTIFICATE_FEEDBACK` varchar(255) DEFAULT NULL,
+  `CERTIFICATE_FEEDBACK` varchar(255) DEFAULT NOT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -63,7 +63,6 @@ INSERT INTO `episode` (`EPISODE_ID`, `EPISODE_NAME`) VALUES
 
 CREATE TABLE `episode_result` (
   `EPISODE_RESULT_ID` int(11) NOT NULL,
-  `TIME_TAKEN` datetime NOT NULL DEFAULT current_timestamp(),
   `SCORE` int(11) NOT NULL,
   `EPISODE_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL

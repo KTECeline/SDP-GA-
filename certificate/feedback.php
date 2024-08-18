@@ -1,3 +1,39 @@
+<?php
+session_start();
+include '../conn/conn.php';
+
+// Check if the user is logged in
+if (isset($_SESSION['USER_ID'])) {
+    $user_id = $_SESSION['USER_ID']; 
+
+    // Get certificate ID from URL parameters
+    if (isset($_GET['certificate_id'])) {
+        $certificate_id = $_GET['certificate_id'];
+
+        // Fetch certificate name or other details if needed
+        $stmt = $dbConn->prepare("SELECT CERTIFICATE_NAME FROM certificate_information WHERE CERTIFICATE_ID = ? AND USER_ID = ?");
+        $stmt->bind_param("ii", $certificate_id, $user_id);
+        $stmt->execute();
+        $stmt->bind_result($name);
+        $stmt->fetch();
+
+        if (!$name) {
+            echo "<script>alert('No certificate found for this ID.'); window.location.href = 'certificate_details.php';</script>";
+            exit();
+        }
+
+        $stmt->close();
+    } else {
+        echo "<script>alert('Certificate ID not found.'); window.location.href = 'certificate_details.php';</script>";
+        exit();
+    }
+} else {
+    echo "<script>alert('User not logged in.'); window.location.href = '../login_register/login_register.php';</script>";
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -27,6 +63,7 @@
                         <label>Your feedback:</label>
                         <input type="text" name="feedback" required placeholder="Enter your feedback">
                     </div>
+                    <input type="hidden" name="certificate_id" value="<?php echo htmlspecialchars($certificate_id); ?>">
                     <div class="form">
                         <div class="button-container">
                             <button id="feedback" class="submit-btn" type="submit" name="feedback">Submit</button>
@@ -38,4 +75,33 @@
 
         <?php include "../header_footer/footer.php"; ?>
     </body>
-</html>
+</html><script>
+
+document.getElementById('feedback').addEventListener('click', function(event) {
+    // Prevent form submission to allow AJAX request
+    event.preventDefault();
+
+    // Get feedback value
+    var feedback = document.querySelector('input[name="feedback"]').value;
+
+    // Get certificate ID from the hidden input field
+    var certificateId = document.querySelector('input[name="certificate_id"]').value;
+
+
+    // Create an AJAX request
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'certificate_save.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Redirect to thankyou.php
+            var userId = <?php echo json_encode($user_id); ?>;
+            window.location.href = 'thankyou.php?user_id=' + encodeURIComponent(userId);
+        }
+    };
+
+    // Send the request with the feedback and certificate ID
+    xhr.send('feedback=' + encodeURIComponent(feedback) + '&certificate_id=' + encodeURIComponent(certificateId));
+});
+</script>
