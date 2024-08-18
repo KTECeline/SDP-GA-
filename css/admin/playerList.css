@@ -165,3 +165,52 @@ button:hover {
 }
 
 
+/* search bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #7c6a9a; /* Button color */
+    border: 1px solid #857997;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-bar button i {
+    font-size: 16px;
+    color: white;
+}
+
+.search-bar button:hover {
+    background-color: white;
+    color:#7c6a9a;
+}
+
+.search-bar button:active {
+    background-color: white;
+    color:#7c6a9a;
+}
+
+#searchBtn i {
+    color: white; /* Replace with your desired color */
+}
+
+#searchBtn:hover i {
+    color: #7c6a9a; /* Replace with the hover color */
+}

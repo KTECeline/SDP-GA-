@@ -3,6 +3,9 @@ include '../conn/conn.php';
 
 session_start();
 
+if (isset($_SESSION['name'])) { 
+    $username = $_SESSION['username'];}
+
 $currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 1;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
 $attempts = isset($_POST['attempts']) ? (int)$_POST['attempts'] : 0; // Track attempts
