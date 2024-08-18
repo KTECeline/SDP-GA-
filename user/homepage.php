@@ -116,7 +116,7 @@ $can_play_episode_4 = $completed_episodes[2];
                 <div class="content">
                     <div class="author">HUI NAN</div>
                     <div class="title">EPISODE 4</div>
-                    <div class="topic">FILE HANGDLING AND LIBRARY</div>
+                    <div class="topic">FILE HANDLING AND LIBRARY</div>
                     <div class="des">
                         Read from, write to file
                     </div>
@@ -132,10 +132,7 @@ $can_play_episode_4 = $completed_episodes[2];
                 <img src="../image/5.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        Basics of Python
                     </div>
                 </div>
             </div>
@@ -143,10 +140,7 @@ $can_play_episode_4 = $completed_episodes[2];
                 <img src="../image/6.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        Control Flow
                     </div>
                 </div>
             </div>
@@ -154,10 +148,7 @@ $can_play_episode_4 = $completed_episodes[2];
                 <img src="../image/7.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        Data Structure
                     </div>
                 </div>
             </div>
@@ -165,10 +156,7 @@ $can_play_episode_4 = $completed_episodes[2];
                 <img src="../image/8.png">
                 <div class="content">
                     <div class="title">
-                        Name Slider
-                    </div>
-                    <div class="description">
-                        Description
+                        File Handling
                     </div>
                 </div>
             </div>
