@@ -45,8 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['nextQuestion'])) {
         // Increment the question ID for the next question
-        $nextQuestion = $currentQuestion + 1;
-        header("Location: " . $_SERVER['PHP_SELF'] . "?EPISODE_QUESTION_ID=" . $nextQuestion);
+        if ($currentQuestion < 10) {
+            $nextQuestion = $currentQuestion + 1;
+            header("Location: " . $_SERVER['PHP_SELF'] . "?EPISODE_QUESTION_ID=" . $nextQuestion);
+        } else {
+            header("Location: last.php");
+        }
         exit;
     }
 }
