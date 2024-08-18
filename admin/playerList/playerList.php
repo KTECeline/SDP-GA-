@@ -38,7 +38,7 @@
 
     <!-- Table View -->
     <div id="tableView" class="user-table active-view">
-   
+   <div class="table-container">
         <table id="userTable">
             <thead>
             <tr bgcolor="purple">
@@ -97,7 +97,7 @@
             ?>
         </table>
            
-    </div>
+    </div></div>
   
 
     <!-- Card View -->
