@@ -12,6 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+sesion_start();
 if (isset($_SESSION['USER_ID'])) {
     $user_id = $_SESSION['USER_ID'];
 } else {
