@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Episode 1 Brief</title>
-    <link rel="stylesheet" href="css/brief.css">
+    <link rel="stylesheet" href="../css/brief.css">
     
 
 <!-- Google link font -->
