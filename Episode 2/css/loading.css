@@ -1,0 +1,100 @@
+*{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    text-decoration:none;
+    list-style:none;
+    box-sizing:border-box;
+}
+
+:root{
+    --black:#000000;
+    --violet-dark: #843efe;
+    --violet-light: #e6b2f3;
+    --gray: hsl(253, 15%, 70%);
+    --border:.1rem solid rgba(0,0,0,.2);
+    --dark-violet: hsl(252, 100%, 12%);
+    --light-violet: hsl(252, 80%, 16%);
+    --space-cadet: #1D1F40;
+    --white: #FFFFFF;
+    --borderline: #2e5984;
+    --transition: all 0.3s ease;
+    --gradient: linear-gradient(to right, var(--violet-light), var(--violet-dark))
+}
+
+body{
+    font-family: "Kanit", sans-serif;
+    background-color: var(--dark-violet);
+    color: white;
+    margin: 0;
+    padding: 0;
+    transition: opacity 2s ease-out;
+  }
+  
+
+  .loading-container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);;
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    
+  }
+
+  
+  #welcome-image {
+    width: 100%; /* Or set your desired width */
+    max-width: 700px; /* Adjust this as needed */
+    padding: 20px 40px; /* Adjust padding to create a rectangle */
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px; /* Adjust border-radius to make the edges rounded */
+}
+
+
+
+.loading-text {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  animation: typing 4s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+  to {
+      width: 62%;
+  }
+}
+
+@keyframes blink {
+  0% {
+      border-right: 2px solid rgba(255, 255, 255, 0.75);
+  }
+  50% {
+      border-right: 2px solid transparent;
+  }
+  100% {
+      border-right: 2px solid rgba(255, 255, 255, 0.75);
+  }
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #8554fb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto; /* Center the spinner */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+  
