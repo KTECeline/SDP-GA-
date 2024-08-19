@@ -41,7 +41,7 @@ $can_play_episode_4 = $completed_episodes[2];
     <div class="top">
         <img src="../image/Halloween Chill.gif" alt="Halloween chill" class="backgroundhidden">
         <img src="../image/Witchcraft.Code Logo (Without bg).png" class="backgroundImg"/>
-        <button class="top-btn" <?php if(!$can_play_episode_1) echo 'disabled'; ?> onclick="location.href='../Episode 1/ep1.php'">PLAY NOW</button>
+        <button class="top-btn" <?php if(!$can_play_episode_1) echo 'disabled'; ?> onclick="location.href='../Episode 1/Episode1.php'">PLAY NOW</button>
     </div>
 
     <div class="midSession">

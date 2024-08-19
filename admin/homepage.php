@@ -55,7 +55,7 @@
             <i class="fa-solid fa-comments"></i>
                 <span>Feedback</span>
             </a>
-            <a href="../../login_register/logout.php" class="sidebar-item">
+            <a href="../login_register/logout.php" class="sidebar-item">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Log Out</span>
             </a>
