@@ -16,7 +16,7 @@ if (isset($_SESSION['USER_ID'])) {
     $user_id = $_SESSION['USER_ID'];
 } else {
     // Redirect to login if USER_ID is not set in session
-    header("Location: login.php");
+    header("Location: ../login_register/login_register.php");
     exit;
 }
 
