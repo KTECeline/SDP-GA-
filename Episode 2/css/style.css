@@ -265,9 +265,9 @@ header img {
 
 .witch {
   position: absolute;
-  right: 20px;
-  top: 220px;
-  width: 20%; 
+  right: 0.20vw;
+  top: 190px;
+  width: 22vw; 
   text-align: center;
 }
 

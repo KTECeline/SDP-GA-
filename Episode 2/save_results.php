@@ -12,6 +12,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+session_start();
+
+if (isset($_SESSION['USER_ID'])) {
+    $user_id = $_SESSION['USER_ID'];
+} else {
+    // Redirect to login if USER_ID is not set in session
+    header("Location: ../login_register/login_register.php");
+    exit;
+}
+
 // Get POST data
 $time_taken = $_POST['time_taken'];
 $score = $_POST['score'];
@@ -20,8 +30,8 @@ $score = $_POST['score'];
 $episode_id = 2;
 
 // Prepare and bind
-$stmt = $conn->prepare("INSERT INTO episode_result (time_taken, SCORE, EPISODE_ID) VALUES (?, ?, ?)");
-$stmt->bind_param("sii", $time_taken, $score, $episode_id);
+$stmt = $conn->prepare("INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?,?)");
+$stmt->bind_param("iii", $score, $episode_id, $user_id);
 
 // Execute
 if ($stmt->execute()) {

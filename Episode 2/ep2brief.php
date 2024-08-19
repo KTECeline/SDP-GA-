@@ -40,14 +40,7 @@
         }
     }
 </style>
-<script>
-    function startEpisode() {
-        document.body.classList.add('fade-out'); 
-        setTimeout(function() {
-            window.location.href = "ep2loading.php"; 
-        }, 1000); 
-    }
-</script>
+
 </head>
 
 <body>
@@ -83,7 +76,7 @@
     </div>
 
     <div class="action-buttons right">
-        <a href="javascript:void(0);" onclick="startEpisode()" class="btn btn-primary">Start --&gt; </a>
+    <a href="vid.php" class="btn btn-primary">Next --&gt; </a>
     </div>
 </main>        
     </body>

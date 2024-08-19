@@ -10,6 +10,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+session_start();
+
+if (isset($_SESSION['USER_ID'])) {
+    $user_id = $_SESSION['USER_ID'];
+} else {
+    // Redirect to login if USER_ID is not set in session
+    header("Location: ../login_register/login_register.php");
+    exit;
+}
+
+
 $total_sql = "SELECT COUNT(*) as total FROM game_episode WHERE EPISODE_ID = 2";
 $total_result = $conn->query($total_sql);
 $total_row = $total_result->fetch_assoc();
@@ -296,7 +307,7 @@ function replayGame() {
 }
 
 function endGame() {
-    window.location.href = '../homepage/homepage.php'; 
+    window.location.href = '../../user/homepage.php'; 
 }
 
 function showExitMessage() {
@@ -352,7 +363,7 @@ function closeRulesMessage() {
 }
 
 function nextEpisodeFunction(){
-    window.location.href = 'episode3.php';
+    window.location.href = '../Episode 3/try2.php';
 }
 
 function showExplanation(selectedOption) {

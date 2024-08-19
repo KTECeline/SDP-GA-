@@ -44,12 +44,22 @@
 
         <main class="button">
             <div class="action-buttons left">
-                <a href="../user/homepage.php" class="btn btn-secondary"> &lt;-- Back</a>
+                <a href="ep2brief.php" class="btn btn-secondary"> &lt;-- Back</a>
             </div>
         
             <div class="action-buttons right">
-                <a href="../Episode2/ep2.php" class="btn btn-primary">Next --&gt; </a>
+                
+                <a href="javascript:void(0);" onclick="startEpisode()" class="btn btn-primary">Start --&gt; </a>
             </div>
         </main>        
     </body>
 </html>
+
+<script>
+    function startEpisode() {
+        document.body.classList.add('fade-out'); 
+        setTimeout(function() {
+            window.location.href = "ep2loading.php"; 
+        }, 1000); 
+    }
+</script>

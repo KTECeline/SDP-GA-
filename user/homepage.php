@@ -103,7 +103,7 @@ if ($can_play_episode_4) {
                         If else, loops and functions are the main topics in this episode. Stay tuned for more episodes.
                     </div>
                     <div class="buttons">
-                    <button <?php if(!$can_play_episode_2) { echo 'onclick="showMessage(1)"'; } else { echo 'onclick="location.href=\'../Episode 2/vid.php\'"'; } ?>>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_2) { echo 'onclick="showMessage(1)"'; } else { echo 'onclick="location.href=\'../Episode 2/ep2brief.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>

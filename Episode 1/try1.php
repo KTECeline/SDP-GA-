@@ -2,27 +2,33 @@
 include '../conn/conn.php';
 session_start();
 
-
-if (isset($_SESSION['USER_ID'])) {
-    $user_id = $_SESSION['USER_ID'];
-} else {
-    header("Location: ../login_register/login_register.php");
+// Handle game restart
+if (isset($_POST['restartGame'])) {
+    // Clear session variables
+    unset($_SESSION['start_time']);
+    unset($_SESSION['score']);
+    unset($_SESSION['answered_questions']); // Clear answered questions
+    header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 
-// Initialize start time and score if not set
+// Initialize start time, score, and answered questions if not set
 if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
 }
 if (!isset($_SESSION['score'])) {
     $_SESSION['score'] = 0;
 }
+if (!isset($_SESSION['answered_questions'])) {
+    $_SESSION['answered_questions'] = array();
+}
 
-// Handle the current question ID from the POST request or default to 1
+// Handle the current question ID from the GET request or default to 1
 $currentQuestion = isset($_GET['EPISODE_QUESTION_ID']) ? (int)$_GET['EPISODE_QUESTION_ID'] : 1;
 
 // Initialize variables
 $showNextButton = false;
+$showRestartButton = false;
 $explanationText = '';
 $isIncorrect = false;
 
@@ -50,12 +56,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Determine if the selected answer is correct
         if ($selectedAnswer === $correctAnswer) {
-            $showNextButton = true;
-            $explanationText = "Correct! " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
-            
-            // Calculate score (you may need to adjust this based on your scoring system)
-            $score = 50; // Example: 10 points for each correct answer
-            $_SESSION['score'] += $score;
+            // Check if the user has already answered this question
+            if (!in_array($currentQuestion, $_SESSION['answered_questions'])) {
+                $_SESSION['answered_questions'][] = $currentQuestion; // Mark the question as answered
+
+                $explanationText = "Correct! " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
+                
+                // Calculate score (you may need to adjust this based on your scoring system)
+                $score = 50; // Example: 50 points for each correct answer
+                $_SESSION['score'] += $score;
+
+                // Show Next Question and Restart buttons
+                $showNextButton = true;
+                $showRestartButton = true;
+            } else {
+                $explanationText = "You have already answered this question correctly. " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
+                $showNextButton = true; // Show Next button even if the answer was previously answered correctly
+                $showRestartButton = true; // Ensure Restart button is also shown
+            }
         } else {
             $explanationText = "Incorrect. " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
             $isIncorrect = true;
@@ -72,15 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nextQuestion = $currentQuestion + 1;
             header("Location: " . $_SERVER['PHP_SELF'] . "?EPISODE_QUESTION_ID=" . $nextQuestion);
         } else {
-            // All questions answered, calculate final time and insert results
-            $end_time = time();
-            $time_taken = $end_time - $_SESSION['start_time'];
-            $time_taken_formatted = sprintf('%02d:%02d:%02d', ($time_taken/3600),($time_taken/60%60), $time_taken%60);
-            
+            // All questions answered, insert results without time taken
             $episode_id = 1; // Assume this is the current episode_id
-            
+            $user_id = 1; // Assume this is the current user's ID, you need to get this based on your authentication system
 
-            $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?, ?)";
+            $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
             $stmt = $dbConn->prepare($insertSql);
             $stmt->bind_param("iii", $_SESSION['score'], $episode_id, $user_id);
 
@@ -88,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Clear session variables
                 unset($_SESSION['start_time']);
                 unset($_SESSION['score']);
+                unset($_SESSION['answered_questions']);
                 
                 header("Location: last.php?score=" . $_SESSION['score']);
                 exit;
@@ -134,7 +149,6 @@ $remaining_time = max(0, 600 - $elapsed_time);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="../css/Episode1.css"/>
-
 </head>
 <body>
     <div id="timer"><?php echo $remaining_time; ?></div>
@@ -154,12 +168,14 @@ $remaining_time = max(0, 600 - $elapsed_time);
                         <button type="submit" class="button" name="answer" value="C"><?= $optionC ?></button>
                         <button type="submit" class="button" name="answer" value="D"><?= $optionD ?></button>
                     </div>
-                    <div class="explanation"><?php if ($explanationText): ?>
-                        <p><?= $explanationText ?></p>
+                    <div class="explanation">
+                        <?php if ($explanationText): ?>
+                            <p><?= $explanationText ?></p>
+                        <?php endif; ?>
                     </div>
-                    <?php endif; ?>
-                    <?php if ($showNextButton): ?>
-                        <button type="submit" class="button" name="nextQuestion" value="next">Next Question</button>
+                    <?php if ($showNextButton || $showRestartButton): ?>
+                        <button type="submit" class="button" name="nextQuestion" value="next" style="<?php echo $showNextButton ? 'display: inline;' : 'display: none;'; ?>">Next Question</button>
+                        <button type="submit" class="button" name="restartGame" value="restart" style="<?php echo $showRestartButton ? 'display: inline;' : 'display: none;'; ?>">Restart Game</button>
                     <?php endif; ?>
                 </form>
             </div>
@@ -180,7 +196,6 @@ $remaining_time = max(0, 600 - $elapsed_time);
                 setTimeout(updateTimer, 1000);
             } else {
                 timerElement.textContent = "Time's up!";
-                
             }
         }
         updateTimer();
