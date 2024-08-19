@@ -18,6 +18,16 @@ $can_play_episode_1 = true;
 $can_play_episode_2 = $completed_episodes[0]; 
 $can_play_episode_3 = $completed_episodes[1]; 
 $can_play_episode_4 = $completed_episodes[2];
+
+$current_episode = 1;
+if ($can_play_episode_4) {
+    $current_episode = 4;
+} elseif ($can_play_episode_3) {
+    $current_episode = 3;
+} elseif ($can_play_episode_2) {
+    $current_episode = 2;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +51,7 @@ $can_play_episode_4 = $completed_episodes[2];
     <div class="top">
         <img src="../image/Halloween Chill.gif" alt="Halloween chill" class="backgroundhidden">
         <img src="../image/Witchcraft.Code Logo (Without bg).png" class="backgroundImg"/>
-        <button class="top-btn" <?php if(!$can_play_episode_1) echo 'disabled'; ?> onclick="location.href='../Episode 1/Episode1.php'">PLAY NOW</button>
+        <button class="top-btn" onclick="location.href='../Episode <?php echo $current_episode; ?>/Episode<?php echo $current_episode; ?>.php'">PLAY NOW</button>
     </div>
 
     <div class="midSession">
