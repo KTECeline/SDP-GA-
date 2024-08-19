@@ -46,11 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $explanationText = "Correct! " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
             
             // Calculate score (you may need to adjust this based on your scoring system)
-            $score = 10; // Example: 10 points for each correct answer
+            $score = 50; // Example: 10 points for each correct answer
             $_SESSION['score'] += $score;
         } else {
             $explanationText = "Incorrect. " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
             $isIncorrect = true;
+
+            $scorePenalty = 5;
+            $_SESSION['score'] = max(0, $_SESSION['score'] - $scorePenalty);
         }
         $stmt->close();
     }
@@ -112,7 +115,7 @@ $stmt->close();
 
 // Calculate remaining time
 $elapsed_time = time() - $_SESSION['start_time'];
-$remaining_time = max(0, 10000 - $elapsed_time);
+$remaining_time = max(0, 600 - $elapsed_time);
 
 ?>
 
