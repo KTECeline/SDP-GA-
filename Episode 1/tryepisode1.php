@@ -7,23 +7,28 @@ if (isset($_POST['restartGame'])) {
     // Clear session variables
     unset($_SESSION['start_time']);
     unset($_SESSION['score']);
+    unset($_SESSION['answered_questions']); // Clear answered questions
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 
-// Initialize start time and score if not set
+// Initialize start time, score, and answered questions if not set
 if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
 }
 if (!isset($_SESSION['score'])) {
     $_SESSION['score'] = 0;
 }
+if (!isset($_SESSION['answered_questions'])) {
+    $_SESSION['answered_questions'] = array();
+}
 
-// Handle the current question ID from the POST request or default to 1
+// Handle the current question ID from the GET request or default to 1
 $currentQuestion = isset($_GET['EPISODE_QUESTION_ID']) ? (int)$_GET['EPISODE_QUESTION_ID'] : 1;
 
 // Initialize variables
 $showNextButton = false;
+$showRestartButton = false;
 $explanationText = '';
 $isIncorrect = false;
 
@@ -51,15 +56,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Determine if the selected answer is correct
         if ($selectedAnswer === $correctAnswer) {
-            $showNextButton = true;
-            $explanationText = "Correct! " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
-            
-            // Calculate score (you may need to adjust this based on your scoring system)
-            $score = 10; // Example: 10 points for each correct answer
-            $_SESSION['score'] += $score;
+            // Check if the user has already answered this question
+            if (!in_array($currentQuestion, $_SESSION['answered_questions'])) {
+                $_SESSION['answered_questions'][] = $currentQuestion; // Mark the question as answered
+
+                $explanationText = "Correct! " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
+                
+                // Calculate score (you may need to adjust this based on your scoring system)
+                $score = 50; // Example: 10 points for each correct answer
+                $_SESSION['score'] += $score;
+
+                // Show Next Question and Restart buttons
+                $showNextButton = true;
+                $showRestartButton = true;
+            } else {
+                $explanationText = "You have already answered this question correctly. " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
+                $showNextButton = true; // Show Next button even if the answer was previously answered correctly
+                $showRestartButton = true; // Ensure Restart button is also shown
+            }
         } else {
             $explanationText = "Incorrect. " . (isset($explanation[$selectedAnswer]) ? $explanation[$selectedAnswer] : '');
             $isIncorrect = true;
+
+            $scorePenalty = 5;
+            $_SESSION['score'] = max(0, $_SESSION['score'] - $scorePenalty);
         }
         $stmt->close();
     }
@@ -86,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Clear session variables
                 unset($_SESSION['start_time']);
                 unset($_SESSION['score']);
+                unset($_SESSION['answered_questions']);
                 
                 header("Location: last.php?score=" . $_SESSION['score']);
                 exit;
@@ -121,7 +142,7 @@ $stmt->close();
 
 // Calculate remaining time
 $elapsed_time = time() - $_SESSION['start_time'];
-$remaining_time = max(0, 10000 - $elapsed_time);
+$remaining_time = max(0, 600 - $elapsed_time);
 
 ?>
 
@@ -151,14 +172,15 @@ $remaining_time = max(0, 10000 - $elapsed_time);
                         <button type="submit" class="button" name="answer" value="C"><?= $optionC ?></button>
                         <button type="submit" class="button" name="answer" value="D"><?= $optionD ?></button>
                     </div>
-                    <div class="explanation"><?php if ($explanationText): ?>
-                        <p><?= $explanationText ?></p>
+                    <div class="explanation">
+                        <?php if ($explanationText): ?>
+                            <p><?= $explanationText ?></p>
+                        <?php endif; ?>
                     </div>
+                    <?php if ($showNextButton || $showRestartButton): ?>
+                        <button type="submit" class="button" name="nextQuestion" value="next" style="<?php echo $showNextButton ? 'display: inline;' : 'display: none;'; ?>">Next Question</button>
+                        <button type="submit" class="button" name="restartGame" value="restart" style="<?php echo $showRestartButton ? 'display: inline;' : 'display: none;'; ?>">Restart Game</button>
                     <?php endif; ?>
-                    <?php if ($showNextButton): ?>
-                        <button type="submit" class="button" name="nextQuestion" value="next">Next Question</button>
-                    <?php endif; ?>
-                    <button type="submit" class="button" name="restartGame" value="restart">Restart Game</button>
                 </form>
             </div>
         </div>
