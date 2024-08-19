@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="../css/Episode4.css">
         <script>
             setTimeout(function() {
-                window.location.href = "ep1.php?reset=true";
+                window.location.href = "ep3.php?reset=true";
             }, 4500);
         </script>
         <style>
