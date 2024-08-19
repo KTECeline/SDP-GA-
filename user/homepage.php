@@ -56,8 +56,8 @@ if ($can_play_episode_4) {
 
     <div class="midSession">
         <div class="homepageVid">
-            <video class="video-placeholder" controls>
-                <source src="#" type="video/mp4">
+            <video class="video-placeholder" controls autoplay>
+                <source src="mainvid.mp4" type="video/mp4">
             </video>
         </div>
         <div class="homepageMidText">
