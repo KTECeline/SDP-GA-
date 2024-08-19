@@ -89,7 +89,7 @@ if ($can_play_episode_4) {
                         Learn more about variables, data types and basic operations in Python. This is the first episode of the Python series. Stay tuned for more episodes.
                     </div>
                     <div class="buttons">
-                    <button <?php if(!$can_play_episode_1) { echo 'onclick="showMessage(1)"'; } else { echo 'onclick="location.href=\'../Episode 1/Episode1.php\'"'; } ?>>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_1) { echo 'onclick="showMessage(1)"'; } else { echo 'onclick="location.href=\'../Episode 1/vid.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>
