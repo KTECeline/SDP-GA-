@@ -45,8 +45,7 @@
             <div class="rule-box">
                 <h1>🌟 Game Instructions 🌟</h1>
                 <div class="briefing-card">
-                    <p>In this episode, you will dive into the topic of <strong>"File Handling and Library"</strong>. 📂<br><br>
-                    You need to navigate through the maze using the arrow keys on your keyboard.<br>
+                    <p>You need to navigate through the maze using the arrow keys on your keyboard.<br>
                     <i class="fas fa-arrow-left arrow-left" title="Left"></i> Left &nbsp;
                     <i class="fas fa-arrow-up arrow-up" title="Up"></i> Up &nbsp;
                     <i class="fas fa-arrow-right arrow-right" title="Right"></i> Right &nbsp;
