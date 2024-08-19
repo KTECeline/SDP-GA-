@@ -80,9 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $episode_id = 1; // Assume this is the current episode_id
             
 
-            $insertSql = "INSERT INTO episode_result (TIME_TAKEN, SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?, ?)";
+            $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?, ?)";
             $stmt = $dbConn->prepare($insertSql);
-            $stmt->bind_param("siii", $time_taken_formatted, $_SESSION['score'], $episode_id, $user_id);
+            $stmt->bind_param("iii", $_SESSION['score'], $episode_id, $user_id);
 
             if ($stmt->execute()) {
                 // Clear session variables
