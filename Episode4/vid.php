@@ -44,7 +44,7 @@
 
         <main class="button">
             <div class="action-buttons left">
-                <a href=".../Episode4/briefing4.php" class="btn btn-secondary"> &lt;-- Back</a>
+                <a href="../Episode4/briefing4.php" class="btn btn-secondary"> &lt;-- Back</a>
             </div>
         
             <div class="action-buttons right">
