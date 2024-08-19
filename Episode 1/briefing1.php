@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Episode 1 Brief</title>
-    <link rel="stylesheet" href="../css/brief.css">
+    <link rel="stylesheet" href="../Episode 2/css/brief.css">
     
 
 <!-- Google link font -->
@@ -19,7 +19,7 @@
     body {
         height: 100vh;
         width: 100%;
-        background: var(--dark-violet) url('image/background12.jpg') no-repeat center center/cover;
+        background: var(--dark-violet) url('../Episode 2/image/background12.jpg') no-repeat center center/cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -48,7 +48,7 @@
 
 <header class="active">
     <div class="container">
-        <a href="../user/homepage.php"><img src="image/Witchcraft.Code Logo.png"/></a>
+        <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
     </div>
 </header>
 
