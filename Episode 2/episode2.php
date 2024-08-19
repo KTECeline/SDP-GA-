@@ -319,7 +319,7 @@ function confirmExit() {
     var messageModal = document.getElementById('exitModal');
     if (messageModal) {
     messageModal.style.display = 'none';
-    window.location.href = 'homepage.html'; // Replace with your homepage URL
+    window.location.href = '../user/homepage.php'; // Replace with your homepage URL
 }
 }
 
