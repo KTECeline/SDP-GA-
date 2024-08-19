@@ -14,7 +14,7 @@ if (isset($_SESSION['name'])) {
     }
 } else {
     echo "<script>alert('User session not found. Please log in.');</script>";
-    header("Location: ../../login_register/login_register.php");
+    header("Location: ../login_register/login_register.php");
     exit();
 }
 
