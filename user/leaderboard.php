@@ -1,21 +1,6 @@
 <?php
     session_start();
     include '../conn/conn.php';
-
-    if(isset($_SESSION['name'])) {
-        $username = $_SESSION['name'];;
-        $sql = "SELECT * FROM user_information WHERE USER_USERNAME = '$username'";
-        $result = mysqli_query($dbConn, $sql);
-        if(mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_array($result);
-        } else {
-            echo "<script>alert('No data found for the logged-in user!');</script>";
-        }
-    } else {
-        echo "<script>window.location.href = user_leaderboard.php';</script>";
-        exit();
-    }
-
     if (isset($_SESSION['name']) && isset($_SESSION['USER_ID'])) {
         $current_user_id = $_SESSION['USER_ID'];
         
@@ -75,62 +60,36 @@ $dbConn->close();
     <title>Leaderboard</title>
     <link rel="stylesheet" href="../css/leaderboard.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.min.css">
 </head>
 <body>
-    <header class="active">
-        <div class="container">
-            <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
-        
-            <ul class="header-action">
-                <li><a href="leaderboard.php">Leaderboard</a></li>
-                <?php 
-                    if (isset($_SESSION['name'])) { 
-                ?>
-                    <li class="dropdown">
-                        <a href="../user/homepage.php" class="dropbtn"><?php echo $_SESSION['name']; ?></a>
-                        <div class="dropdown-content">
-                            <a href="../user/user_profile.php">Profile</a>
-                            <a href="../login_register/logout.php">Logout</a>
-                        </div>
-                    </li>
-                <?php 
-                    } else { 
-                ?>
-                    <li><a href="../login_register/login.php"><i class="fa fa-sign-in"></i>Login</a></li>
-                <?php 
-                    }
-                ?>   
-            </ul>
-        </div>
-    </header>
-
-    <!-- side bar button -->
-    <input type="checkbox" id="check">
-    <label for="check">
-        <i class="fas fa-bars" id="btn"></i>
-        <i class="fas fa-times" id="cancel"></i>
-    </label>
-
-    <!-- Profile Side bar -->
-    <section id="side-bar">
-        <div class="profile">
-            <img src="../image/User profile.png" class="image" width="80px" alt="">
-            <h3 class="name"><?php echo htmlspecialchars($row['USER_NAME']); ?></h3>
-            <p class="role">User</p>
-            <a href="user_profile.php" class="btn">View Profile</a>
-        </div>
-
-        <ul>
-            <li><a href="user_profile.php"><i class="fas fa-user"></i>Profile</a></li>
-            <li><a href="user_leaderboard.php"><i class="fas fa-trophy"></i>Leaderboard</a></li>
-            <li><a href="user_certificate.php"><i class="fas fa-certificate"></i>Certificate</a></li>
-            <li><a href="../login_register/logout.php"><i class="fas fa-door-open"></i>Log Out</a></li>
-        </ul>        
-    </section>
-
+<header class="active">
+            <div class="container">
+                <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+            
+                <ul class="header-action">
+                    <li><a href="user_leaderboard.php">Leaderboard</a></li>
+                    <?php 
+                        if (isset($_SESSION['name'])) { 
+                    ?>
+                        <li class="dropdown">
+                            <a href="../user/homepage.php" class="dropbtn"><?php echo $_SESSION['name']; ?></a>
+                            <div class="dropdown-content">
+                                <a href="../user/user_profile.php">Profile</a>
+                                <a href="../login_register/logout.php">Logout</a>
+                            </div>
+                        </li>
+                    <?php 
+                        } else { 
+                    ?>
+                        <li><a href="../login_register/login.php"><i class="fa fa-sign-in"></i>Login</a></li>
+                    <?php 
+                        }
+                    ?>   
+                </ul>
+            </div>
+        </header>
     <!--MAIN CONTENT-->
     <div class="main-content">
     <center><h1>TOP 10 Leaderboard</h1></center>
@@ -183,8 +142,7 @@ $dbConn->close();
             Score: <?php echo htmlspecialchars($userRankData['MAX_SCORE']); ?>
         </div>
         <?php endif; ?>
-
-        </div><?php include "../header_footer/footer.php" ?>
+        </div>
        
     </div>
     
@@ -205,7 +163,7 @@ $dbConn->close();
 
         populatePodium(leaderboardData);
     </script>
-
+    
 </body>
 </html>
 <?php
