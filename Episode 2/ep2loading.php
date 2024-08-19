@@ -19,7 +19,7 @@
 body {
   height: 100vh;
   width: 100%;
-  background: var(--dark-violet) url('image/background12.jpg') no-repeat center center/cover;
+  background: var(--dark-violet) url('image/flying-witch.gif') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +62,12 @@ setTimeout(function() {
 
 
 </script>
+
+<header class="active">
+    <div class="container">
+        <a href="../user/homepage.php"><img src="image/Witchcraft.Code Logo.png"/></a>
+    </div>
+</header>
 
 <div class="loading-container">
     <div class="loading-text">Loading to Episode 2 ...</div>
