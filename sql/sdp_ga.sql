@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2024 at 01:15 PM
+-- Generation Time: Aug 19, 2024 at 12:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `certificate_information` (
   `CERTIFICATE_ID` int(11) NOT NULL,
   `CERTIFICATE_NAME` varchar(255) NOT NULL,
-  `CERTIFICATE_FEEDBACK` varchar(255) DEFAULT NOT NULL,
+  `CERTIFICATE_FEEDBACK` varchar(255) NOT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -94,7 +94,7 @@ CREATE TABLE `game_episode` (
 -- Dumping data for table `game_episode`
 --
 
-INSERT INTO 'game_episode' (`EPISODE_QUESTION_ID`, `EPISODE_QUESTION`, `EPISODE_HINT`, `OPTION_A`, `OPTION_A_EXPLANATION`, `OPTION_B`, `OPTION_B_EXPLANATION`, `OPTION_C`, `OPTION_C_EXPLANATION`, `OPTION_D`, `OPTION_D_EXPLANATION`, `CORRECT_ANSWER`, `EPISODE_ID`) VALUES
+INSERT INTO `game_episode` (`EPISODE_QUESTION_ID`, `EPISODE_QUESTION`, `EPISODE_HINT`, `OPTION_A`, `OPTION_A_EXPLANATION`, `OPTION_B`, `OPTION_B_EXPLANATION`, `OPTION_C`, `OPTION_C_EXPLANATION`, `OPTION_D`, `OPTION_D_EXPLANATION`, `CORRECT_ANSWER`, `EPISODE_ID`) VALUES
 (1, 'Which of the following is the correct way to declare a variable in Python?', 'Hint: In Python, you don’t need to mention the type of the variable. You just assign a value.', 'int x = 10', 'Wrong: int x = 10 is used in languages like C or Java, where you must specify the data type.', 'x = 10', 'Correct: In Python, variables are declared by simply assigning a value to them with the = operate.', 'var x = 10', 'Wrong: var x = 10 is a syntax used in JavaScript, not Python.', 'Declare x = 10', 'Wrong: declare x = 10 is not valid in Python; Python does not use the declare keyword.', 'B', 1),
 (2, 'What will be the output of the following code?\r\n\r\nx = 5\r\ny = 10\r\nx = y\r\n', 'Hint: Look at what happens to x after it’s set equal to y.', '5', 'Wrong: x was originally 5, but it was reassigned to y, so it no longer holds the value 5.', '10', 'Correct: After x = y, x will have the same value as y, which is 10.', '15', 'Wrong: x = y assigns y\'s value to x; it does not add x and y together.', 'Error', 'Wrong: There is no syntax or runtime error in this code.\r\n', 'B', 1),
 (3, 'What is the data type of the variable x in the following code?\r\n\r\nx = 3.14', 'Hint: Does 3.14 look like a whole number or a number with a decimal?', 'int', 'Wrong: An int represents whole numbers without a decimal point.', 'str', 'Wrong: A str represents a sequence of characters, not numbers.', 'float', 'Correct: 3.14 is a floating-point number, so x is of type float.', 'bool', 'Wrong: A bool represents True or False values, not numbers.', 'C', 1),
@@ -135,11 +135,9 @@ INSERT INTO 'game_episode' (`EPISODE_QUESTION_ID`, `EPISODE_QUESTION`, `EPISODE_
 (38, 'What does the strip() method do when used with file input in Python?\r\n\r\n\r\n', 'The strip() method cleans up whitespace from the edges of a string.', 'Splits the file into lines', 'strip() does not split file contents.', 'Reads the entire file contents into memory', 'strip() does not handle file reading.', 'Removes all whitespace characters', 'strip() specifically removes leading and trailing whitespace, not all whitespace.', 'Removes leading and trailing whitespace characters\r\n', 'strip() removes whitespace from the start and end of a string.', 'D', 4),
 (39, 'How can you handle exceptions when opening a file in Python?\r\n\r\n', 'To catch and handle errors during file operations, use the block designed for handling exceptions.\r\n', 'try...except block', 'Use a try...except block to catch exceptions that may occur during file operations.\r\n', 'if...else block', 'if...else is used for conditional statements, not for handling exceptions.\r\n', 'switch...case block', 'Python does not have a switch...case construct.\r\n', 'error_handling() function', 'There is no built-in error_handling() function for file operations.', 'A', 4),
 (40, 'How do you write multiple lines to a file in Python? \r\n', 'To write multiple lines to a file efficiently, use a method that accepts a list of strings and writes each line to the file.', 'file.writelines([\'line1\', \'line2\'])', 'This is the correct method for writing multiple lines to a file. file.writelines() accepts a list of strings and writes each string to the file without adding newline characters between them.', 'file.write([\'line1\', \'line2\'])\r\n', 'file.write() does not accept a list of strings; it expects a single string. This option would result in a TypeError.\r\n', 'file.write_multiple([\'line1\', \'line2\'])', 'file.write_multiple() is not a valid method for file objects in Python. There is no built-in method with this name.\r\n\r\n', 'file.append([\'line1\', \'line2\'])\r\n', 'file.append() is not a valid method for file objects in Python. To append data to a file, you should open the file in append mode \'a\' and use file.write() or file.writelines().', 'A', 4);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `score_information`
 --
@@ -227,7 +225,7 @@ ALTER TABLE `user_information`
 -- AUTO_INCREMENT for table `certificate_information`
 --
 ALTER TABLE `certificate_information`
-  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `episode`
@@ -245,7 +243,7 @@ ALTER TABLE `episode_result`
 -- AUTO_INCREMENT for table `game_episode`
 --
 ALTER TABLE `game_episode`
-  MODIFY `EPISODE_QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `EPISODE_QUESTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `score_information`
