@@ -30,8 +30,8 @@ $score = $_POST['score'];
 $episode_id = 2;
 
 // Prepare and bind
-$stmt = $conn->prepare("INSERT INTO episode_result (time_taken, SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?,?)");
-$stmt->bind_param("siii", $time_taken, $score, $episode_id, $user_id);
+$stmt = $conn->prepare("INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?,?)");
+$stmt->bind_param("iii", $score, $episode_id, $user_id);
 
 // Execute
 if ($stmt->execute()) {
