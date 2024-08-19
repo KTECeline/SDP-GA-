@@ -69,7 +69,7 @@ $dbConn->close();
                 <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
             
                 <ul class="header-action">
-                    <li><a href="user_leaderboard.php">Leaderboard</a></li>
+                    <li><a href="leaderboard.php">Leaderboard</a></li>
                     <?php 
                         if (isset($_SESSION['name'])) { 
                     ?>
