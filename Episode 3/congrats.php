@@ -1,8 +1,4 @@
-<?php
-session_start();
-if (isset($_SESSION['name'])) { 
-    $username = $_SESSION['username'];}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +69,7 @@ if (isset($_SESSION['name'])) {
     <div class="container">
     <h1>Congratulations ! You have passed Episode 3 !<h1>
     <p>Continue explore Episode 4 ?<p>
-    <a class="no" href ="../admin/homepage.php">No</a> <a class="yes" href="fight.php">Yes</a>
+    <a class="no" href ="../user/homepage.php">No</a> <a class="yes" href="../Episode4/briefing4.php">Yes</a>
     </div>
 </body>
 </html>
