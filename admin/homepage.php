@@ -192,99 +192,76 @@
             });
         }
         function createEpisodeMetricsChart(data) {
-            new Chart(document.getElementById('episodeMetricsChart'), {
-                type: 'bar',
-                data: {
-                    labels: data.map(item => 'Episode ' + item.EPISODE_ID),
-                    datasets: [
-                        {
-                            type: 'line',
-                            label: 'Average Time Spent (minutes)',
-                            data: data.map(item => item.avg_time_spent / 60), // Convert seconds to minutes
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1,
-                            yAxisID: 'y-axis-time'
-                        },
-                        {
-                            type: 'bar',
-                            label: 'Average Total Score',
-                            data: data.map(item => item.avg_total_score_per_episode),
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1,
-                            yAxisID: 'y-axis-score'
-                        },
-                        {
-                            type: 'bar',
-                            label: 'Average Score',
-                            data: data.map(item => item.avg_score),
-                            backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                            borderColor: 'rgba(255, 206, 86, 1)',
-                            borderWidth: 1,
-                            yAxisID: 'y-axis-score'
-                        }
-                    ]
+    new Chart(document.getElementById('episodeMetricsChart'), {
+        type: 'bar',
+        data: {
+            labels: data.map(item => 'Episode ' + item.EPISODE_ID),
+            datasets: [
+                {
+                    type: 'bar',
+                    label: 'Average Total Score',
+                    data: data.map(item => item.avg_total_score_per_episode),
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y-axis-score'
                 },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Episode Metrics'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.dataset.yAxisID === 'y-axis-time') {
-                                        const minutes = Math.floor(context.raw);
-                                        const seconds = Math.round((context.raw - minutes) * 60);
-                                        return label + minutes + ' min ' + seconds + ' sec';
-                                    }
-                                    return label + context.formattedValue;
-                                }
+                {
+                    type: 'bar',
+                    label: 'Average Score',
+                    data: data.map(item => item.avg_score),
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y-axis-score'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Episode Metrics'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
                             }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            stacked: true,
-                            title: {
-                                display: true,
-                                text: 'Episodes'
-                            }
-                        },
-                        'y-axis-time': {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            title: {
-                                display: true,
-                                text: 'Time (minutes)'
-                            },
-                            ticks: {
-                                callback: function(value) {
-                                    return value.toFixed(0) + ' min';
-                                }
-                            }
-                        },
-                        'y-axis-score': {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: {
-                                display: true,
-                                text: 'Score'
-                            }
+                            return label + context.formattedValue;
                         }
                     }
                 }
-            });
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: 'Episodes'
+                    }
+                },
+                'y-axis-score': {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'Score'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value.toFixed(0);
+                        }
+                    }
+                }
+            }
         }
+    });
+}
 
         function createPercentileDonutChart(data) {
     const ctx = document.getElementById('percentileDonutChart').getContext('2d');
