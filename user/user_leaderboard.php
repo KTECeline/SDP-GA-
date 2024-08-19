@@ -1,70 +1,72 @@
 <?php
-    session_start();
-    include '../conn/conn.php';
+session_start();
+include '../conn/conn.php';
 
-    if(isset($_SESSION['name'])) {
-        $username = $_SESSION['name'];;
-        $sql = "SELECT * FROM user_information WHERE USER_USERNAME = '$username'";
-        $result = mysqli_query($dbConn, $sql);
-        if(mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_array($result);
-        } else {
-            echo "<script>alert('No data found for the logged-in user!');</script>";
-        }
+if (isset($_SESSION['name'])) {
+    $username = $_SESSION['name'];
+    $sql = "SELECT * FROM user_information WHERE USER_USERNAME = '$username'";
+    $result = mysqli_query($dbConn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result);
     } else {
-        echo "<script>window.location.href = user_leaderboard.php';</script>";
-        exit();
+        echo "<script>alert('No data found for the logged-in user!');</script>";
+        $row = null;
     }
+} else {
+    echo "<script>alert('User session not found. Please log in.');</script>";
+    header("Location: ../../login_register/login_register.php");
+    exit();
+}
 
-    if (isset($_SESSION['name']) && isset($_SESSION['USER_ID'])) {
-        $current_user_id = $_SESSION['USER_ID'];
-        
+if (isset($_SESSION['name']) && isset($_SESSION['USER_ID'])) {
+    $current_user_id = $_SESSION['USER_ID'];
 
-        // SQL query
-        $sql_top10 = "SELECT e.USER_ID, u.USER_USERNAME, MAX(e.EPISODE_TOTAL_SCORE) AS MAX_SCORE,
-                RANK() OVER (ORDER BY MAX(e.EPISODE_TOTAL_SCORE) DESC) AS RANK
-                FROM user_information u
-                JOIN score_information e ON u.USER_ID = e.USER_ID
-                WHERE u.ROLES = 'user'
-                GROUP BY u.USER_ID
-                ORDER BY MAX_SCORE DESC
-                LIMIT 10"; 
-        $result_top10 = $dbConn->query($sql_top10);
-
-        $sql_user_rank = "SELECT USER_ID, USER_USERNAME, MAX_SCORE, RANK FROM (
-            SELECT e.USER_ID, u.USER_USERNAME, MAX(e.EPISODE_TOTAL_SCORE) AS MAX_SCORE,
+    // SQL query for Top 10 Leaderboard
+    $sql_top10 = "SELECT e.USER_ID, u.USER_USERNAME, MAX(e.EPISODE_TOTAL_SCORE) AS MAX_SCORE,
             RANK() OVER (ORDER BY MAX(e.EPISODE_TOTAL_SCORE) DESC) AS RANK
             FROM user_information u
             JOIN score_information e ON u.USER_ID = e.USER_ID
             WHERE u.ROLES = 'user'
             GROUP BY u.USER_ID
-          ) ranked_users
-          WHERE USER_ID = ?";
+            ORDER BY MAX_SCORE DESC
+            LIMIT 10"; 
+    $result_top10 = $dbConn->query($sql_top10);
 
-$stmt = $dbConn->prepare($sql_user_rank);
-$stmt->bind_param("i", $current_user_id);
-$stmt->execute();
-$result_user_rank = $stmt->get_result();
+    // SQL query for user rank
+    $sql_user_rank = "SELECT USER_ID, USER_USERNAME, MAX_SCORE, RANK FROM (
+        SELECT e.USER_ID, u.USER_USERNAME, MAX(e.EPISODE_TOTAL_SCORE) AS MAX_SCORE,
+        RANK() OVER (ORDER BY MAX(e.EPISODE_TOTAL_SCORE) DESC) AS RANK
+        FROM user_information u
+        JOIN score_information e ON u.USER_ID = e.USER_ID
+        WHERE u.ROLES = 'user'
+        GROUP BY u.USER_ID
+      ) ranked_users
+      WHERE USER_ID = ?";
 
-$leaderboardData = array();
-$userRankData = null;
+    $stmt = $dbConn->prepare($sql_user_rank);
+    $stmt->bind_param("i", $current_user_id);
+    $stmt->execute();
+    $result_user_rank = $stmt->get_result();
 
-if ($result_top10->num_rows > 0) {
-    while($row = $result_top10->fetch_assoc()) {
-        $leaderboardData[] = array(
-            "USER_ID" => $row["USER_ID"],
-            "username" => $row["USER_USERNAME"],
-            "score" => $row["MAX_SCORE"],
-            "rank" => $row["RANK"]
-        );
+    $leaderboardData = array();
+    $userRankData = null;
+
+    if ($result_top10->num_rows > 0) {
+        while($row_top10 = $result_top10->fetch_assoc()) {
+            $leaderboardData[] = array(
+                "USER_ID" => $row_top10["USER_ID"],
+                "username" => $row_top10["USER_USERNAME"],
+                "score" => $row_top10["MAX_SCORE"],
+                "rank" => $row_top10["RANK"]
+            );
+        }
     }
-}
 
-if ($result_user_rank->num_rows > 0) {
-    $userRankData = $result_user_rank->fetch_assoc();
-}
+    if ($result_user_rank->num_rows > 0) {
+        $userRankData = $result_user_rank->fetch_assoc();
+    }
 
-$dbConn->close();
+    $dbConn->close();
 ?>
 
 <!DOCTYPE html>
