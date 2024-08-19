@@ -26,7 +26,8 @@
                     <p>Congratulations on climbing the tower! 🎉<br>
                     But your adventure is far from over. Now, you must brave the tricky maze ahead. 🏰<br>
                     To find the exit, you'll need to tackle questions in 5 different sections of treasure chest. Time is ticking! <br>
-                    Answer correctly to advance through the maze; incorrect answers will lead you to dead ends. <br><br></p>
+                    Answer correctly to advance through the maze; incorrect answers will lead you to dead ends. <br><br>
+                    In this episode, you will dive into the topic of <strong>"File Handling and Library"</strong>. 📂</p>
                 </div>
             </div>
         </main>
@@ -37,7 +38,7 @@
             </div>
         
             <div class="action-buttons right">
-                <a href="../Episode4/next_briefing4.php" class="btn btn-primary">Next --&gt; </a>
+                <a href="../Episode4/vid.php" class="btn btn-primary">Next --&gt; </a>
             </div>
         </main>        
     </body>

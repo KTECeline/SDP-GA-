@@ -143,17 +143,6 @@
             var timeLeft = totalTime;
             var currentQuestionIndex = <?php echo $currentQuestionIndex; ?>;
             var chestMessageShown = <?php echo json_encode($_SESSION['chestMessageShown']); ?>;
-
-            function startGame() {
-                document.getElementById('tutorialModal').style.display = 'none';
-                <?php $_SESSION['tutorialShown'] = true; ?>
-            }
-
-            // Function to close the tutorial modal
-            function closeTutorialModal() {
-                document.getElementById('tutorialModal').style.display = 'none';
-                <?php $_SESSION['tutorialShown'] = true; ?>
         </script>
     </body>
 </html>
-
