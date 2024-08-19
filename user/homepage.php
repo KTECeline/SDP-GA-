@@ -131,7 +131,7 @@ if ($can_play_episode_4) {
                         Read from, write to file
                     </div>
                     <div class="buttons">
-                    <button <?php if(!$can_play_episode_4) { echo 'onclick="showMessage(3)"'; } else { echo 'onclick="location.href=\'../Episode 4/Episode4.php\'"'; } ?>>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_4) { echo 'onclick="showMessage(3)"'; } else { echo 'onclick="location.href=\'../Episode4/briefing4.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>

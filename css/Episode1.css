@@ -17,7 +17,8 @@ body{
     width: 150px;
     margin-bottom: 20px;
     padding: 10px;
-    background-color: pink;
+    background-color: #17069e;
+    color:#a3a0e9;
     border-radius: 5px;
     float: right;
 }
@@ -45,7 +46,8 @@ body{
     width: 680px;
     text-align: center;
     margin-top: 50px;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 
 .answer {
@@ -53,14 +55,17 @@ body{
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     margin-top: 50px;
+    
 }
 
 .button{
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     height: 50px;
-    background-color: lightblue;
-    color: blue;
+    background-color: #8f7fba;
+    color: #e6e0ee;
+    border-radius:10px;
+    font-weight:bold;
 }
 
 .button:hover {
@@ -74,6 +79,8 @@ body{
     justify-content: center;
     height: 50px;
     transform: translateY(100px); 
+    color:black;
+    font-weight:100px;
 }
 
 #boom {
@@ -84,12 +91,12 @@ body{
 }
 
 #score-display {
-    color: blue;
-    background-color: lightblue;
+    color: #17069e;
+    background-color: #a3a0e9;
     position: fixed;
-    top: 100px;
-    float: right;
-    right: 36%;
+    top: 115px;
+    float: center;
+    right:30%;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -97,4 +104,13 @@ body{
 
 .rotate90 {
     transform: scaleX(-1);
+}
+
+.container-right {
+  background-color: rgba(255, 255, 255, 0.5); 
+  padding:20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+margin-left:180px;
+    
 }
