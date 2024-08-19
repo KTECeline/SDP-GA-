@@ -51,7 +51,7 @@ if ($can_play_episode_4) {
     <div class="top">
         <img src="../image/Halloween Chill.gif" alt="Halloween chill" class="backgroundhidden">
         <img src="../image/Witchcraft.Code Logo (Without bg).png" class="backgroundImg"/>
-        <button class="top-btn" onclick="location.href='../Episode <?php echo $current_episode; ?>/Episode<?php echo $current_episode; ?>.php'">PLAY NOW</button>
+        <button class="top-btn" onclick="location.href='../Episode <?php echo $current_episode; ?>/briefing<?php echo $current_episode; ?>.php'">PLAY NOW</button>
     </div>
 
     <div class="midSession">
