@@ -11,7 +11,7 @@ if (isset($_SESSION['USER_ID'])) {
     exit();
 }
 // Initialize variables
-$currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 30;
+$currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 21;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
 $attempts = isset($_POST['attempts']) ? (int)$_POST['attempts'] : 0; // Track attempts
 $marks = isset($_POST['marks']) ? (int)$_POST['marks'] : 0; // Track total marks
