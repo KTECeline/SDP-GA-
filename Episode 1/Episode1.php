@@ -12,6 +12,14 @@ if (isset($_POST['restartGame'])) {
     exit;
 }
 
+if (isset($_SESSION['USER_ID'])) {
+    $user_id = $_SESSION['USER_ID'];
+} else {
+    // Redirect to login if USER_ID is not set in session
+    header("Location: ../login_register/login_register.php");
+    exit;
+}
+
 // Initialize start time, score, and answered questions if not set
 if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
@@ -92,7 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // All questions answered, insert results without time taken
             $episode_id = 1; // Assume this is the current episode_id
-            $user_id = 1; // Assume this is the current user's ID, you need to get this based on your authentication system
 
             $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?, ?)";
             $stmt = $dbConn->prepare($insertSql);

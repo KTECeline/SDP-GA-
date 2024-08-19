@@ -7,7 +7,7 @@ if (isset($_SESSION['USER_ID'])) {
     // Now you can use $userID to fetch user-specific data from your database
 } else {
     // No user is logged in, redirect to login page
-    header("Location: login.php");
+    header("Location: ../login_register/login_register.php");
     exit();
 }
 // Initialize variables
