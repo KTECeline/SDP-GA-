@@ -2,6 +2,14 @@
 include '../conn/conn.php';
 session_start();
 
+
+if (isset($_SESSION['USER_ID'])) {
+    $user_id = $_SESSION['USER_ID'];
+} else {
+    header("Location: ../login_register/login_register.php");
+    exit;
+}
+
 // Initialize start time and score if not set
 if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
@@ -70,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $time_taken_formatted = sprintf('%02d:%02d:%02d', ($time_taken/3600),($time_taken/60%60), $time_taken%60);
             
             $episode_id = 1; // Assume this is the current episode_id
-            $user_id = 1; // Assume this is the current user's ID, you need to get this based on your authentication system
+            
 
             $insertSql = "INSERT INTO episode_result (TIME_TAKEN, SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?, ?)";
             $stmt = $dbConn->prepare($insertSql);
