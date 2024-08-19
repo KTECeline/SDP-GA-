@@ -117,7 +117,7 @@ if ($can_play_episode_4) {
                         list, tuples, dictionary and sets are the main topics in this episode. Stay tuned for more episodes.
                     </div>
                     <div class="buttons">
-                    <button <?php if(!$can_play_episode_3) { echo 'onclick="showMessage(2)"'; } else { echo 'onclick="location.href=\'../Episode 3/try2.php\'"'; } ?>>PLAY NOW</button>
+                    <button <?php if(!$can_play_episode_3) { echo 'onclick="showMessage(2)"'; } else { echo 'onclick="location.href=\'../Episode 3/vid.php\'"'; } ?>>PLAY NOW</button>
                     </div>
                 </div>
             </div>
