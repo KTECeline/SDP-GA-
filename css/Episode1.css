@@ -5,22 +5,24 @@ body{
     -o-background-size: cover;
     background-size: cover;
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
 #timer {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 25px;
-    font-weight: bold;
-    text-align:center;
-    width: 150px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #17069e;
-    color:#a3a0e9;
-    border-radius: 5px;
+    color: #17069e;
+    background-color: #a3a0e9;
+    position: fixed;
+    font-size: 30px;
+    top: 10px;
     float: right;
+    right:1%;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    width:200px;
+    text-align: center;
 }
 
 .container {
@@ -69,8 +71,8 @@ body{
 }
 
 .button:hover {
-    background-color: darkblue;
-    color: lightblue;
+    background-color: #653870;
+    color: #c93fd3;
     cursor: pointer;
 }
 
@@ -96,7 +98,7 @@ body{
     position: fixed;
     top: 115px;
     float: center;
-    right:30%;
+    right:23.7%;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -107,9 +109,39 @@ body{
 }
 
 .container-right {
-    background-color: rgba(255, 255, 255, 0.5); 
+    background-color: rgba(255, 255, 255, 0.7); 
     padding:20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin-left:180px;  
+}
+header.active {
+    width: 100%;
+    background-color: #150849;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.header-content img {
+    height: 60px;
+}
+
+.header-title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    margin-left: 20px; /* Adds space between the logo and the title */
 }

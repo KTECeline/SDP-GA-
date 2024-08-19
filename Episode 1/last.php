@@ -8,6 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Matemasie&display=swap" rel="stylesheet">
 </head>
 <body>
+<header>
+    <div class="header-content">
+        <a href="#"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <div class="header-title">
+            Episode 1: Introduction to Python & Basic Syntax
+        </div>
+    </div>
+</header>
     <div class="hint">
         Please Double Click The Witch, There Will Be An Evolution !!<br><br>Congratulations, You Can Proceed To Episode 2 !
     </div>

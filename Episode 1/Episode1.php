@@ -94,11 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $episode_id = 1; // Assume this is the current episode_id
             $user_id = 1; // Assume this is the current user's ID, you need to get this based on your authentication system
 
-<<<<<<< HEAD
-            $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
-=======
             $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?, ?)";
->>>>>>> dd564a34aded4c3f79e8197b17f64c81200756d8
             $stmt = $dbConn->prepare($insertSql);
             $stmt->bind_param("iii", $_SESSION['score'], $episode_id, $user_id);
 
@@ -155,6 +151,14 @@ $remaining_time = max(0, 600 - $elapsed_time);
     <link rel="stylesheet" href="../css/Episode1.css"/>
 </head>
 <body>
+<header class="active">
+    <div class="header-content">
+        <a href="#"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <div class="header-title">
+            Episode 1: Introduction to Python & Basic Syntax
+        </div>
+    </div>
+</header>
     <div id="timer"><?php echo $remaining_time; ?></div>
     <div id="score-display">Score: <span id="score"><?php echo $_SESSION['score']; ?></span></div>
     <div class="container">

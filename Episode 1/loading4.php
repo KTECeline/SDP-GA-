@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="../css/Episode4.css">
         <script>
             setTimeout(function() {
-                window.location.href = "ep3.php?reset=true";
+                window.location.href = "Episode1.php?reset=true";
             }, 4500);
         </script>
         <style>
@@ -40,7 +40,7 @@
             <div class="rule-box">
                 <div class="briefing-card">
                     <div class="spinner"></div>
-                    <p class="loading-text">Loading to Episode 3...</p>
+                    <p class="loading-text">Loading to Episode 1...</p>
                 </div>
             </div>
         </main>

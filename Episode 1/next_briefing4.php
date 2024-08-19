@@ -41,7 +41,7 @@
         <a href="#"><img src="image/Witchcraft.Code Logo.png"/></a>
 
         <div class="header-title">
-                Episode 3: Data Structure
+        Episode 1: Introduction to Python & Basic Syntax
             </div>
 
     </div>
@@ -52,9 +52,8 @@
             <div class="rule-box">
                 <h1>🌟 Game Instructions 🌟</h1>
                 <div class="briefing-card">
-                    <p>You need to answer the questions to collect magic wands !<br>
-                    Getting a correct answer will earn 1 magic wand.<br>
-                    After collected 10 magic wands you could help witch to kill the monster and escape from the tower !<br>
+                    <p>You need to answer the questions to help witch to evolve !<br>
+                    After answering 10 questions correctly, you could help witch to complete her evolution.<br>
                     Ready to test your skills and find your way out? Let's go!</p>
                 </div>
             </div>
@@ -62,7 +61,7 @@
            
         <main class="button">
             <div class="action-buttons left">
-                <a href="../Episode 3/vid.php" class="btn btn-secondary"> &lt;-- Back</a>
+                <a href="../Episode 1/vid.php" class="btn btn-secondary"> &lt;-- Back</a>
             </div>
         
             <div class="action-buttons right">
