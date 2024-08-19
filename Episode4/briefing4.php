@@ -37,7 +37,7 @@
             </div>
         
             <div class="action-buttons right">
-                <a href="../Episode4/next_briefing4.php" class="btn btn-primary">Next --&gt; </a>
+                <a href="../Episode4/vid.php" class="btn btn-primary">Next --&gt; </a>
             </div>
         </main>        
     </body>
