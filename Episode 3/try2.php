@@ -71,13 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($selectedAnswer === $correctAnswer) {
             if ($remaining_time <= 0) {
-                $score = 2; // Set score to 2 if time's up
+                $score = 20; // Set score to 2 if time's up
             } else {
                 switch ($attempts) {
-                    case 1: $score = 10; break;
-                    case 2: $score = 8; break;
-                    case 3: $score = 6; break;
-                    case 4: $score = 4; break;
+                    case 1: $score = 100; break;
+                    case 2: $score = 80; break;
+                    case 3: $score = 60; break;
+                    case 4: $score = 40; break;
                     default: $score = 0;
                 }
             }
@@ -113,6 +113,14 @@ $stmt->close();
     <link href="https://fonts.cdnfonts.com/css/ocr-a-std" rel="stylesheet">
 </head>
 <body>
+<header class="active">
+    <div class="header-content">
+        <a href="#"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <div class="header-title">
+            Episode 3: Data Structure
+        </div>
+    </div>
+</header>
 <div id="marks"> Marks = <?= $marks ?> </div>
 <div id="timer"><?= $remaining_time ?></div>
 
