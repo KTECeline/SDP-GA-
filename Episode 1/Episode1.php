@@ -94,7 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $episode_id = 1; // Assume this is the current episode_id
             $user_id = 1; // Assume this is the current user's ID, you need to get this based on your authentication system
 
+<<<<<<< HEAD
             $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
+=======
+            $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?, ?)";
+>>>>>>> dd564a34aded4c3f79e8197b17f64c81200756d8
             $stmt = $dbConn->prepare($insertSql);
             $stmt->bind_param("iii", $_SESSION['score'], $episode_id, $user_id);
 
