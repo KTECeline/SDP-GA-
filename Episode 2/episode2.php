@@ -330,10 +330,19 @@ function confirmExit() {
     var messageModal = document.getElementById('exitModal');
     if (messageModal) {
     messageModal.style.display = 'none';
-    window.location.href = '../user/homepage.php'; // Replace with your homepage URL
+    window.location.href = '../user/homepage.php';
 }
 }
 
+
+function exitFunction() {
+    var messageModal = document.getElementById('summary-modal');
+    if (messageModal) {
+    messageModal.style.display = 'none';
+    window.location.href = '../user/homepage.php';
+
+}
+}
 
 function showTimeoutMessage() {
     var messageModal = document.getElementById('timeoutModal');
