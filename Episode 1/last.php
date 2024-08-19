@@ -18,7 +18,7 @@
     <img src="../image/evolution.gif" alt="evolution" id="evolution">
     <img src="../image/NewWitch.gif" alt="New Witch" id="newWitch">
     
-    <div class="next"><a href="../Episode 1/last.php">NEXT</a></div>
+    <div class="next"><a href="../Episode 2/ep2brief.php">NEXT</a></div>
     <div class="home"><a href="../user/homepage.php">HOME</a></div>
 
     <script>
