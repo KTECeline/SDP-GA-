@@ -193,27 +193,17 @@
         }
         function createEpisodeMetricsChart(data) {
     new Chart(document.getElementById('episodeMetricsChart'), {
-        type: 'bar',
+        type: 'line',  // Changed to 'line' chart type
         data: {
             labels: data.map(item => 'Episode ' + item.EPISODE_ID),
             datasets: [
                 {
-                    type: 'bar',
-                    label: 'Average Total Score',
-                    data: data.map(item => item.avg_total_score_per_episode),
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1,
-                    yAxisID: 'y-axis-score'
-                },
-                {
-                    type: 'bar',
                     label: 'Average Score',
                     data: data.map(item => item.avg_score),
                     backgroundColor: 'rgba(255, 206, 86, 0.2)',
                     borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1,
-                    yAxisID: 'y-axis-score'
+                    borderWidth: 2,
+                    fill: false,  // Set to false to show only the line without filling below it
                 }
             ]
         },
@@ -222,7 +212,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Episode Metrics'
+                    text: 'Average Score per Episode'
                 },
                 tooltip: {
                     callbacks: {
@@ -238,19 +228,18 @@
             },
             scales: {
                 x: {
-                    stacked: true,
                     title: {
                         display: true,
                         text: 'Episodes'
                     }
                 },
-                'y-axis-score': {
+                y: {
                     type: 'linear',
                     display: true,
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'Score'
+                        text: 'Average Score'
                     },
                     ticks: {
                         callback: function(value) {
@@ -262,6 +251,7 @@
         }
     });
 }
+
 
         function createPercentileDonutChart(data) {
     const ctx = document.getElementById('percentileDonutChart').getContext('2d');
