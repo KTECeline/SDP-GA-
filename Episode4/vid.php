@@ -36,7 +36,7 @@
             <div class="rule-box">
                 <h1>Tutorial</h1>
                     <video widht="400px" height="500px" controls autoplay>
-                        <source src="Episode 4.mp4" type="video/mp4">
+                        <source src="ep4vid.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
             </div>
