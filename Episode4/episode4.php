@@ -48,6 +48,10 @@
           <header class="active">
             <div class="container">
                 <a href="episode4.php?reset=true" class="reset-button" onclick="replayGame()"><img src="../image/Witchcraft.Code Logo.png" alt="Logo"/></a>
+    
+                <div class="header-title">
+                     Episode 4: File Handling and Library
+                </div>
             </div>
         </header> 
 
@@ -143,6 +147,7 @@
             var timeLeft = totalTime;
             var currentQuestionIndex = <?php echo $currentQuestionIndex; ?>;
             var chestMessageShown = <?php echo json_encode($_SESSION['chestMessageShown']); ?>;
+
         </script>
     </body>
 </html>
