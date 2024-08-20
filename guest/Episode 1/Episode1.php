@@ -147,7 +147,7 @@ $remaining_time = max(0, 600 - $elapsed_time);
 <body>
 <header class="active">
     <div class="header-content">
-        <a href=""><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
         <div class="header-title">
             Episode 1: Introduction to Python & Basic Syntax
         </div>
