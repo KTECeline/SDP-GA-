@@ -10,17 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-session_start();
-
-if (isset($_SESSION['USER_ID'])) {
-    $user_id = $_SESSION['USER_ID'];
-} else {
-    // Redirect to login if USER_ID is not set in session
-    header("Location: ../login_register/login_register.php");
-    exit;
-}
-
-
 $total_sql = "SELECT COUNT(*) as total FROM game_episode WHERE EPISODE_ID = 2";
 $total_result = $conn->query($total_sql);
 $total_row = $total_result->fetch_assoc();
@@ -307,7 +296,7 @@ function replayGame() {
 }
 
 function endGame() {
-    window.location.href = '../../user/homepage.php'; 
+    window.location.href = '../../index.html'; 
 }
 
 function showExitMessage() {
@@ -330,7 +319,7 @@ function confirmExit() {
     var messageModal = document.getElementById('exitModal');
     if (messageModal) {
     messageModal.style.display = 'none';
-    window.location.href = '../user/homepage.php';
+    window.location.href = '../../index.html';
 }
 }
 
@@ -339,7 +328,7 @@ function exitFunction() {
     var messageModal = document.getElementById('summary-modal');
     if (messageModal) {
     messageModal.style.display = 'none';
-    window.location.href = '../user/homepage.php';
+    window.location.href = '../../index.html';
 
 }
 }
@@ -522,18 +511,6 @@ function showSummary() {
 
     document.getElementById('summary-modal').style.display = 'block';
 
-    // Send results to the server
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'save_results.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            console.log(xhr.responseText); // Handle response if needed
-        } else {
-            console.error('Error saving results');
-        }
-    };
-    xhr.send(`time_taken=${encodeURIComponent(timeTaken)}&score=${encodeURIComponent(totalPoints)}`);
 }
 
 
