@@ -136,7 +136,7 @@ function replayGame() {
 }
 
 function endGame() {
-    window.location.href = '../user/homepage.php'; 
+    window.location.href = '../../index.html'; 
 }
 
 function showTimeoutMessage() {

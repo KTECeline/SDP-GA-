@@ -41,7 +41,7 @@
 
                 if ($nextQuestionIndex > 5) {
                     $message = "<span style='color: #7DFF5C;'><strong>Congratulations!</strong></span> You've completed all sections.🎉";
-                    $nextButton = "<a href='../certificate/certificate_details.php' class='next-button'>Finish</a>";
+                    $nextButton = "<a href='thankyou.php' class='next-button'>Finish</a>";
                     include 'save_result4.php';
                     unset($_SESSION['currentQuestionIndex']);
                 } else {

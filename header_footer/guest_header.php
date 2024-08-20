@@ -16,10 +16,10 @@
     <body>
         <header class="active">
             <div class="container">
-                <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+                <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png"/></a>
             
                 <ul class="header-action">
-                <li><a href="../login_register/login_register.php"><i class="fa fa-sign-in"></i>Login</a></li>  
+                <li><a href="../../login_register/login_register.php"><i class="fa fa-sign-in"></i>Login</a></li>  
                 </ul>
             </div>
         </header>
