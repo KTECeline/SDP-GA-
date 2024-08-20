@@ -37,7 +37,7 @@
                     <?php 
                         } else { 
                     ?>
-                        <li><a href="../login_register/login.php"><i class="fa fa-sign-in"></i>Login</a></li>
+                        <li><a href="../login_register/login_register.php"><i class="fa fa-sign-in"></i>Login</a></li>
                     <?php 
                         }
                     ?>   
