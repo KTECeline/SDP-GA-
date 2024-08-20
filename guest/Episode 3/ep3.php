@@ -1,15 +1,6 @@
 <?php
-include '../conn/conn.php';
+include '../../conn/conn.php';
 
-session_start();
-if (isset($_SESSION['USER_ID'])) {
-    $userID = $_SESSION['USER_ID'];
-    // Now you can use $userID to fetch user-specific data from your database
-} else {
-    // No user is logged in, redirect to login page
-    header("Location: ../login_register/login_register.php");
-    exit();
-}
 // Initialize variables
 $currentQuestion = isset($_POST['question_id']) ? (int)$_POST['question_id'] : 21;
 $bullet = isset($_POST['bullet']) ? (int)$_POST['bullet'] : 0;
@@ -47,12 +38,6 @@ if ($result->num_rows > 0) {
         "D" => $row['OPTION_D_EXPLANATION'],
     );
 } else {
-    // No more questions available
-    $episode_id = 3;
-    $insertSql = "INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?, ?)";
-    $stmt = $dbConn->prepare($insertSql);
-    $stmt->bind_param("iii", $marks, $episode_id, $userID);
-
     if ($stmt->execute()) {
         header("Location: fight.php?marks=" . $marks);
         exit;
@@ -109,13 +94,13 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="../css/Episode3.css"/>
+    <link rel="stylesheet" href="../../css/Episode3.css"/>
     <link href="https://fonts.cdnfonts.com/css/ocr-a-std" rel="stylesheet">
 </head>
 <body>
 <header class="active">
     <div class="header-content">
-        <a href="#"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
         <div class="header-title">
             Episode 3: Data Structure
         </div>

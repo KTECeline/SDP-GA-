@@ -14,7 +14,7 @@ session_start();
     <title>Image Zoom and Scroll</title>
     <style>
         body {
-            background: url('../image/fight.gif') no-repeat center center fixed;
+            background: url('../../image/fight.gif') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -141,21 +141,21 @@ session_start();
 <body>
 <header>
     <div class="logo-container">
-        <a href="#"><img src="../image/Witchcraft.Code Logo.png"/></a>
+        <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png"/></a>
     </div>
     <div class="header-title">Episode 3: Data Structure</div>
 </header>
 
 <div class="image-container">
-    <img src="../image/tower.png" alt="Zoomable Image" id="zoomable-image" class="start-position">
+    <img src="../../image/tower.png" alt="Zoomable Image" id="zoomable-image" class="start-position">
     <div class="witch">
-        <img src="../image/Flying witch.gif" />
+        <img src="../../image/Flying witch.gif" />
     </div>
     <div class="monster" id="monster">
-        <img src="../image/monster1.png" id="monster-img"/>
+        <img src="../../image/monster1.png" id="monster-img"/>
     </div>
     <div class="laser" id="laser">
-        <img src="../image/laser.gif" />
+        <img src="../../image/laser.gif" />
     </div>
     <div class="instructions"> Click on the monsters to kill them!<div>
 </div>
@@ -175,7 +175,7 @@ session_start();
 
             if (currentMonster <= 10) {
                 currentMonster++;
-                monsterImg.src = `../image/monster${currentMonster}.png`;
+                monsterImg.src = `../../image/monster${currentMonster}.png`;
                 monsterDiv.style.display = 'block';
             }
         }
@@ -195,7 +195,7 @@ session_start();
                 img.className = 'scroll-floor-' + currentFloor;
                 if (currentMonster < 10) {
                     currentMonster++;
-                    monsterImg.src = `../image/monster${currentMonster}.png`;
+                    monsterImg.src = `../../image/monster${currentMonster}.png`;
                     monsterDiv.style.display = 'block';
                 }
             }
