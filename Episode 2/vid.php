@@ -44,7 +44,7 @@
 
         <main class="button">
             <div class="action-buttons left">
-                <a href="ep2brief.php" class="btn btn-secondary"> &lt;-- Back</a>
+                <a href="briefing2.php" class="btn btn-secondary"> &lt;-- Back</a>
             </div>
         
             <div class="action-buttons right">
