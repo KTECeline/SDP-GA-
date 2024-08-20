@@ -19,7 +19,7 @@
     body {
         height: 100vh;
         width: 100%;
-        background: var(--dark-violet) url('../Episode 2/image/background12.jpg') no-repeat center center/cover;
+        background: var(--dark-violet) url('../Episode 2/image/ep2.jpeg') no-repeat center center/cover;
         display: flex;
         justify-content: center;
         align-items: center;
