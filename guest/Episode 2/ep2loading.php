@@ -65,7 +65,7 @@ setTimeout(function() {
 
 <header class="active">
     <div class="container">
-        <a href="../user/homepage.php"><img src="image/Witchcraft.Code Logo.png"/></a>
+        <a href="../../index.html"><img src="image/Witchcraft.Code Logo.png"/></a>
     </div>
 </header>
 
