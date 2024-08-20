@@ -48,7 +48,7 @@
 
 <header class="active">
     <div class="container">
-        <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+        <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png"/></a>
     </div>
 </header>
 
@@ -71,7 +71,7 @@
 
 <main class="button">
     <div class="action-buttons left">
-        <a href="../user/homepage.php" class="btn btn-secondary"> &lt;-- Back</a>
+        <a href="../../index.html" class="btn btn-secondary"> &lt;-- Back</a>
     </div>
 
     <div class="action-buttons right">

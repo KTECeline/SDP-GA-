@@ -12,14 +12,6 @@ if (isset($_POST['restartGame'])) {
     exit;
 }
 
-if (isset($_SESSION['USER_ID'])) {
-    $user_id = $_SESSION['USER_ID'];
-} else {
-    // Redirect to login if USER_ID is not set in session
-    header("Location: ../login_register/login_register.php");
-    exit;
-}
-
 // Initialize start time, score, and answered questions if not set
 if (!isset($_SESSION['start_time'])) {
     $_SESSION['start_time'] = time();
@@ -99,11 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: " . $_SERVER['PHP_SELF'] . "?EPISODE_QUESTION_ID=" . $nextQuestion);
         } else {
             // All questions answered, insert results without time taken
-            $episode_id = 1; // Assume this is the current episode_id
-
-            $insertSql = "INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?, ?)";
-            $stmt = $dbConn->prepare($insertSql);
-            $stmt->bind_param("iii", $_SESSION['score'], $episode_id, $user_id);
 
             if ($stmt->execute()) {
                 // Clear session variables
@@ -111,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 unset($_SESSION['score']);
                 unset($_SESSION['answered_questions']);
                 
-                header("Location: last.php?score=" . $_SESSION['score']);
+                header("Location: last.php");
                 exit;
             } else {
                 echo "Error: " . $stmt->error;
@@ -160,7 +147,7 @@ $remaining_time = max(0, 600 - $elapsed_time);
 <body>
 <header class="active">
     <div class="header-content">
-        <a href="#"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <a href="#"><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
         <div class="header-title">
             Episode 1: Introduction to Python & Basic Syntax
         </div>
