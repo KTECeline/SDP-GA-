@@ -21,7 +21,14 @@
                 justify-content: center;
                 margin-top: 50px;
             }
-        </style>
+            
+    body{
+        background-image: url("../Episode 2/image/ep1.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
     </head>
 
     <body>

@@ -138,6 +138,7 @@ $remaining_time = max(0, 600 - $elapsed_time);
     <title>Quiz</title>
     <link rel="stylesheet" href="../../css/Episode1.css"/>
 </head>
+
 <body>
 <header class="active">
     <div class="header-content">
