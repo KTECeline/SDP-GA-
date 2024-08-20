@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="../css/Episode4.css">
+        <link rel="stylesheet" href="../../css/Episode4.css">
         <script>
             setTimeout(function() {
                 window.location.href = "ep3.php?reset=true";
@@ -16,7 +16,7 @@
         </script>
         <style>
             body {
-                background-image: url('../image/flying-witch.gif');
+                background-image: url('../../image/flying-witch.gif');
                 background-size: cover; 
                 background-position: center;
                 background-repeat: no-repeat;
@@ -32,7 +32,7 @@
     <body>
         <header class="active">
             <div class="container">
-                <a href="vid.php"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+                <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
             </div>
         </header>
         

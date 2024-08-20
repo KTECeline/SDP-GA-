@@ -1,5 +1,5 @@
 <?php
-    include '../conn/conn.php';
+    include '../../conn/conn.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userAnswer = $_POST['answer'];

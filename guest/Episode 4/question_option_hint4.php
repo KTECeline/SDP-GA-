@@ -1,5 +1,5 @@
 <?php
-    include '../conn/conn.php';
+    include '../../conn/conn.php';
 
     if (!isset($_SESSION['currentQuestionIndex'])) {
         $_SESSION['currentQuestionIndex'] = 5; 

@@ -8,7 +8,7 @@
     <link href="https://fonts.cdnfonts.com/css/ocr-a-std" rel="stylesheet">
     <style>
         body {
-            background: url('../image/ep3end.gif') no-repeat center center fixed;
+            background: url('../../image/ep3end.gif') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -102,7 +102,7 @@
 <header class="active">
 
 <div class="container">
-    <a href="#"><img src="../image/Witchcraft.Code Logo.png"/></a>
+    <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png"/></a>
 
     <div class="header-title">
             Episode 3: Data Structure
@@ -113,12 +113,12 @@
 </header>
 
     <div class="witch">
-        <img src="../image/congrats witch.gif" />
+        <img src="../../image/congrats witch.gif" />
     </div>
     <div class="container-congrats">
     <h1>Congratulations ! You have passed Episode 3 !<h1>
     <p>Continue explore Episode 4 ?<p>
-    <a class="no" href ="../user/homepage.php">No</a> <a class="yes" href="../Episode 4/briefing4.php">Yes</a>
+    <a class="no" href ="../../index.html">No</a> <a class="yes" href="../Episode 4/briefing4.php">Yes</a>
     </div>
 </body>
 </html>

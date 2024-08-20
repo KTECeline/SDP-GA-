@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../conn/conn.php';
+    include '../../conn/conn.php';
     include 'question_option_hint4.php';
     include 'logic4.php';
     include 'reset4.php';
@@ -36,8 +36,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Episode 4</title>
-        <link rel="stylesheet" href="../css/Episode4.css">
-        <script src="../Javascript/episode4.js"></script>
+        <link rel="stylesheet" href="../../css/Episode4.css">
+        <script src="../../Javascript/episode4.js"></script>
         <script>
             var witchCoordinates = <?php echo $witchCoordinatesJson; ?>;
             var currentSection = <?php echo $currentSection; ?>;
@@ -47,7 +47,7 @@
     <body>
           <header class="active">
             <div class="container">
-                <a href="episode4.php?reset=true" class="reset-button" onclick="replayGame()"><img src="../image/Witchcraft.Code Logo.png" alt="Logo"/></a>
+                <a href="episode4.php?reset=true" class="reset-button" onclick="replayGame()"><img src="../../image/Witchcraft.Code Logo.png" alt="Logo"/></a>
     
                 <div class="header-title">
                      Episode 4: File Handling and Library
@@ -138,7 +138,7 @@
             </div>
         </main>
 
-        <script src="../Javascript/episode4.js"></script>
+        <script src="../../Javascript/episode4.js"></script>
         <script>
             var witchX = 310;
             var witchY = 120;

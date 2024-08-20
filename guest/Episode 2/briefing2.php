@@ -48,12 +48,12 @@
 
 <header class="active">
     <div class="container">
-        <a href="../user/homepage.php"><img src="image/Witchcraft.Code Logo.png"/></a>
+        <a href="../../index.html"><img src="image/Witchcraft.Code Logo.png"/></a>
     </div>
 </header>
 
 <main class="mission-briefing">
-    <div class="rule-b>ox">
+    <div class="rule-box">
         <h1>⭐ Mission Briefing ⭐</h1>
         <div class="briefing-card">
             <h2>Episode 2: The Gatedragon's Challenge 🐉</h2>
@@ -72,7 +72,7 @@
 
 <main class="button">
     <div class="action-buttons left">
-        <a href="../user/homepage.php" class="btn btn-secondary"> &lt;-- Back</a>
+        <a href="../../index.html" class="btn btn-secondary"> &lt;-- Back</a>
     </div>
 
     <div class="action-buttons right">

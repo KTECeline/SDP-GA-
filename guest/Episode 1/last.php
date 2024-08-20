@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/last.css"/>
+    <link rel="stylesheet" href="../../css/last.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Matemasie&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="header-content">
-        <a href="#"><img src="../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
         <div class="header-title">
             Episode 1: Introduction to Python & Basic Syntax
         </div>
@@ -20,14 +20,14 @@
         Please Double Click The Witch, There Will Be An Evolution !!<br><br>Congratulations, You Can Proceed To Episode 2 !
     </div>
     <div class="image">
-        <img src="../image/Flying witch.gif" alt="Flying witch" class="rotate90" id="witch">
+        <img src="../../image/Flying witch.gif" alt="Flying witch" class="rotate90" id="witch">
     </div>
 
-    <img src="../image/evolution.gif" alt="evolution" id="evolution">
-    <img src="../image/NewWitch.gif" alt="New Witch" id="newWitch">
+    <img src="../../image/evolution.gif" alt="evolution" id="evolution">
+    <img src="../../image/NewWitch.gif" alt="New Witch" id="newWitch">
     
     <div class="next"><a href="../Episode 2/briefing2.php">NEXT</a></div>
-    <div class="home"><a href="../user/homepage.php">HOME</a></div>
+    <div class="home"><a href="../../index.html">HOME</a></div>
 
     <script>
         // JavaScript to handle the click event

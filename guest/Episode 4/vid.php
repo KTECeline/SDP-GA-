@@ -7,8 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="../css/Episode4.css">
+        <link rel="stylesheet" href="../../css/Episode4.css">
         <style>
             video {
                 width: 90%;
@@ -28,7 +27,7 @@
     <body>
         <header class="active">
             <div class="container">
-                <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
+                <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png"/></a>
             </div>
         </header>
 
@@ -44,11 +43,11 @@
 
         <main class="button">
             <div class="action-buttons left">
-                <a href="../Episode4/briefing4.php" class="btn btn-secondary"> &lt;-- Back</a>
+                <a href="../Episode 4/briefing4.php" class="btn btn-secondary"> &lt;-- Back</a>
             </div>
         
             <div class="action-buttons right">
-                <a href="../Episode4/next_briefing4.php" class="btn btn-primary">Next --&gt; </a>
+                <a href="../Episode 4/next_briefing4.php" class="btn btn-primary">Next --&gt; </a>
             </div>
         </main>        
     </body>
