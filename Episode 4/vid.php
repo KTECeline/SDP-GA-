@@ -44,11 +44,11 @@
 
         <main class="button">
             <div class="action-buttons left">
-                <a href="../Episode4/briefing4.php" class="btn btn-secondary"> &lt;-- Back</a>
+                <a href="../Episode 4/briefing4.php" class="btn btn-secondary"> &lt;-- Back</a>
             </div>
         
             <div class="action-buttons right">
-                <a href="../Episode4/next_briefing4.php" class="btn btn-primary">Next --&gt; </a>
+                <a href="../Episode 4/next_briefing4.php" class="btn btn-primary">Next --&gt; </a>
             </div>
         </main>        
     </body>
