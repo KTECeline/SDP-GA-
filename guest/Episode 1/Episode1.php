@@ -1,5 +1,5 @@
 <?php
-include '../conn/conn.php';
+include '../../conn/conn.php';
 session_start();
 
 // Handle game restart
@@ -142,12 +142,12 @@ $remaining_time = max(0, 600 - $elapsed_time);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="../css/Episode1.css"/>
+    <link rel="stylesheet" href="../../css/Episode1.css"/>
 </head>
 <body>
 <header class="active">
     <div class="header-content">
-        <a href="#"><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
+        <a href=""><img src="../../image/Witchcraft.Code Logo.png" alt="Witchcraft Code Logo"/></a>
         <div class="header-title">
             Episode 1: Introduction to Python & Basic Syntax
         </div>
@@ -157,7 +157,7 @@ $remaining_time = max(0, 600 - $elapsed_time);
     <div id="score-display">Score: <span id="score"><?php echo $_SESSION['score']; ?></span></div>
     <div class="container">
         <div class="container-image">
-            <img width="400px" src="../image/Flying witch.gif" alt="Flying witch" class="rotate90">
+            <img width="400px" src="../../image/Flying witch.gif" alt="Flying witch" class="rotate90">
         </div>
         <div class="container-right">
             <div class="question">

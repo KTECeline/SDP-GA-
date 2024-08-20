@@ -118,7 +118,7 @@
     <div class="container-congrats">
     <h1>Congratulations ! You have passed Episode 3 !<h1>
     <p>Continue explore Episode 4 ?<p>
-    <a class="no" href ="../user/homepage.php">No</a> <a class="yes" href="../Episode4/briefing4.php">Yes</a>
+    <a class="no" href ="../user/homepage.php">No</a> <a class="yes" href="../Episode 4/briefing4.php">Yes</a>
     </div>
 </body>
 </html>
