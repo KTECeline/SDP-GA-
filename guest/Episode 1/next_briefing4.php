@@ -8,8 +8,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="../css/Episode4.css">
+        <link rel="stylesheet" href="../../css/Episode4.css">
         <style>
             .fade-out {
                 animation: fadeOut 1s forwards; 
@@ -38,7 +37,7 @@
     <header class="active">
 
     <div class="container">
-        <a href="#"><img src="../image/Witchcraft.Code Logo.png"/></a>
+        <a href="../../index.html"><img src="../../image/Witchcraft.Code Logo.png"/></a>
 
         <div class="header-title">
         Episode 1: Introduction to Python & Basic Syntax
