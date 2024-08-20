@@ -47,7 +47,7 @@
                 <a href="../user/homepage.php"><img src="../image/Witchcraft.Code Logo.png"/></a>
             
                 <ul class="header-action">
-                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <li><a href="../user/leaderboard.php">Leaderboard</a></li>
                     <?php 
                         if (isset($_SESSION['name'])) { 
                     ?>

@@ -38,7 +38,7 @@
     <header class="active">
 
     <div class="container">
-        <a href="#"><img src="image/Witchcraft.Code Logo.png"/></a>
+        <a href="#"><img src="../image/Witchcraft.Code Logo.png"/></a>
 
         <div class="header-title">
         Episode 1: Introduction to Python & Basic Syntax

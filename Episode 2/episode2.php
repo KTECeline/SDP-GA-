@@ -371,7 +371,7 @@ function closeRulesMessage() {
 }
 
 function nextEpisodeFunction(){
-    window.location.href = '../Episode 3/try2.php';
+    window.location.href = '../Episode 3/briefing3.php';
 }
 
 function showExplanation(selectedOption) {

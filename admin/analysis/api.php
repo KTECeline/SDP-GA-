@@ -45,8 +45,6 @@ function getEpisodeMetrics() {
     global $dbConn;
     $sql = "SELECT 
                 e.EPISODE_ID,
-                AVG(s.EPISODE_TOTAL_SCORE) as avg_total_score_per_episode,
-                AVG(TIME_TO_SEC(e.TIME_TAKEN)) as avg_time_spent_seconds,
                 AVG(e.SCORE) as avg_score
             FROM episode_result e
             JOIN score_information s ON e.USER_ID = s.USER_ID
@@ -59,8 +57,6 @@ function getEpisodeMetrics() {
         while ($row = $result->fetch_assoc()) {
             $data[] = array(
                 'EPISODE_ID' => $row['EPISODE_ID'],
-                'avg_total_score_per_episode' => floatval($row['avg_total_score_per_episode']),
-                'avg_time_spent' => round(floatval($row['avg_time_spent_seconds'])), // Round to nearest second
                 'avg_score' => floatval($row['avg_score'])
             );
         }
