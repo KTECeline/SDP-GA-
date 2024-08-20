@@ -340,7 +340,6 @@ function exitFunction() {
     if (messageModal) {
     messageModal.style.display = 'none';
     window.location.href = '../user/homepage.php';
-
 }
 }
 
