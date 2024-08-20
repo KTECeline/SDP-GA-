@@ -90,19 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nextQuestion = $currentQuestion + 1;
             header("Location: " . $_SERVER['PHP_SELF'] . "?EPISODE_QUESTION_ID=" . $nextQuestion);
         } else {
-            // All questions answered, insert results without time taken
-
-            if ($stmt->execute()) {
-                // Clear session variables
-                unset($_SESSION['start_time']);
-                unset($_SESSION['score']);
-                unset($_SESSION['answered_questions']);
-                
-                header("Location: last.php");
-                exit;
-            } else {
-                echo "Error: " . $stmt->error;
-            }
+            // All questions answered, clear session variables
+            unset($_SESSION['start_time']);
+            unset($_SESSION['score']);
+            unset($_SESSION['answered_questions']);
+            
+            header("Location: last.php?score=" . $_SESSION['score']);
+            exit;
         }
         exit;
     }
@@ -183,7 +177,7 @@ $remaining_time = max(0, 600 - $elapsed_time);
             </div>
         </div>
     </div>
-    <img id="boom" src="../image/boom.gif" alt="Boom" style="display:none;">
+    <img id="boom" src="../../image/boom.gif" alt="Boom" style="display:none;">
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -214,5 +208,3 @@ $remaining_time = max(0, 600 - $elapsed_time);
         scoreElement.textContent = currentScore;
     });
     </script>
-</body>
-</html>
