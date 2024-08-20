@@ -37,7 +37,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Episode 4</title>
         <link rel="stylesheet" href="../../css/Episode4.css">
-        <script src="../../Javascript/episode4.js"></script>
+        <script src="episode4.js"></script>
         <script>
             var witchCoordinates = <?php echo $witchCoordinatesJson; ?>;
             var currentSection = <?php echo $currentSection; ?>;
@@ -138,7 +138,7 @@
             </div>
         </main>
 
-        <script src="../../Javascript/episode4.js"></script>
+        
         <script>
             var witchX = 310;
             var witchY = 120;
