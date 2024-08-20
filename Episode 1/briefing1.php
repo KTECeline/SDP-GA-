@@ -56,7 +56,7 @@
     <div class="rule-b>ox">
         <h1>⭐ Mission Briefing ⭐</h1>
         <div class="briefing-card">
-            <h2>Episode 1: Escape the castle! 🐉</h2>
+            <h2>Episode 1: Witch Evolution 🧙‍♀️</h2>
             <p>🎉 HII, thanks for helping out 🎉</p>
             <p>The witch here is stuck for 15 years miserably in the castle
                 <br>She needs your help in escaping! <br>
