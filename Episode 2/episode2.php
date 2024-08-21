@@ -382,7 +382,7 @@ function showExplanation(selectedOption) {
         D: response.OPTION_D_EXPLANATION
     };
 
-    const explanationText = explanations[selectedOption] || 'You answer wrong, you lose one chance ! Choose wisely, or face the consequences !';
+    const explanationText = explanations[selectedOption] || 'You answered wrong, you lose one chance ! Choose wisely, or face the consequences ! Remember, you should only answer with A, B, C, or D. ';
     document.getElementById('explanation-text').innerHTML = explanationText;
     document.getElementById('explanation-container').style.display = 'block';
 
