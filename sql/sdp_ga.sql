@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `certificate_information`
 --
-
+CREATE DATABASE IF NOT EXISTS `sdp_ga` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE TABLE `certificate_information` (
   `CERTIFICATE_ID` int(11) NOT NULL,
   `CERTIFICATE_NAME` varchar(255) NOT NULL,
