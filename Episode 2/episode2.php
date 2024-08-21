@@ -134,7 +134,7 @@ $conn->close();
         <p id="messageText" class="Text">Rules:</p>
         <ul>
             <li>1. To advance, you must answer the Dragon Gatekeeper's question correctly.</li>
-            <li>2. Only by scoring enough can you pass through the gate and proceed to the next challenge.</li>
+            <li>2. You can only enter <strong>A, B, C, or D</strong> according to the text cloud displayed in the input field.</li>
             <li>3. You only have <strong>"one chance"</strong> to answer, so choose wisely!</li>
             <li>4. Incorrect answers will result in a deduction of <strong>25 XP</strong>.</li>
         </ul>
@@ -290,7 +290,7 @@ function showExplanation(selectedOption) {
         D: response.OPTION_D_EXPLANATION
     };
 
-    const explanationText = explanations[selectedOption] || 'You answer wrong, you lose one chance ! Choose wisely, or face the consequences !';
+    const explanationText = explanations[selectedOption] || 'You answered wrong, you lose one chance ! Choose wisely, or face the consequences ! Remember, you can only input A, B, C, or D in the answer field.';
     document.getElementById('explanation-text').innerHTML = explanationText;
     document.getElementById('explanation-container').style.display = 'block';
 
