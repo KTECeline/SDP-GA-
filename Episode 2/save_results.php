@@ -30,13 +30,8 @@ $score = $_POST['score'];
 $episode_id = 2;
 
 // Prepare and bind
-<<<<<<< Updated upstream
 $stmt = $conn->prepare("INSERT INTO episode_result ( SCORE, EPISODE_ID, USER_ID) VALUES ( ?, ?,?)");
 $stmt->bind_param("iii", $score, $episode_id, $user_id);
-=======
-$stmt = $conn->prepare("INSERT INTO episode_result (SCORE, EPISODE_ID, USER_ID) VALUES (?, ?,?)");
-$stmt->bind_param("siii", $score, $episode_id, $user_id);
->>>>>>> Stashed changes
 
 // Execute
 if ($stmt->execute()) {
