@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2024 at 12:52 PM
+-- Generation Time: Aug 21, 2024 at 03:50 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,18 @@ CREATE TABLE `certificate_information` (
   `CERTIFICATE_FEEDBACK` varchar(255) NOT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `certificate_information`
+--
+
+INSERT INTO `certificate_information` (`CERTIFICATE_ID`, `CERTIFICATE_NAME`, `CERTIFICATE_FEEDBACK`, `USER_ID`) VALUES
+(10, 'Huinan', 'GOOD', 1),
+(11, 'Alx', 'Nice! Not bad', 3),
+(12, 'Rachel', 'I like the game', 4),
+(13, 'John', 'Cure graphics', 5),
+(14, 'Jia Yee ', 'Videos are nice', 11),
+(15, 'Jin Yi', 'Tutorials are easy to see', 12);
 
 -- --------------------------------------------------------
 
@@ -67,6 +79,39 @@ CREATE TABLE `episode_result` (
   `EPISODE_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `episode_result`
+--
+
+INSERT INTO `episode_result` (`EPISODE_RESULT_ID`, `SCORE`, `EPISODE_ID`, `USER_ID`) VALUES
+(60, 455, 1, 1),
+(61, 1000, 2, 1),
+(62, 820, 3, 1),
+(63, 500, 4, 1),
+(64, 465, 1, 3),
+(65, 625, 2, 3),
+(66, 720, 3, 3),
+(67, 500, 4, 3),
+(68, 435, 1, 4),
+(71, 1000, 2, 4),
+(72, 840, 3, 4),
+(73, 500, 4, 4),
+(74, 420, 1, 5),
+(75, 750, 2, 5),
+(76, 860, 3, 5),
+(77, 500, 4, 5),
+(78, 425, 1, 11),
+(79, 625, 2, 11),
+(80, 820, 3, 11),
+(81, 500, 4, 11),
+(82, 440, 1, 12),
+(83, 875, 2, 12),
+(84, 840, 3, 12),
+(85, 500, 4, 12),
+(86, 450, 1, 13),
+(87, 455, 1, 14),
+(88, 750, 2, 14);
 
 -- --------------------------------------------------------
 
@@ -111,7 +156,7 @@ INSERT INTO `game_episode` (`EPISODE_QUESTION_ID`, `EPISODE_QUESTION`, `EPISODE_
 (14, 'What is the output of the following code?\r\nfor i in range(1, 5):\r\n    if i == 3:\r\n        continue\r\n    print(i)', 'Consider how the \"continue\" statement affects the flow of the loop when \"i\" is equal to 3. What happens to the \"print(i)\" statement in that iteration?', '0 1 2 3 4', 'B. Incorrect! The loop skips 3, so it is not printed. -25 XP', '1 2 4', 'B. Correct! The loop skips the value 3 due to the continue statement. +100 XP ', '0 1 2', 'C. Incorrect ! The loop continues after 2, so 4 is also printed. -25 XP', '1 3 4', 'D. Incorrect ! The loop skips 3, so this output is incorrect. -25 XP', 'B', 2),
 (15, 'Which of the following is not a valid loop control statement in Python?', 'Think about the common statements used to control loop execution, such as skipping iterations or exiting loops. One of the options is not recognized as a loop control statement in Python.', 'pass', 'A. Incorrect ! pass is a valid statement that does nothing. -25 XP', 'continue', 'B. Incorrect ! Continue is a valid statement to skip to the next iteration. -25 XP', 'skip', 'C. Correct ! Skip is not a valid loop control statement in Python. +100 XP', 'break', 'D. Incorrect ! Break is a valid statement to exit a loop.\r\n\r\n-25 XP', 'C', 2),
 (16, 'What will be the output of the following code?\r\nfor i in range(1, 5):\r\n    if i == 3:\r\n        continue\r\n    print(i)', 'The \"continue\" statement skips the current iteration of the loop and proceeds to the next one. Consider what happens when the loop reaches the value 3.', '1 2', 'A. Incorrect ! The loop continues to 4. -25 XP', '1 2 3 4 ', 'B. Incorrect ! The number 3 is skipped due to the continue statement.\r\n\r\n-25 XP', '1 2 4', 'C. Correct ! The loop skips printing 3. +100 XP', '1 2 3', 'D. Incorrect ! The loop skips 3 but continues to 4. -25 XP', 'C', 2),
-(17, 'What will be the output of the following code?\r\ndef func(x, y=5):\r\n    return x * y\r\nresult = func(2)\r\nprint(result)', 'The function func multiplies its first argument \"x\" with its second argument \"y\". If the second argument \"y\" is not provided, it defaults to 5.', 'Error', 'A. Incorrect ! The code is correct and runs without errors. -25 XP', '7', 'B. Incorrect ! The function does not add but multiplies the values. -25 XP', '5', 'C. Incorrect ! The value of \"x\" is 2, so the result is 10, not 5. -25 XP', '10', 'D. Correct. The function multiplies 2 by the default value of y which is 5. +100 XP', 'D', 2),
+(17, 'What will be the output of the following code?\r\ndef func(x, y=5):\r\n    return x * y\r\nresult = func(2)\r\nprint(result)', 'The function func multiplies its first argument \"x\" with its second argument \"y\". If the second argument \"y\" is not provided, it defaults to 5.', 'Error', 'A. Incorrect ! The code is correct and runs without errors. -25 XP', '7', 'B. Incorrect ! The function does not add but multiplies the values. -25 XP', '5', 'C. Incorrect ! The value of \"x\" is 2, so the result is 10, not 5. -25 XP', 'Error', 'D. Correct. The function multiplies 2 by the default value of y which is 5. +100 XP', 'D', 2),
 (18, 'What is the output of the following code?\r\n\r\nfor i in range(2):\r\n    for j in range(2):\r\n        print(i, j)', 'The code contains two nested loops. The outer loop runs twice, and for each iteration of the outer loop, the inner loop also runs twice. Think about how many times the \"print\" statement will execute and what values of \"i\" and \"j\" will be printed.', '0 0, 0 1, 1 0, 1 1', 'A. Correct! The nested loops go through all combinations of i and j. +100 XP', '0 0, 1 1', 'B. Incorrect ! The loops generate more combinations, not just these two. -25 XP', '1 0, 1 1, 0 0, 0 1', 'C. Incorrect ! The loops run in ascending order, not this order. -25 XP', '0 1, 1 0', 'D. Incorrect ! The output order does not match this pattern. -25 XP', 'A', 2),
 (19, 'What will be the output of the following code?\r\n\r\ndef func(x):\r\n    return x ** 2\r\nprint(func(3) + func(2))', 'The code defines a function that squares its input and then calls this function twice with different values. The output is the sum of the squared results.', '13', 'A. Correct ! The function returns \r\n3^2 + 2^2 = 9 + 4= 13. +100 XP', '11', 'B. Incorrect ! Wrong calculation. The correct result is 13. -25 XP', '25', 'C. Incorrect ! The result should be 13. -25 XP', '9', 'D. Incorrect ! Only 3^2 is considered here. -25 XP', 'A', 2),
 (20, 'What will be the output of the following code?\r\n\r\nx = [1, 2, 3]\r\nx.append(4)\r\nprint(len(x))', 'To determine the output, consider how the \"append()\" method affects the length of the list.', '4', 'A. Correct ! The append method adds one element to the list, making its length 4. +100 XP', '3', 'B. Incorrect ! The list length is 4 after appending. -25 XP', '5', 'C. Incorrect ! The length is 4, not 5. -25 XP', 'Error', 'D. Incorrect ! The code is correct and will run without errors. -25 XP', 'A', 2),
@@ -148,6 +193,18 @@ CREATE TABLE `score_information` (
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `score_information`
+--
+
+INSERT INTO `score_information` (`SCORE_ID`, `EPISODE_TOTAL_SCORE`, `USER_ID`) VALUES
+(14, 2775, 1),
+(15, 2310, 3),
+(16, 2275, 4),
+(17, 2530, 5),
+(18, 2370, 11),
+(19, 2655, 12);
+
 -- --------------------------------------------------------
 
 --
@@ -169,8 +226,15 @@ CREATE TABLE `user_information` (
 --
 
 INSERT INTO `user_information` (`USER_ID`, `USER_NAME`, `USER_EMAIL`, `USER_PHONENUMBER`, `USER_USERNAME`, `USER_PASSWORD`, `ROLES`) VALUES
-(1, 'Hui Nan', 'huinan26@gmail.com', '011-20186158', 'huinannn', 'hn123', 'user'),
-(2, 'Celine', 'celine@gmail.com', '011-20246666', 'celine', 'celine123', 'admin');
+(1, 'Hui Nan', 'huinan26@gmail.com', '011-20186158', 'huinann', 'hn123', 'user'),
+(2, 'Celine', 'celine@gmail.com', '011-20246666', 'celine', 'celine123', 'admin'),
+(3, 'Alex Tan', 'alextan@gmail.com', '011-20337777', 'alextan', 'alex123', 'user'),
+(4, 'Rachel Lee', 'rachellee@gmail.com', '011-20448888', 'rachellee', 'rachel123', 'user'),
+(5, 'John Lim', 'johnlim@gmail.com', '011-20559999', 'johnlim', 'john123', 'user'),
+(11, 'Jia Yee', 'Jiayee@gmail.com', '012-34323433', 'Jiayee', 'jy123', 'user'),
+(12, 'Jin Yi', 'jinyi@gmail.com', '012-345566778', 'JinYi', 'jy123', 'user'),
+(13, 'Eric', 'eric@gmail.com', '012-374790948', 'Eric', 'e123', 'user'),
+(14, 'Jing Hui', 'jinghui@gmail.com', '012-38473634', 'Jinghui', 'jh123', 'user');
 
 --
 -- Indexes for dumped tables
@@ -225,7 +289,7 @@ ALTER TABLE `user_information`
 -- AUTO_INCREMENT for table `certificate_information`
 --
 ALTER TABLE `certificate_information`
-  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CERTIFICATE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `episode`
@@ -237,7 +301,7 @@ ALTER TABLE `episode`
 -- AUTO_INCREMENT for table `episode_result`
 --
 ALTER TABLE `episode_result`
-  MODIFY `EPISODE_RESULT_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EPISODE_RESULT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `game_episode`
@@ -249,13 +313,13 @@ ALTER TABLE `game_episode`
 -- AUTO_INCREMENT for table `score_information`
 --
 ALTER TABLE `score_information`
-  MODIFY `SCORE_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SCORE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user_information`
 --
 ALTER TABLE `user_information`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
