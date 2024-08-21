@@ -55,7 +55,7 @@ $conn->close();
         </div>
     
     <ul class="header-action">
-        <li><a href="../../index.html" onclick="showExitMessage()">Exit</a></li>
+        <li><a href="#" onclick="showExitMessage()">Exit</a></li>
     </ul>
 
 </div>
