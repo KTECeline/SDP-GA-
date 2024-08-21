@@ -7,7 +7,15 @@ if (isset($_SESSION['USER_ID'])) {
     $user_id = $_SESSION['USER_ID'];
 
     // Calculate total score from all episodes
-    $stmt = $dbConn->prepare("SELECT SUM(SCORE) AS total_score FROM episode_result WHERE USER_ID = ?");
+    $stmt = $dbConn->prepare("
+    SELECT SUM(max_score) AS total_score
+    FROM (
+        SELECT MAX(SCORE) AS max_score
+        FROM episode_result 
+        WHERE USER_ID = ?
+        GROUP BY EPISODE_ID
+    ) AS max_scores_per_episode
+");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $stmt->bind_result($total_score);
