@@ -59,7 +59,7 @@ $conn->close();
 <header class="active">
 
 <div class="container">
-    <a href="../user/homepage.php"><img src="image/Witchcraft.Code Logo.png"/></a>
+    <a href="#"><img src="image/Witchcraft.Code Logo.png"/></a>
 
     <div class="header-title">
             Episode 2: Control Flow and Function
